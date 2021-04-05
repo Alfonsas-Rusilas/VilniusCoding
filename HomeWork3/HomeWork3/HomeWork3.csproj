@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>HomeWork3.Salygu_uzduotys._005_switch_extend</StartupObject>
+    <StartupObject>HomeWork3.Salygu_uzduotys._007_duonos_kepimas</StartupObject>
   </PropertyGroup>
 
 </Project>
