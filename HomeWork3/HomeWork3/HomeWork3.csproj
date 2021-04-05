@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>HomeWork3.Salygu_uzduotys._002_MokinioPazymys</StartupObject>
   </PropertyGroup>
 
 </Project>
