@@ -20,7 +20,11 @@ namespace HomeWork3.Git_uzduotys
             Console.WriteLine($"Didžiausias skaičius yra {Max(sk1,sk2,sk3)}");
             Console.WriteLine($"Ar pirmas skaičius papuola į intervalą: {InRange(sk1, sk2, sk3)}");
             Console.WriteLine($"Ar pirmas skaičius pirminis: {InPrimal(sk1)}");
-        }
+            Console.WriteLine($"Random skaičius iš D20: {D20()}");
+            Console.WriteLine($"Random skaičius iš D10: {D10()}");
+            Console.WriteLine($"Random skaičius iš D6: {D6()}");
+            Funkcija_skaicius_intervale(12, 100);
+         }
 
         static int Max(int ska1, int ska2, int ska3)
         {
@@ -42,6 +46,35 @@ namespace HomeWork3.Git_uzduotys
                 if (p == pirminiai[i]) rezultatas = true;
             }
             return rezultatas;
+        }
+
+        static int D20()
+        {
+            Random _random = new Random();
+            return _random.Next(1, 20);
+        }
+
+        static int D10()
+        {
+            Random _random = new Random();
+            return _random.Next(1, 10);
+        }
+
+        static int D6()
+        {
+            Random _random = new Random();
+            return _random.Next(1, 6);
+        }
+
+        static void Funkcija_skaicius_intervale(int nuo, int iki)
+        {
+            int skaicius;
+            do
+            {
+                Console.Write($"Funkcija tikrina ar skaičius iš intervalo {nuo}..{iki}. Įveskite skaičių: ");
+                skaicius = Convert.ToInt32(Console.ReadLine());
+            } while (!InRange(skaicius, nuo, iki));
+            Console.Write($"Puiku: {skaicius}");
         }
     }
 }
