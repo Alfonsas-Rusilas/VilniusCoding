@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HomeWork3.Lesson4
 {
@@ -69,8 +70,9 @@ namespace HomeWork3.Lesson4
 
             const int SedimuVietu = 8;
             const int VietuPrieLango = 4;
-            const string AtsakymasTaip = "taip";
-            //const string AtsakymasNe = "ne";
+            //const string AtsakymasTaip = "taip";
+            var atsakymaiYes = new List<string>() { "yes", "1", "Taip", "taip" };
+            var atsakymaiNo = new List<string>() { "no", "0", "No", "ne" };
             int panaudotos_vietos = 0;
             int panaudotos_vietos_prie_lango = 0;
             do
@@ -78,12 +80,19 @@ namespace HomeWork3.Lesson4
                 Console.Write("Sėdėsit prie lango (taip/ne)?");
                 string str = Convert.ToString(Console.ReadLine());
 
-                if (str == AtsakymasTaip)
+                if (atsakymaiYes.Contains(str))
                 {
                     panaudotos_vietos_prie_lango++;
                 }
-                panaudotos_vietos++;
-
+                else if (atsakymaiNo.Contains(str))
+                {
+                    panaudotos_vietos++;
+                }
+                else
+                {
+                    Console.WriteLine("Neteisingai įvedėt atsakymą"); 
+                    continue;
+                }
             } while (panaudotos_vietos < SedimuVietu && panaudotos_vietos_prie_lango < VietuPrieLango);
 
         }
