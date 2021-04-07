@@ -38,7 +38,7 @@ namespace HomeWork3.Lesson4
             }
             Console.WriteLine($"\nHi! suma skaičių, mažesnių už 1000 ir kurie dalinasi iš 3 arba 5: {suma}");
             */
-            //////////////  END of 3.a /////////////////////////////////////////
+
             // Ctrl + K, C  //komentuoti bloką
             // Ctr + K, U   //nuimti komentarus pažymėtam blokui
 
@@ -67,7 +67,7 @@ namespace HomeWork3.Lesson4
             }
             */
             ////////////// 3.c /////////////////////////////////////////
-
+            /*
             const int SedimuVietu = 8;
             const int VietuPrieLango = 4;
             //const string AtsakymasTaip = "taip";
@@ -95,6 +95,7 @@ namespace HomeWork3.Lesson4
                     continue;
                 }
             } while (panaudotos_vietos < SedimuVietu && panaudotos_vietos_prie_lango < VietuPrieLango);
+            */
 
             /*
             do
@@ -113,6 +114,25 @@ namespace HomeWork3.Lesson4
             } while (panaudotos_vietos < SedimuVietu || panaudotos_vietos_prie_lango < VietuPrieLango);
             */
 
+            ////////////// 3.d /////////////////////////////////////////
+
+            int suma = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                if (!(i % 5 == 0)) suma += i;
+                if (i > 123) break;
+            }
+            Console.WriteLine($"Suma: {suma}");
+
+            suma = 0;
+            int tmp = 0;
+            for (;;)
+            {
+                if (!(tmp % 5 == 0)) suma += tmp;
+                if (tmp > 123) break;
+                tmp++;
+            }
+            Console.WriteLine($"Suma 2: {suma}");
 
         }
     }
