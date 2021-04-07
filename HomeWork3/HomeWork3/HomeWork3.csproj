@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>HomeWork3.Pamoka_3.pamoka_3</StartupObject>
+    <StartupObject>HomeWork3.Lesson4.Program4</StartupObject>
   </PropertyGroup>
 
 </Project>
