@@ -119,8 +119,14 @@ namespace HomeWork3.Lesson4
             int suma = 0;
             for (int i = 0; i < 1000; i++)
             {
-                if (!(i % 5 == 0)) suma += i;
-                if (i > 123) break;
+                if (i % 5 != 0)
+                {
+                    suma += i;
+                }
+                if (i > 123)
+                {
+                    break;
+                }
             }
             Console.WriteLine($"Suma: {suma}");
 
@@ -128,8 +134,15 @@ namespace HomeWork3.Lesson4
             int tmp = 0;
             for (;;)
             {
-                if (!(tmp % 5 == 0)) suma += tmp;
-                if (tmp > 123) break;
+                if (tmp % 5 == 0)
+                {
+                    continue;
+                }
+                if (tmp > 123)
+                {
+                    break;
+                }
+                suma += tmp;
                 tmp++;
             }
             Console.WriteLine($"Suma 2: {suma}");
