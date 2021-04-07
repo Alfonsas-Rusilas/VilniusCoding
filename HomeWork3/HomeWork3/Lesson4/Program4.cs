@@ -38,21 +38,20 @@ namespace HomeWork3.Lesson4
             Console.WriteLine($"\nHi! suma skaičių, mažesnių už 1000 ir kurie dalinasi iš 3 arba 5: {suma}");
             */
             //////////////  END of 3.a /////////////////////////////////////////
-            // Ctrl + K,  Ctrl + C
+            // Ctrl + K, C  //komentuoti bloką
+            // Ctr + K, U   //nuimti komentarus pažymėtam blokui
 
 
             ////////////// 3.b /////////////////////////////////////////
 
-            Console.WriteLine("Pasirinkite vieną:\n1 kava;\n2 arbata;\n3 vanduo");
+            Console.WriteLine("Pasirinkite vieną iš galimų:\n1 Kava;\n2 Arbata;\n3 Vanduo;");
             int meniu = Convert.ToInt32(Console.ReadLine());
             while (meniu < 1 || meniu > 3)
             {
-                Console.WriteLine("Klaida!");
-                Console.Write("Įveskite tinkamą skaičių: ");
+                Console.WriteLine("Klaida! Įveskite tinkamą skaičių: ");
                 meniu = Convert.ToInt32(Console.ReadLine());
             }
             Console.WriteLine($"Pasirinkote: {meniu}");
-
 
         }
     }
