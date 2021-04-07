@@ -51,7 +51,19 @@ namespace HomeWork3.Lesson4
                 Console.WriteLine("Klaida! Įveskite tinkamą skaičių: ");
                 meniu = Convert.ToInt32(Console.ReadLine());
             }
-            Console.WriteLine($"Pasirinkote: {meniu}");
+            Console.Write($"Pasirinkote: {meniu}, t.y. ");
+            switch (meniu)
+            {
+                case 1:
+                    Console.WriteLine("kavą");
+                    break;
+                case 2:
+                    Console.WriteLine("arbatą");
+                    break;
+                case 3:
+                    Console.WriteLine("vandenį");
+                    break;
+            }
 
         }
     }
