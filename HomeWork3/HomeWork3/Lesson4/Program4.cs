@@ -83,6 +83,7 @@ namespace HomeWork3.Lesson4
                 if (atsakymaiYes.Contains(str))
                 {
                     panaudotos_vietos_prie_lango++;
+                    panaudotos_vietos++;
                 }
                 else if (atsakymaiNo.Contains(str))
                 {
@@ -90,10 +91,28 @@ namespace HomeWork3.Lesson4
                 }
                 else
                 {
-                    Console.WriteLine("Neteisingai įvedėt atsakymą"); 
+                    Console.WriteLine("Neteisingai įvedėt atsakymą, pakartokit.");
                     continue;
                 }
             } while (panaudotos_vietos < SedimuVietu && panaudotos_vietos_prie_lango < VietuPrieLango);
+
+            /*
+            do
+            {
+                string input;
+                do
+                {
+
+                } while (input != "yes" && input != "no");
+                
+                if (..) 
+                {
+                    //,,
+                }
+                //..
+            } while (panaudotos_vietos < SedimuVietu || panaudotos_vietos_prie_lango < VietuPrieLango);
+            */
+
 
         }
     }
