@@ -43,7 +43,7 @@ namespace HomeWork3.Lesson4
 
 
             ////////////// 3.b /////////////////////////////////////////
-
+            /*
             Console.WriteLine("Pasirinkite vieną iš galimų:\n1 Kava;\n2 Arbata;\n3 Vanduo;");
             int meniu = Convert.ToInt32(Console.ReadLine());
             while (meniu < 1 || meniu > 3)
@@ -64,6 +64,27 @@ namespace HomeWork3.Lesson4
                     Console.WriteLine("vandenį");
                     break;
             }
+            */
+            ////////////// 3.c /////////////////////////////////////////
+
+            const int SedimuVietu = 8;
+            const int VietuPrieLango = 4;
+            const string AtsakymasTaip = "taip";
+            //const string AtsakymasNe = "ne";
+            int panaudotos_vietos = 0;
+            int panaudotos_vietos_prie_lango = 0;
+            do
+            {
+                Console.Write("Sėdėsit prie lango (taip/ne)?");
+                string str = Convert.ToString(Console.ReadLine());
+
+                if (str == AtsakymasTaip)
+                {
+                    panaudotos_vietos_prie_lango++;
+                }
+                panaudotos_vietos++;
+
+            } while (panaudotos_vietos < SedimuVietu && panaudotos_vietos_prie_lango < VietuPrieLango);
 
         }
     }
