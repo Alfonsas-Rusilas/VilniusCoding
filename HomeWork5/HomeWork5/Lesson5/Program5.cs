@@ -71,14 +71,12 @@ namespace HomeWork5.Lesson5
             double ugis_metrais = Convert.ToDouble(Console.ReadLine());
 
             double kunoMasesIndex = KMI(svoris_kg, ugis_metrais);
-            string strKMI = KMItoString(kunoMasesIndex);
-            Console.Write(strKMI);
+            Console.WriteLine($"Jūsų KMI: {kunoMasesIndex} - {KMItoString(kunoMasesIndex)}");
         }
 
         static string KMItoString(double kmi)
         {
             string rezult = "";
-
             switch (kmi)
             {
                 case double dd when dd < 15:
