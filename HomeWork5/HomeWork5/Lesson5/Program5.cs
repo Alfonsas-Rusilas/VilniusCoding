@@ -26,7 +26,16 @@ namespace HomeWork5.Lesson5
         // DoSom(leftParam:5, rightParam:84) - nurodome parametrus pagal vardą
         //
         // Ctrl + . //// sukuria karkasą pagal pavadinimą (arba Alt + Shift + F10)
-
+        //
+        // PassAsRef(ref int someInt)
+        // PassAsRef(ref skaicius) - siunčia nuorodą į skaičių
+        //
+        // PassAsRef(out int skaicius) - siunčia nuorodą į skaičių
+        // 
+        // int.TryParse(Console.ReadLine(), out RetValue) - patikrinimas, su užpildomu RetValue
+        // in - yra skirtas nusiųsti kintamąjį į vidų
+        // PessAsIn(in int skaiciusIn) - perduodam pav. funkcijai, bet jo pakeisti neleidžiama!
+        //
         //////////////////// Metodai ir Funkcijos ////////////////////////
         /*
         static void Main()
@@ -60,7 +69,13 @@ namespace HomeWork5.Lesson5
         {
             Console.WriteLine("======================== 5.a ===========================");
             //Exercise1();
-            Exercise2();
+            //Exercise2();
+            Exercise3();
+        }
+
+        static void Exercise3()
+        {
+            //
         }
 
         static void Exercise2()
@@ -81,6 +96,7 @@ namespace HomeWork5.Lesson5
             {
                 case double dd when dd < 15:
                     rezult = "badaujantis žmogus";
+                    // return "badaujantis žmogus";
                     break;
                 case double dd when dd < 18.5 && dd > 15:
                     rezult = "badaujantis žmogus";
@@ -109,8 +125,7 @@ namespace HomeWork5.Lesson5
             return kg / (metrai * metrai);
         }
 
-
-
+        //=================================================== 
 
         static void Exercise1()
         {
