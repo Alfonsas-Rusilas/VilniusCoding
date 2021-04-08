@@ -59,8 +59,60 @@ namespace HomeWork5.Lesson5
         static void Main()
         {
             Console.WriteLine("======================== 5.a ===========================");
-            Exercise1();
+            //Exercise1();
+            Exercise2();
         }
+
+        static void Exercise2()
+        {
+            Console.Write("Įveskite svorį kg: ");
+            int svoris_kg = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Įveskite ūgį metrais: ");
+            double ugis_metrais = Convert.ToDouble(Console.ReadLine());
+
+            double kunoMasesIndex = KMI(svoris_kg, ugis_metrais);
+            string strKMI = KMItoString(kunoMasesIndex);
+            Console.Write(strKMI);
+        }
+
+        static string KMItoString(double kmi)
+        {
+            string rezult = "";
+
+            switch (kmi)
+            {
+                case double dd when dd < 15:
+                    rezult = "badaujantis žmogus";
+                    break;
+                case double dd when dd < 18.5 && dd > 15:
+                    rezult = "badaujantis žmogus";
+                    break;
+                case double dd when dd > 18.5 && dd < 25:
+                    rezult = "normalaus svorio žmogus";
+                    break;
+                case double dd when dd < 30 && dd > 25:
+                    rezult = "turintis višsvorio žmogus";
+                    break;
+                case double dd when dd < 40 && dd > 30:
+                    rezult = "nutukęs žmogus";
+                    break;
+                case double dd when dd > 40:
+                    rezult = "ligotai nutukęs žmogus";
+                    break;
+                default:
+                    rezult = "ateivis";
+                    break;
+            }
+            return rezult;
+        }
+
+        static double KMI(int kg, double metrai)
+        {
+            return kg / (metrai * metrai);
+        }
+
+
+
 
         static void Exercise1()
         {
@@ -83,22 +135,22 @@ namespace HomeWork5.Lesson5
 
         static void Dalmuo(int sk1 = 2, int sk2 = 3)
         {
-            Console.WriteLine($"Dalmuo: {sk1} ir {sk2}");
+            Console.WriteLine($"Dalmuo: {sk1 / sk2}");
         }
 
         static void Sandauga(int sk1 = 2, int sk2 = 3)
         {
-            Console.WriteLine($"Sandauga: {sk1} ir {sk2}");
+            Console.WriteLine($"Sandauga: {sk1 * sk2}");
         }
 
         static void Skirtumas(int sk1 = 2, int sk2 = 3)
         {
-            Console.WriteLine($"Skirtumas: {sk1} ir {sk2}");
+            Console.WriteLine($"Skirtumas: {sk1 - sk2}");
         }
 
         static void Suma(int sk1 = 5, int sk2 = 10)
         {
-            Console.WriteLine($"Suma: {sk1} ir {sk2}");
+            Console.WriteLine($"Suma: {sk1 + sk2}");
         }
     }
 }
