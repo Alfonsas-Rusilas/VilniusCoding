@@ -75,6 +75,8 @@ namespace HomeWork5.Lesson5
 
         static void Exercise3()
         {
+            // 4.3 - padaryti 
+            // Namų darbas ND1 - kataloge BigHomeWork1 (nenaudoti try - parse, daryti pagal pav.)
             //
         }
 
