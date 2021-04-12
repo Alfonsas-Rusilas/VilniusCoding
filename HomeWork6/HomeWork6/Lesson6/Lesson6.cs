@@ -29,18 +29,13 @@ namespace HomeWork6.Lesson6
 
             string[] str_mas = WriteWords();
             string str = "";
-            for (int i = 0; i < str_mas.Length; i++)
-            {
-                str += str_mas[i];
-            }
-            Console.WriteLine($"Suvedėt: {str}");
+             Console.WriteLine($"Suvedėt: {PrintArray(str_mas, " ")}");
             str = "";
             for (int i = str_mas.Length-1; i >= 0; i--)
             {
                 str += str_mas[i];
             }
             Console.WriteLine($"Suvedimas atvirkščiai: {str}");
-
             RemoveArrayDuplicates(new string[] { "Mano", "batai", "Mano", "buvo", "batai", "buvo", "du", "buvo", "du", "." } );
         }
 
@@ -68,13 +63,7 @@ namespace HomeWork6.Lesson6
                     }
                 }
             }
-            tmp = "";
-            for (int m = 0; m < str.Length; m++)
-            {
-                tmp += " " + str[m];
-            }
-            Console.WriteLine($"Turime: {tmp}");
-
+            Console.WriteLine($"Turime: {PrintArray(str, " ")}");
             int sk = str.Length - 1;
             for (int m = 0; m < str.Length; m++)
             {
@@ -86,11 +75,17 @@ namespace HomeWork6.Lesson6
                     sk--;
                 }
             }
-            for (int m = 0; m < str.Length; m++)
+            Console.WriteLine($"Turime sutvarkytą: {PrintArray(str, " ")}");
+        }
+
+        static string PrintArray(string[] str_array,  string delimiter = " ")
+        {
+            string tmp = "";
+            for (int m = 0; m < str_array.Length; m++)
             {
-                tmp += " " + str[m];
+                tmp += " " + str_array[m];
             }
-            Console.WriteLine($"Turime sutvarkytą: {tmp}");
+            return tmp;
         }
 
     }
