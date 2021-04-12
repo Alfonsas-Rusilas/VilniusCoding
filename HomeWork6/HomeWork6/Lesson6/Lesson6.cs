@@ -29,8 +29,7 @@ namespace HomeWork6.Lesson6
 
             string[] str_mas = WriteWords();
             string str = "";
-             Console.WriteLine($"Suvedėt: {PrintArray(str_mas, " ")}");
-            str = "";
+            Console.WriteLine($"Suvedėt: {PrintArray(str_mas, " ")}");
             for (int i = str_mas.Length-1; i >= 0; i--)
             {
                 str += str_mas[i];
@@ -52,30 +51,37 @@ namespace HomeWork6.Lesson6
 
         static void RemoveArrayDuplicates(string[] str)
         {
-            string tmp = str[0];
+            string sign = "!";
+            int signs = 0;
             for (int i = 0; i < str.Length; i++)
             {
-                for (int j = i+1; j < str.Length; j++)
+                for (int j = i + 1; j < str.Length; j++)
                 {
-                    if (str[i]==str[j])
+                    if ((str[i] == str[j]) && (str[i]!=sign))
                     {
-                        str[j] = "!";
+                        str[j] = sign;
+                        signs++;
                     }
                 }
             }
             Console.WriteLine($"Turime: {PrintArray(str, " ")}");
-            int sk = str.Length - 1;
+
+            string[] str_els = new string[str.Length];
+            for (int i = 0; i < str_els.Length; i++)
+            {
+                str_els[i] = sign;
+            }
+
+            int sk = 0;
             for (int m = 0; m < str.Length; m++)
             {
-                if (str[m] == "!")
+                if (str[m] != sign)
                 {
-                    string some = str[m];
-                    str[sk] = str[m];
-                    str[m] = some;
-                    sk--;
+                    str_els[sk++] = str[m];
                 }
             }
-            Console.WriteLine($"Turime sutvarkytą: {PrintArray(str, " ")}");
+
+            Console.WriteLine($"Turime sutvarkytą: {PrintArray(str_els, " ")}");
         }
 
         static string PrintArray(string[] str_array,  string delimiter = " ")
