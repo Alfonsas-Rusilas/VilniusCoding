@@ -7,7 +7,6 @@ namespace BigHomeWork1
         static void Main(string[] args)
         {
             bool valueWithMinus = false;
-            //int valueIntPositive = 0;
             string valueStrPositive = "";
 
             Console.Write("Įveskite skaičių: ");
@@ -37,28 +36,22 @@ namespace BigHomeWork1
                     break;
                 case 3: //šimtų rėžiai    
                     pos = (numDigits % 3) + 1;
-                    //place = " Šimtai ";
+                    Console.WriteLine($"Case 3; skilčių: {pos}; skaičius {value}");
                     place = (value[0] == '1') ? (" Šimtas ") : (" Šimtai ");
                     break;
                 case 4://tūkstančių rėžiai
-                    //pos = (numDigits % 4) + 1;
-                    //place = (value[0] == '1') ? (" Tūkstantis ") : (" Tūkstančiai ");
-                    //break;
                 case 5:
-                    //pos = (numDigits % 4) + 1;
-                    //place = (value[1] == '0') ? (" Tūkstančių ") : (" Tūkstančiai ");
-                    //break;
                 case 6:
                     pos = (numDigits % 4) + 1;
-                    //place = " Tūkstančiai ";
-                    //place = (value[0] == '1') ? (" Tūkstantis ") : (" Tūkstančiai ");
+                    Console.WriteLine($"Case 4,5,6: skilčių: {pos}; skaičius {value}");
                     place = TukstancioLinksnis(value);
                     break;
                 case 7://milijonai
                 case 8:
                 case 9:
                     pos = (numDigits % 7) + 1;
-                    place = " Milionai ";
+                    Console.WriteLine($"Case 9: skilčių: {pos}; skaičius {value}");
+                    place = MilionoLinksnis(value);
                     break;
                 default:
                     isDone = true;
@@ -84,18 +77,29 @@ namespace BigHomeWork1
             if (val.Length==4)
             {
                 linksnis = (val[0] == '1') ? (" Tūkstantis ") : (" Tūkstančiai ");
-            } 
+            }
+            else if (val.Length == 5)
+            {
+                linksnis = (val[0] == '1') ? (" Tūkstančių ") : (val[1]=='0')?(" Tūkstančių ") :(" Tūkstančiai ");
+            }
+            //else if (val.Length == 6)
+            //{
+            //    linksnis = (val[2] == '1') ? (" Tūkstantis ") : (val[1] == '0') ? (" Tūkstančių ") : (" Tūkstančiai ");
+            //}
+            return linksnis;
+        }
+
+        static string MilionoLinksnis(string val)
+        {
+            string linksnis = " Mil. ";
+            //if (val.Length == 4)
+            //{
+            //    linksnis = (val[0] == '1') ? (" Tūkstantis ") : (" Tūkstančiai ");
+            //}
             //else if (val.Length == 5)
             //{
-            //    switch (val)
-            //    {
-            //        case 1:
-
-            //        default:
-            //            break;
-            //    }
+            //    linksnis = (val[0] == '1') ? (" Tūkstančių ") : (val[1] == '0') ? (" Tūkstančių ") : (" Tūkstančiai ");
             //}
-
             return linksnis;
         }
 
