@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace HomeWork6.Lesson6
 {
-    class Lesson6
+    class Lesson6a
     {
         static void Main(string[] args)
         {
+            // teorija:
             //String[] zodziai = { "Nulis", "Vienas", "Du", "Trys", "Keturi", "Penki", "Šeši", "Septyni", "Aštuoni", "Devyni" };
             //string[] ss = {"T0", "G1", "E3"};
             //int[] i = new int[3] { 1, 5, 4 };
@@ -19,15 +20,8 @@ namespace HomeWork6.Lesson6
             //Console.WriteLine($"Hello: {zodziai[2]}, {ss[2]}, {alphabet}");
             // int index = s3.IndexOf("C");
 
-
-            //String[] str = { "Nulis", "Vienas", "Du", "Trys", "Keturi", "Penki=\u00E7", "A@@@@####$%^&*[]]}AA\n\tBBB\n\\CCC\nDDD" };
-            //str[6] = str[6] + "\\\\\\__";
-            //Console.WriteLine($"Hello: {str[6]}, {str[5]}");
-
-
-            //////////////////// 6.a 
-
-            string[] str_mas = WriteWords();
+            //////////////////// 6.a ////////////////////
+            string[] str_mas = GetWords();
             string str = "";
             Console.WriteLine($"Suvedėt: {PrintArray(str_mas, " ")}");
             for (int i = str_mas.Length-1; i >= 0; i--)
@@ -36,9 +30,27 @@ namespace HomeWork6.Lesson6
             }
             Console.WriteLine($"Suvedimas atvirkščiai: {str}");
             RemoveArrayDuplicates(new string[] { "Mano", "batai", "Mano", "buvo", "batai", "buvo", "du", "buvo", "du", "." } );
+
+            //////////////////// 6.b //////////////////// namų darbams - 6.b ir 6.c
+            // int[] numbers = {1,3,5}
+            // foreach (int item in numbers) {....} //veikia break, continue
+            // SendData(int a, string str, params int[] numb) //jei norime perduoti nežinomą kiekį, galime gale naudoti
+            // Netipizuoti parametrai: SendData(params object[] num) //objektas c# gali būti int, bool, etc.
+
+
+            //////////////////// 6.d //////////////////// namų darbams - array klasė, ir 6.d
+            // string[,] names;
+            // int[,] a = new int[3,4] {{..} {..} {..}}
+            // Geriau naudoti masyvus masyvuose:
+            // int[][] scores;
+            // int[][] scores = new int[][] {
+            //     new int[] {93,94,95},
+            //     new int[] {3,4,5} };
+
         }
 
-        static string[] WriteWords()
+
+        static string[] GetWords()
         {
             string[] tmp = new string[5];
             for (int i = 0; i < 5; i++)
@@ -65,22 +77,17 @@ namespace HomeWork6.Lesson6
                 }
             }
             Console.WriteLine($"Turime: {PrintArray(str, " ")}");
-
+            
+            int sk = 0;
             string[] str_els = new string[str.Length];
-            for (int i = 0; i < str_els.Length; i++)
+            for (int i = 0; i < str.Length; i++)
             {
                 str_els[i] = sign;
-            }
-
-            int sk = 0;
-            for (int m = 0; m < str.Length; m++)
-            {
-                if (str[m] != sign)
+                if (str[i] != sign)
                 {
-                    str_els[sk++] = str[m];
+                    str_els[sk++] = str[i];
                 }
             }
-
             Console.WriteLine($"Turime sutvarkytą: {PrintArray(str_els, " ")}");
         }
 
