@@ -11,15 +11,6 @@ namespace BigHomeWork1
 
             Console.Write("Įveskite skaičių: ");
             string str = Convert.ToString(Console.ReadLine());
-         
-            //if (IsCorrectInt(str, ref valueMinus, ref valueStrPositive))
-            //{
-            //    Console.WriteLine($"{valueMinus} {ChangeNumberToText(valueStrPositive)}");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Skaičius įvestas neteisingai.");
-            //}
 
             while (IsCorrectInt(str, ref valueMinus, ref valueStrPositive))
             {
@@ -27,7 +18,6 @@ namespace BigHomeWork1
                 Console.Write("Įveskite kitą skaičių: ");
                 str = Convert.ToString(Console.ReadLine());
             }
-            
         }
 
         static string ChangeNumberToText(string value)
@@ -213,7 +203,6 @@ namespace BigHomeWork1
             {
                 return false;
             }
-
             if (str[0] == '-')
             {
                 str = str[1..];
@@ -232,15 +221,11 @@ namespace BigHomeWork1
 
         static string EliminateZerosInBeginning(string str)
         {
-            string _value = "";
-            foreach (char item in str)
+            while (str.StartsWith('0') && str.Length > 0)
             {
-                if (item!='0')
-                {
-                    _value += item;
-                }
+                str = str.Remove(0, 1);
             }
-            return _value;
+            return str;
         }
     }
 }
