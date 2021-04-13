@@ -6,19 +6,33 @@ namespace BigHomeWork1
     {
         static void Main(string[] args)
         {
-            bool valueWithMinus = false;
+            string valueMinus = "";
             string valueStrPositive = "";
 
             Console.Write("Įveskite skaičių: ");
             string str = Convert.ToString(Console.ReadLine());
+         
+            //if (IsCorrectInt(str, ref valueMinus, ref valueStrPositive))
+            //{
+            //    Console.WriteLine($"{valueMinus} {ChangeNumberToText(valueStrPositive)}");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Skaičius įvestas neteisingai.");
+            //}
 
-            bool some = IsCorrectInt(str, ref valueWithMinus, ref valueStrPositive);
-            Console.WriteLine($"Skaičius teisingas? - {some}; ar su minusu? - {valueWithMinus}");
-            Console.WriteLine($"Skaičius {valueStrPositive} išreikštas žodžiais: {ChangeNumberToText(valueStrPositive)}");
+            while (IsCorrectInt(str, ref valueMinus, ref valueStrPositive))
+            {
+                Console.WriteLine($"{valueMinus} {ChangeNumberToText(valueStrPositive)}");
+                Console.Write("Įveskite kitą skaičių: ");
+                str = Convert.ToString(Console.ReadLine());
+            }
+            
         }
 
         static string ChangeNumberToText(string value)
         {
+            //Console.WriteLine($"ChangeNumberToText(string {value})");
             string words = ""; // skaičiaus vertimas į sakinį; 
             bool isDone = false; //ar pilnai išverstas
             int numDigits = value.Length; // kiek skaitmenų skaičiuje
@@ -36,22 +50,29 @@ namespace BigHomeWork1
                     break;
                 case 3: //šimtų rėžiai    
                     pos = (numDigits % 3) + 1;
-                    Console.WriteLine($"Case 3; skilčių: {pos}; skaičius {value}");
+                    //Console.WriteLine($"Case 3; skilčių: {pos}; skaičius {value}");
                     place = (value[0] == '1') ? (" Šimtas ") : (" Šimtai ");
                     break;
                 case 4://tūkstančių rėžiai
                 case 5:
                 case 6:
                     pos = (numDigits % 4) + 1;
-                    Console.WriteLine($"Case 4,5,6: skilčių: {pos}; skaičius {value}");
+                    //Console.WriteLine($"Case 4,5,6: skilčių: {pos}; skaičius {value}");
                     place = TukstancioLinksnis(value);
                     break;
                 case 7://milijonai
                 case 8:
                 case 9:
                     pos = (numDigits % 7) + 1;
-                    Console.WriteLine($"Case 9: skilčių: {pos}; skaičius {value}");
-                    place = MilionoLinksnis(value);
+                    //Console.WriteLine($"Case 9: skilčių: {pos}; skaičius {value}");
+                    place = " Mil. "; 
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                    pos = (numDigits % 10) + 1;
+                    //Console.WriteLine($"Case 9: skilčių: {pos}; skaičius {value}");
+                    place = " Bil. ";
                     break;
                 default:
                     isDone = true;
@@ -61,7 +82,7 @@ namespace BigHomeWork1
             {
                 if (value.Substring(0, pos) != "0" && value.Substring(pos) != "0")
                 {
-                     words = ChangeNumberToText(value.Substring(0, pos)) + place + ChangeNumberToText(value.Substring(pos));
+                     words = ChangeNumberToText(value.Substring(0, pos)) + place + ChangeNumberToText(EliminateZerosInBeginning(value.Substring(pos)));
                 }
                 else
                 {
@@ -82,24 +103,10 @@ namespace BigHomeWork1
             {
                 linksnis = (val[0] == '1') ? (" Tūkstančių ") : (val[1]=='0')?(" Tūkstančių ") :(" Tūkstančiai ");
             }
-            //else if (val.Length == 6)
-            //{
-            //    linksnis = (val[2] == '1') ? (" Tūkstantis ") : (val[1] == '0') ? (" Tūkstančių ") : (" Tūkstančiai ");
-            //}
-            return linksnis;
-        }
-
-        static string MilionoLinksnis(string val)
-        {
-            string linksnis = " Mil. ";
-            //if (val.Length == 4)
-            //{
-            //    linksnis = (val[0] == '1') ? (" Tūkstantis ") : (" Tūkstančiai ");
-            //}
-            //else if (val.Length == 5)
-            //{
-            //    linksnis = (val[0] == '1') ? (" Tūkstančių ") : (val[1] == '0') ? (" Tūkstančių ") : (" Tūkstančiai ");
-            //}
+            else if (val.Length == 6)
+            {
+                linksnis = (val[1] == '1') ? (" Tūkstančių ") : (val[2] == '1') ? (" Tūkstantis ") : (val[2] == '0') ? (" Tūkstančių "):(" Tūkstančiai ");
+            }
             return linksnis;
         }
 
@@ -175,7 +182,7 @@ namespace BigHomeWork1
             return names;
         }
 
-        static bool IsCorrectInt(string str, ref bool minus, ref string val_str)
+        static bool IsCorrectInt(string str, ref string minus, ref string val_str)
         {
             if (str == "" || str == "-")
             {
@@ -184,7 +191,7 @@ namespace BigHomeWork1
             
             if (str[0]=='-')
             {
-                minus = true;
+                minus = "Minus";
                 str = str[1..];
             }
 
@@ -198,6 +205,42 @@ namespace BigHomeWork1
             }
             val_str = str;
             return true;
+        }
+
+        static bool IsCorrectInt(string str)
+        {
+            if (str == "" || str == "-")
+            {
+                return false;
+            }
+
+            if (str[0] == '-')
+            {
+                str = str[1..];
+            }
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                byte asci = (byte)str[i];
+                if (asci < 48 || asci > 57)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        static string EliminateZerosInBeginning(string str)
+        {
+            string _value = "";
+            foreach (char item in str)
+            {
+                if (item!='0')
+                {
+                    _value += item;
+                }
+            }
+            return _value;
         }
     }
 }
