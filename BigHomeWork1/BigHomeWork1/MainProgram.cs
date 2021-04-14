@@ -22,12 +22,11 @@ namespace BigHomeWork1
 
         static string ChangeNumberToText(string value)
         {
-            //Console.WriteLine($"ChangeNumberToText(string {value})");
-            string words = ""; // skaičiaus vertimas į sakinį; 
-            bool isDone = false; //ar pilnai išverstas
+            string words = "";      //skaičiaus vertimas į sakinį; 
+            bool isDone = false;    //ar pilnai išverstas
             int numDigits = value.Length; // kiek skaitmenų skaičiuje
             int pos = 0;
-            String place = ""; // šimtai, tūkstančiai ir t.t. 
+            String place = "";      // šimtai, tūkstančiai ir t.t. 
             switch (numDigits)
             {
                 case 1:
@@ -41,28 +40,28 @@ namespace BigHomeWork1
                 case 3: //šimtų rėžiai    
                     pos = (numDigits % 3) + 1;
                     //Console.WriteLine($"Case 3; skilčių: {pos}; skaičius {value}");
-                    place = (value[0] == '1') ? (" Šimtas ") : (" Šimtai ");
+                    place = (value[0] == '1') ? (" šimtas ") : (" šimtai ");
                     break;
                 case 4://tūkstančių rėžiai
                 case 5:
                 case 6:
                     pos = (numDigits % 4) + 1;
                     //Console.WriteLine($"Case 4,5,6: skilčių: {pos}; skaičius {value}");
-                    place = TukstancioLinksnis(value);
+                    place = Linksnis(value);
                     break;
                 case 7://milijonai
                 case 8:
                 case 9:
                     pos = (numDigits % 7) + 1;
                     //Console.WriteLine($"Case 9: skilčių: {pos}; skaičius {value}");
-                    place = " Mil. "; 
+                    place = Linksnis(value); 
                     break;
                 case 10:
                 case 11:
                 case 12:
                     pos = (numDigits % 10) + 1;
                     //Console.WriteLine($"Case 9: skilčių: {pos}; skaičius {value}");
-                    place = " Bil. ";
+                    place = Linksnis(value);
                     break;
                 default:
                     isDone = true;
@@ -79,30 +78,62 @@ namespace BigHomeWork1
                     words = ChangeNumberToText(value.Substring(0, pos)) + ChangeNumberToText(value.Substring(pos));
                 }
             }
-            return words;
+            return FirstLetterUp(words);
         }
 
-        static string TukstancioLinksnis(string val)
+        static string FirstLetterUp(string firstLetter)
         {
-            string linksnis = " Tūkst. ";
-            if (val.Length==4)
+            if (string.IsNullOrEmpty(firstLetter))
             {
-                linksnis = (val[0] == '1') ? (" Tūkstantis ") : (" Tūkstančiai ");
+                return string.Empty;
             }
-            else if (val.Length == 5)
+            firstLetter = firstLetter.Trim(' ');
+            firstLetter = firstLetter.ToLower();
+            return char.ToUpper(firstLetter[0]) + firstLetter.Substring(1);
+        }
+
+        static string Linksnis(string val)
+        {
+            string linksnis;
+            switch (val.Length)
             {
-                linksnis = (val[0] == '1') ? (" Tūkstančių ") : (val[1]=='0')?(" Tūkstančių ") :(" Tūkstančiai ");
-            }
-            else if (val.Length == 6)
-            {
-                linksnis = (val[1] == '1') ? (" Tūkstančių ") : (val[2] == '1') ? (" Tūkstantis ") : (val[2] == '0') ? (" Tūkstančių "):(" Tūkstančiai ");
+                case 4:
+                    linksnis = (val[0] == '1') ? (" tūkstantis ") : (" tūkstančiai ");
+                    break;
+                case 5:
+                    linksnis = (val[0] == '1') ? (" tūkstančių ") : (val[1] == '0') ? (" tūkstančių ") : (val[1] == '1') ? (" tūkstantis ") : (" tūkstančiai ");
+                    break;
+                case 6:
+                    linksnis = (val[1] == '1') ? (" tūkstančių ") : (val[2] == '1') ? (" tūkstantis ") : (val[2] == '0') ? (" tūkstančių ") : (" tūkstančiai ");
+                    break;
+                case 7:
+                    linksnis = (val[0] == '1') ? (" milionas ") : (" milionai ");
+                    break;
+                case 8:
+                    linksnis = (val[0] == '1') ? (" milionų ") : (val[1] == '0') ? (" milionų ") : (val[1] == '1') ? (" milionas ") : (" milionai ");
+                    break;
+                case 9:
+                    linksnis = (val[1] == '1') ? (" milionų ") : (val[2] == '1') ? (" milionas ") : (val[2] == '0') ? (" milionų ") : (" milionai ");
+                    break;
+                case 10:
+                    linksnis = (val[0] == '1') ? (" bilionas ") : (" bilionai ");
+                    break;
+                case 11:
+                    linksnis = (val[0] == '1') ? (" bilionų ") : (val[1] == '0') ? (" bilionų ") : (val[1] == '1') ? (" bilionas ") : (" bilionai ");
+                    break;
+                case 12:
+                    linksnis = (val[1] == '1') ? (" bilionų ") : (val[2] == '1') ? (" bilionas ") : (val[2] == '0') ? (" bilionų ") : (" bilionai ");
+                    break;
+                default:
+                    linksnis = "";
+                    break;
             }
             return linksnis;
         }
 
         static string Ones(string val)
         {
-            String[] units = {"Nulis","Vienas", "Du", "Trys", "Keturi", "Penki", "Šeši", "Septyni", "Aštuoni", "Devyni" };
+            String[] units = {"nulis","vienas", "du", "trys", "keturi", "penki", "šeši", "septyni", "aštuoni", "devyni"};
             return units[Convert.ToInt32(val)];
         }
 
@@ -112,58 +143,58 @@ namespace BigHomeWork1
             switch (Convert.ToInt32(val))
             {
                 case 10:
-                    names = "Dešimt";
+                    names = "dešimt";
                     break;
                 case 11:
-                    names = "Vienuolika";
+                    names = "vienuolika";
                     break;
                 case 12:
-                    names = "Dvylika";
+                    names = "dvylika";
                     break;
                 case 13:
-                    names = "Trylika";
+                    names = "trylika";
                     break;
                 case 14:
-                    names = "Keturiolika";
+                    names = "keturiolika";
                     break;
                 case 15:
-                    names = "Penkiolika";
+                    names = "penkiolika";
                     break;
                 case 16:
-                    names = "Šešiolika";
+                    names = "šešiolika";
                     break;
                 case 17:
-                    names = "Septyniolika";
+                    names = "septyniolika";
                     break;
                 case 18:
-                    names = "Aštuoniolika";
+                    names = "aštuoniolika";
                     break;
                 case 19:
-                    names = "Devyniolika";
+                    names = "devyniolika";
                     break;
                 case 20:
-                    names = "Dvidešimt";
+                    names = "dvidešimt";
                     break;
                 case 30:
-                    names = "Trisdešimt";
+                    names = "trisdešimt";
                     break;
                 case 40:
-                    names = "Keturiasdešimt";
+                    names = "keturiasdešimt";
                     break;
                 case 50:
-                    names = "Penkiasdešimt";
+                    names = "penkiasdešimt";
                     break;
                 case 60:
-                    names = "Šešiasdešimt";
+                    names = "šešiasdešimt";
                     break;
                 case 70:
-                    names = "Septyniasdešimt";
+                    names = "septyniasdešimt";
                     break;
                 case 80:
-                    names = "Aštuoniasdešimt";
+                    names = "aštuoniasdešimt";
                     break;
                 case 90:
-                    names = "Devyniasdešimt";
+                    names = "devyniasdešimt";
                     break;
                 default:
                     names = Tens(val.Substring(0, 1) + "0") + " " + Ones(val.Substring(1));
@@ -174,15 +205,18 @@ namespace BigHomeWork1
 
         static bool IsCorrectInt(string str, ref string minus, ref string val_str)
         {
-            if (str == "" || str == "-")
+            if (string.IsNullOrEmpty(str) || str == "-" || str.Length > 12)
             {
                 return false;
             }
-            
             if (str[0]=='-')
             {
                 minus = "Minus";
                 str = str[1..];
+            }
+            if (str[0] == '0')
+            {
+                return false;
             }
 
             for (int i = 0; i < str.Length; i++)
@@ -199,13 +233,17 @@ namespace BigHomeWork1
 
         static bool IsCorrectInt(string str)
         {
-            if (str == "" || str == "-")
+            if (string.IsNullOrEmpty(str) || str == "-" || str.Length > 12)
             {
                 return false;
             }
             if (str[0] == '-')
             {
                 str = str[1..];
+            }
+            if (str[0] == '0')
+            {
+                return false;
             }
 
             for (int i = 0; i < str.Length; i++)
