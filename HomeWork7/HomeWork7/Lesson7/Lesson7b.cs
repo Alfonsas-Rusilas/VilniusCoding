@@ -8,7 +8,7 @@ namespace HomeWork7.Lesson7
 {
     class Lesson7b
     {
-        static void Main(string[] args)
+        static void Main()
         {
             /////////////////////// 7b   - collections
 
@@ -20,11 +20,11 @@ namespace HomeWork7.Lesson7
             PrintValues(main_list);
             Console.WriteLine($"Elementų: {main_list.Count}");
 
-            Console.WriteLine($"Conatains 20?: : {main_list.Contains(20)}");
+            Console.WriteLine($"main_list.Contains(20) ?: : {main_list.Contains(20)}");
 
-            Console.WriteLine($"IndexOf 4 = {main_list.IndexOf(4)}");
+            Console.WriteLine($"main_list.IndexOf(4) = {main_list.IndexOf(4)}");
 
-            Console.WriteLine($"Find(x>0): {main_list.Find(isPositive)}");
+            Console.WriteLine($"main_list.Find(isPositive): {main_list.Find(isPositive)}");
 
             Console.WriteLine($"main_list.Exists(isPositive): {main_list.Exists(isPositive)}");
 
@@ -38,13 +38,13 @@ namespace HomeWork7.Lesson7
             main_list.Clear();
 
             main_list.InsertRange(0, sub_list);
-            PrintValues(main_list);
+            PrintValues(main_list, "InsertRange(0, sub_list): ");
 
             main_list.Sort();
-            PrintValues(main_list);
+            PrintValues(main_list, "main_list.Sort(): ");
 
             main_list.RemoveAll(FindEven);
-            PrintValues(main_list);
+            PrintValues(main_list, "main_list.RemoveAll(FindEven): ");
 
             //var teigiami = new Predicate<int>(isPositive);
             //var filtered = main_list.FindAll(teigiami);
@@ -68,15 +68,17 @@ namespace HomeWork7.Lesson7
             return val % 2 == 0;
         }
 
-        static void PrintValues(List<int> myList)
+        static void PrintValues(List<int> myList, string message = "")
         {
+            Console.Write(message);
             foreach (int i in myList)
-                Console.Write($"   {i}");
+                Console.Write($"  {i}");
             Console.WriteLine();
         }
 
-        static void PrintValues(List<string> myList)
+        static void PrintValues(List<string> myList, string message = "")
         {
+            Console.Write(message);
             foreach (string i in myList)
                 Console.Write($"   {i}");
             Console.WriteLine();

@@ -33,42 +33,70 @@ namespace HomeWork7.Lesson7
             // list.InsertRange(2, other_list)
             // list.Remove(element)
             // list.Count 
-            /////////////////////// 7a   - collections
+            /////////////////////// 7c   - collections
 
-            Console.WriteLine("Hello 7a World!");
+            List<int> main_list = new List<int>();
+            Random rnd = new Random();
 
-            List<int> main_list = new List<int>() { -1, -2, -3, -4, -5};
-            List<int> sub_list = new List<int>() {10,20,30,40,50,60};
+            for (int i = 0; i < 100; i++)
+            {
+                main_list.Add(rnd.Next(1, 100));
+            }
 
-            main_list.Add(9);
-            main_list.Insert(0,0);
+            main_list.RemoveAll(LessThan80);
 
-            PrintValues(main_list);
+            int daugiau20 = 0;
+            foreach (int item in main_list)
+            {
+                if (item % 2 == 0)
+                {
+                    Console.Write($" {item}");
+                }
+                if (item > 20)
+                {
+                    daugiau20++;
+                }
+            }
 
-            main_list.AddRange(sub_list);
-            PrintValues(main_list);
+            Console.WriteLine($"Daugiau nei 20 = {daugiau20}");
 
-            main_list.InsertRange(0, sub_list);
-            PrintValues(main_list);
+            Console.WriteLine($"Sum = {main_list.Sum()}");
 
-            main_list.Sort();
-            PrintValues(main_list);
+            Console.WriteLine($"Average = {main_list.Average()}");
 
-            //var teigiami = new Predicate<int>(isPositive);
-            //var filtered = main_list.FindAll(teigiami);
-            var filtered = main_list.FindAll(isPositive);
+            Console.WriteLine($"Count() = {main_list.Count()}");
+
+            //List<int> sub_list = new List<int>() {10,20,30,40,50,60};
+
+            //main_list.Add(9);
+            //main_list.Insert(0,0);
+
+            //PrintValues(main_list);
+
+            //main_list.AddRange(sub_list);
+            //PrintValues(main_list);
+
+            //main_list.InsertRange(0, sub_list);
+            //PrintValues(main_list);
+
+            //main_list.Sort();
+            //PrintValues(main_list);
+
+            ////var teigiami = new Predicate<int>(isPositive);
+            ////var filtered = main_list.FindAll(teigiami);
+            //var filtered = main_list.FindAll(isPositive);
 
 
-            PrintValues(filtered);
+            //PrintValues(filtered);
 
-            main_list.RemoveAll(FindEven);
-            PrintValues(main_list);
+            //main_list.RemoveAll(FindEven);
+            //PrintValues(main_list);
         }
 
 
-        static bool isPositive(int val)
+        static bool LessThan80(int val)
         {
-            return val > 0;
+            return val > 80;
         }
 
         static bool FindEven(int val)
