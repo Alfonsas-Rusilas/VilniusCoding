@@ -54,17 +54,26 @@ namespace HomeWork7.Lesson7
             main_list.Sort();
             PrintValues(main_list);
 
-            var predicate = new Predicate<int>(isPositive);
-            var filtered = main_list.FindAll(predicate);
+            //var teigiami = new Predicate<int>(isPositive);
+            //var filtered = main_list.FindAll(teigiami);
+            var filtered = main_list.FindAll(isPositive);
+
 
             PrintValues(filtered);
 
+            main_list.RemoveAll(FindEven);
+            PrintValues(main_list);
         }
 
 
         static bool isPositive(int val)
         {
             return val > 0;
+        }
+
+        static bool FindEven(int val)
+        {
+            return val % 2 == 0;
         }
 
         static void PrintValues(List<int> myList)
