@@ -8,22 +8,33 @@ namespace HomeWork8.Lesson8.Factory
 {
     class Table
     {
-        string Name;
-        string[] Material = { "Metal", "Wood", "Glass" };
-        string Color;
-        int Width;
-        int Length;
-        int ID;
-        double Price;
-        double Discount = 0.5;
-        string warehouse;
+        public string Name;
+        public string Color;
+        public int Width;
+        public int Length;
+        private int ID;
+        private string CreatedBy;
+        public double Price;
+        private double Discount = 0.5;
+        public string Warehouse;
 
-        bool IsNew()
+        public Table()
+        {
+            //
+        }
+        
+
+        public bool IsNew()
         {
             return true;
         }
 
-        bool IsBroken()
+        public string GetMaterial()
+        {
+            return "Wood";
+        }
+
+        public bool IsBroken()
         {
             return false;
         }

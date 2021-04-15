@@ -8,11 +8,18 @@ namespace HomeWork8.Lesson8.House
 {
     class House
     {
-        public string Name;
+        public string Owner;
         public int RoomsCount;
         public string BuildDate;
         public string City;
         public string State;
+        public string Street;
+
+        public House(int rooms = 5, string buildDate = "2021-04-14")
+        {
+            RoomsCount = rooms;
+            BuildDate = buildDate;
+        }
 
         private bool IsCriticalCondition()
         {
@@ -29,7 +36,7 @@ namespace HomeWork8.Lesson8.House
             return true;
         }
 
-        int GetRoomsCount()
+        public int GetRoomsCount()
         {
             return 5;
         }

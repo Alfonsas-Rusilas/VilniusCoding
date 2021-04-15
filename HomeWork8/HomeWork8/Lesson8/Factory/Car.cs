@@ -12,13 +12,19 @@ namespace HomeWork8.Lesson8.Factory
         //      Public: pasiekiamas iš išorės;
         //      Private: tik klasės viduje (nenurodžius pagal nutylėjimą)
 
-        public string Name;
+        public string Model;
         public int Year;
         private bool IsInsured;
 
+        public Car(string model = "Audi", int year = 2021)
+        {
+            Model = model;
+            Year = year;
+        }
+
         private void IgnitePetrol()
         {
-            //
+            Console.WriteLine("IgnitePetrol: working");
         }
 
     }
