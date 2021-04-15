@@ -66,31 +66,7 @@ namespace HomeWork7.Lesson7
 
             Console.WriteLine($"Count() = {main_list.Count()}");
 
-            //List<int> sub_list = new List<int>() {10,20,30,40,50,60};
 
-            //main_list.Add(9);
-            //main_list.Insert(0,0);
-
-            //PrintValues(main_list);
-
-            //main_list.AddRange(sub_list);
-            //PrintValues(main_list);
-
-            //main_list.InsertRange(0, sub_list);
-            //PrintValues(main_list);
-
-            //main_list.Sort();
-            //PrintValues(main_list);
-
-            ////var teigiami = new Predicate<int>(isPositive);
-            ////var filtered = main_list.FindAll(teigiami);
-            //var filtered = main_list.FindAll(isPositive);
-
-
-            //PrintValues(filtered);
-
-            //main_list.RemoveAll(FindEven);
-            //PrintValues(main_list);
         }
 
 
