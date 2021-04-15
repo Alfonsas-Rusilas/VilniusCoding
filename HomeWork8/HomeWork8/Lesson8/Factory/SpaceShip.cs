@@ -8,5 +8,20 @@ namespace HomeWork8.Lesson8.Factory
 {
     class SpaceShip
     {
+        public string Name;
+        public int Year;
+        //string[] Planets = { "Moon", "Mars" }; 
+        
+        private int AverageTripsPerYear()
+        {
+            return 8;
+        }
+
+
+        bool IsWorking()
+        {
+            return true;
+        }
+
     }
 }

@@ -8,7 +8,18 @@ namespace HomeWork8.Lesson8.Factory
 {
     class Car
     {
-        // Pavadinimas - 
+        // access specifier: kas gali matyti/manipuliuoti elementais. 
+        //      Public: pasiekiamas iš išorės;
+        //      Private: tik klasės viduje (nenurodžius pagal nutylėjimą)
+
+        public string Name;
+        public int Year;
+        private bool IsInsured;
+
+        private void IgnitePetrol()
+        {
+            //
+        }
 
     }
 }
