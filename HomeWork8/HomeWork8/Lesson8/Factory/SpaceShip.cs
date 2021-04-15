@@ -12,6 +12,7 @@ namespace HomeWork8.Lesson8.Factory
         private DateTime ProductionYear;
         private int SeatsNumber = 4;
         private int PilotCount;
+        private int TripsPerYear;
         private string SerialNumber;
         private bool _isWorking = true;
         private string Color = "White";
@@ -32,9 +33,14 @@ namespace HomeWork8.Lesson8.Factory
             return SerialNumber;
         }
 
-        public int AverageTripsPerYear()
+        public int GetAverageTripsPerYear()
         {
-            return 8;
+            return TripsPerYear;
+        }
+
+        public void SetAverageTripsPerYear(int trips)
+        {
+            TripsPerYear = trips;
         }
 
         public void AddFly(DateTime flyData)
@@ -71,8 +77,7 @@ namespace HomeWork8.Lesson8.Factory
         {
             return SkrydziuDatos.Max(p => p);
         }
-
-        
+              
 
     }
 }
