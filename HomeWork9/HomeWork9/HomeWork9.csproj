@@ -6,8 +6,4 @@
     <StartupObject>HomeWork9.GameSample.GameProject</StartupObject>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Lesson9\" />
-  </ItemGroup>
-
 </Project>

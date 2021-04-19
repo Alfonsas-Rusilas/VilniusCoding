@@ -41,7 +41,7 @@ namespace HomeWork9.GameSample
             GameScreen myGame = new GameScreen(40, 40);
             myGame.SetHero(new Hero("Herojus", 20, 20));
 
-            int universalID = 100;
+            int universalID = 0;
             for (int x = 0; x < 10; x++)
             {
                 Random rnd = new Random();
@@ -53,7 +53,7 @@ namespace HomeWork9.GameSample
             myGame.Render();
             myGame.MoveHeroLeft();
             myGame.MoveAllEnemysDown();
-            myGame.enemies[1].MoveDown();
+            myGame.GetEnemyByID(2).MoveDown();
             myGame.Render();
 
             /*

@@ -20,7 +20,6 @@ namespace HomeWork9.GameSample.Game
             this.x = x;
             this.y = y;
             this.name = name;
-            
         }
 
         public void MoveDown()
@@ -35,7 +34,7 @@ namespace HomeWork9.GameSample.Game
 
         public void PrintInfo()
         {
-            Console.WriteLine($"Enemy: {name}, id={id}, x={x}, y={y}");
+            Console.WriteLine($"Enemy: {name}, id={id}, {x}x{y}");
         }
     }
 

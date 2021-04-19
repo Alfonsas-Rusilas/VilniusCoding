@@ -32,7 +32,7 @@ namespace HomeWork9.GameSample.Game
 
         public void PrintInfo()
         {
-            Console.WriteLine($"Hero: {name}, x={x}, y={y}");
+            Console.WriteLine($"Hero: {name}, {x}x{y}");
         }
 
     }

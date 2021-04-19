@@ -11,8 +11,8 @@ namespace HomeWork9.GameSample.Game
     {
         private int width;
         private int height;
-        private Hero h;
-        public List<Enemy> enemies = new List<Enemy>();
+        private Hero hero;
+        private List<Enemy> enemies = new List<Enemy>();
 
         public GameScreen(int width, int height)
         {
@@ -22,7 +22,7 @@ namespace HomeWork9.GameSample.Game
 
         public void SetHero(Hero hero)
         {
-            h = hero;
+            this.hero = hero;
         }
 
         public void AddEnemy(Enemy enemy)
@@ -48,24 +48,23 @@ namespace HomeWork9.GameSample.Game
                     return enemies[i];
                 }
             }
-
             return null;
         }
 
         public void MoveHeroRight()
         {
-            h.MoveRight();
+            hero.MoveRight();
         }
 
         public void MoveHeroLeft()
         {
-            h.MoveLeft();
+            hero.MoveLeft();
         }
 
 
         public void Render()
         {
-            h.PrintInfo();
+            hero.PrintInfo();
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].PrintInfo();
