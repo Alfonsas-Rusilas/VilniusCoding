@@ -28,6 +28,11 @@ namespace HomeWork9.GameSample.Game
             y--;
         }
 
+        public int GetId()
+        {
+            return id;
+        }
+
         public void PrintInfo()
         {
             Console.WriteLine($"Enemy: {name}, id={id}, x={x}, y={y}");
