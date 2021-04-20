@@ -1,38 +1,49 @@
 ﻿using System;
+using System.Linq;
 
 namespace BigHomeWork2
 {
     class MainProgram
     {
         static int tmpArrayLength = 10;
-        static int[] tmp_mas = new int[tmpArrayLength]; 
+        static int[] tmp_mas = new int[tmpArrayLength];
+        static int MinMagicNum = 100000;
+        static int MaxMagicNum = 999999;
 
         static void Main(string[] args)
         {
             int[] masyvas1 = new int[6];
             int[] masyvas2 = new int[6];
-            
-
-            
-
-            Console.Write("Įveskite skaičių iš 6 skaitmenų: ");
-            int skaicius = Convert.ToInt32(Console.ReadLine());
-
-            masyvas1 = DigitsToArray(skaicius);
-            masyvas2 = DigitsToArray(skaicius-1);
-
-            CompareArrays(masyvas1, masyvas2);
-
-            //if (IsDigitsDifferent(masyvas1)==false)
-            //{
-            //    Console.WriteLine("Yra pasikartojimų: ");
-            //    PrintArray(masyvas1);
-            //}
-            //separateDigits(skaicius);
+            int currentNum = MinMagicNum;
+            Console.WriteLine($"Ieškosime stebuklingų skaičių tarp {MinMagicNum} iki {MaxMagicNum}.");
+            Console.Write($"Įveskite daugiklį [2,3,4,5,6]: ");
+            int multiplier = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                masyvas1 = DigitsToArray(currentNum);
+                if (IsDigitsDifferent(masyvas1))
+                {
+                    masyvas2 = DigitsToArray(currentNum * 2);
+                    if (CompareArrays(masyvas1, masyvas2))
+                    {
+                        Console.WriteLine("Turime stebūklą: ");
+                        PrintArray(masyvas1, "MasyvasA");
+                        for (int i = 2; i <= multiplier; i++)
+                        {
+                            PrintArray(DigitsToArray(currentNum * i), "Masyvas"+i);
+                        }
+                    }
+                }
+                currentNum++;
+            } while ((currentNum <= MaxMagicNum) && (multiplier * currentNum) <= MaxMagicNum );
         }
 
         static int[] DigitsToArray(int value)
         {
+            if (value > 999999)
+            {
+                return null;
+            }
             int index = 5;
             int[] ret = new int[index+1];
             while (value > 9)
@@ -44,33 +55,25 @@ namespace BigHomeWork2
             return ret;
         }
 
-        /*
-        static void separateDigits(int n)
-        {
-            if (n < 10)
-            {
-                Console.Write("{0}  ", n);
-                return;
-            }
-            separateDigits(n / 10);
-            Console.Write(" {0} ", n % 10);
-        }
-        */
-
         static bool IsDigitsDifferent(int[] mas)
         {
             Array.Clear(tmp_mas, 0, tmpArrayLength);
             foreach (int item in mas)
             {
-                if (++tmp_mas[item] > 1) return false; 
+                if (++tmp_mas[item] > 1)
+                {
+                    return false;
+                }
             }
             return true;
         }
 
         static bool CompareArrays(int[] mas1, int[] mas2)
         {
-            int sk1 = 0;
-            int sk2 = 0;
+            if (mas2 == null)
+            {
+                return false;
+            }
             Array.Clear(tmp_mas, 0, tmpArrayLength);
             for (int i = 0; i < mas1.Length; i++)
             {
@@ -81,21 +84,20 @@ namespace BigHomeWork2
             {
                 if (item != 0 && item != 2)
                 {
-                    sk1++;
+                    return false;
                 }
-                    
             }
             return true;
         }
 
-        static void PrintArray(int[] mas)
+        static void PrintArray(int[] mas, string msg = "")
         {
             string str = "";
             foreach (int item in mas)
             {
                 str += " " + item;
             }
-            Console.WriteLine("Masyvas: " + str);
+            Console.WriteLine($"{msg}: " + str);
         }
     }
 }
