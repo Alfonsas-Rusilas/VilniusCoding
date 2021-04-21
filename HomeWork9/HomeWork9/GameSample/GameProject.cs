@@ -12,6 +12,7 @@ namespace HomeWork9.GameSample
         static void Main(string[] args)
         {
             // Papildoma užduotis 2021-04-21 - moovinti priešus (kurie nori iššūkio)
+            // 
 
             GameController gameController = new GameController();
             gameController.StartGame();
