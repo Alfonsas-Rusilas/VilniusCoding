@@ -10,7 +10,7 @@ namespace HomeWork9.Lesson9
     {
         private int data;
 
-        public Fish(int lifeSpan, int data) : base(lifeSpan)
+        public Fish(int lifeSpan, int data) : base(lifeSpan, "Karpis", "Žuvis")
         {
             this.data = data;
         }

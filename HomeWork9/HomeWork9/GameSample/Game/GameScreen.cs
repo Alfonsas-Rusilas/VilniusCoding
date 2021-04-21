@@ -64,6 +64,7 @@ namespace HomeWork9.GameSample.Game
 
         public void Render()
         {
+            Console.WriteLine("--------------Render()--------------------");
             hero.PrintInfo();
             for (int i = 0; i < enemies.Count; i++)
             {

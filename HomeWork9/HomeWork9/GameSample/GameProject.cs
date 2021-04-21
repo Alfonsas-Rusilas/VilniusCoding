@@ -11,77 +11,11 @@ namespace HomeWork9.GameSample
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
-            // public static void SetCursorposition(int left, int top);
-            /*
-            Hero hero = new Hero("Hero1", 20, 40);
-            hero.PrintInfo();
-            hero.MoveRight();
-            hero.PrintInfo();
+            // Papildoma užduotis 2021-04-21 - moovinti priešus (kurie nori iššūkio)
 
-            List<Enemy> enemys = new List<Enemy>();
+            GameController gameController = new GameController();
+            gameController.StartGame();
 
-            int universalID = 100;
-            for (int x = 0; x < 10; x++)
-            {
-                Random rnd = new Random();
-                enemys.Add(new Enemy(universalID, "Enem"+universalID, rnd.Next(0,10), rnd.Next(0,80)));
-                universalID++;
-            }
-
-            for (int i = 0; i < enemys.Count; i++)
-            {
-                enemys[i].PrintInfo();
-                enemys[i].MoveDown();
-                enemys[i].PrintInfo();
-            }
-            */
-
-
-            GameScreen myGame = new GameScreen(40, 40);
-            myGame.SetHero(new Hero("Herojus", 20, 20));
-
-            int universalID = 0;
-            for (int x = 0; x < 10; x++)
-            {
-                Random rnd = new Random();
-                myGame.AddEnemy(new Enemy(universalID, "Priešas" + universalID, rnd.Next(0, 10), rnd.Next(0, 80)));
-                universalID++;
-            }
-
-            myGame.MoveAllEnemysDown();
-            myGame.Render();
-            myGame.MoveHeroLeft();
-            myGame.MoveAllEnemysDown();
-            myGame.GetEnemyByID(2).MoveDown();
-            myGame.Render();
-
-            /*
-            Console.SetWindowSize(40, 40);
-            // setting buffer size of console
-            Console.SetBufferSize(80, 80);
-
-            Console.Clear();
-            */
-
-
-            /*
-            for (int y = 40; y>=0; y--)
-            {
-                Console.SetCursorPosition(10, y);
-                Console.Write($"y={y}");
-            }
-            */
-
-
-            /*
-            Console.SetCursorPosition(10, 1);
-            Console.Write($"y=1");
-            Console.SetCursorPosition(10, 20);
-            Console.Write($"y=20");
-            Console.SetCursorPosition(10, 40);
-            Console.Write($"y=40");
-            */
         }
     }
 }
