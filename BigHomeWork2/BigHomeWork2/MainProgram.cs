@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace BigHomeWork2
 {
@@ -15,27 +16,43 @@ namespace BigHomeWork2
             int[] masyvas1 = new int[6];
             int[] masyvas2 = new int[6];
             int currentNum = MinMagicNum;
+            List<int> magicNumbersList = new List<int>(); 
             Console.WriteLine($"Ieškosime stebuklingų skaičių tarp {MinMagicNum} iki {MaxMagicNum}.");
-            Console.Write($"Įveskite daugiklį [2,3,4,5,6]: ");
-            int multiplier = Convert.ToInt32(Console.ReadLine());
+            int multiplier = 6;
             do
             {
                 masyvas1 = DigitsToArray(currentNum);
                 if (IsDigitsDifferent(masyvas1))
                 {
-                    masyvas2 = DigitsToArray(currentNum * 2);
-                    if (CompareArrays(masyvas1, masyvas2))
+                    int IsMagicNumber = 0;
+                    for (int i = 2; i <= 6; i++)
                     {
-                        Console.WriteLine("Turime stebūklą: ");
-                        PrintArray(masyvas1, "MasyvasA");
-                        for (int i = 2; i <= multiplier; i++)
+                        masyvas2 = DigitsToArray(currentNum * i);
+                         if (CompareArrays(masyvas1, masyvas2))
                         {
-                            PrintArray(DigitsToArray(currentNum * i), "Masyvas"+i);
+                            IsMagicNumber++;
+                        } else
+                        {
+                            break;
                         }
+                    }
+                    // Jei patikrinom ir buvo true 5 kartus, tai magic skaičių įkeliame į sąrašą:
+                    if (IsMagicNumber == 5)
+                    {
+                        magicNumbersList.Add(currentNum);
                     }
                 }
                 currentNum++;
             } while ((currentNum <= MaxMagicNum) && (multiplier * currentNum) <= MaxMagicNum );
+
+            // Išvedame rastus magic skaičius:
+            for (int i = 0; i < magicNumbersList.Count; i++)
+            {
+                for (int x = 1; x <= 6; x++)
+                {
+                    PrintArray(DigitsToArray(magicNumbersList[i] * x), "Masyvas" + i);
+                }
+            }
         }
 
         static int[] DigitsToArray(int value)
