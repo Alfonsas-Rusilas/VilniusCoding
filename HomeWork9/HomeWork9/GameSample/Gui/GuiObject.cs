@@ -12,6 +12,8 @@ namespace HomeWork9.GameSample.Gui
         protected int y;
         protected int width;
         protected int height;
+        //private int ConsoleWidth = Console.WindowWidth;
+        //private int ConsoleHeight = Console.WindowHeight;
 
         public GuiObject(int x, int y, int width, int height = 1)
         {
@@ -20,5 +22,21 @@ namespace HomeWork9.GameSample.Gui
             this.width = width;
             this.height = height;
         }
+
+        //public void SetConsoleSize(int w, int h)
+        //{
+        //    ConsoleWidth = w;
+        //    ConsoleHeight = h;
+        //}
+
+        //public int GetConsoleWidth()
+        //{
+        //    return ConsoleWidth;
+        //}
+
+        //public int GetConsoleHeight()
+        //{
+        //    return ConsoleHeight;
+        //}
     }
 }

@@ -9,37 +9,68 @@ namespace HomeWork9.GameSample.Gui
     class Frame : GuiObject
     {
         private char _char;
+
         public Frame(int x, int y, int width, int height, char c) : base(x, y, width, height)
         {
             _char = c;
         }
 
 
+        public void RenderFull()
+        {
+            for (int v = 0; v < Console.WindowHeight; v++)
+            {
+                for (int h = 0; h < Console.WindowWidth; h++)
+                {
+                    Console.SetCursorPosition(h, v);
+                    if (((h >= x && h <= x + width) && (v == y || v == y + height)) || ((h == x || h == x + width) && (v >= y && v <= y + height)))
+                    {
+                        Console.Write(_char);
+                    } else
+                    {
+                        Console.Write("");
+                    }
+                }
+
+            }
+        }
+
+        public void RenderEx()
+        {
+            for (int v = y; v <= y+height; v++)
+            {
+                for (int h = x; h <= x+width; h++)
+                {
+                    Console.SetCursorPosition(h, v);
+                    if (((h >= x && h <= x + width) && (v == y || v == y + height)) || ((h == x || h == x + width) && (v >= y && v <= y + height)))
+                    {
+                        Console.Write(_char);
+                    }
+                    else
+                    {
+                        Console.Write("");
+                    }
+                }
+
+            }
+        }
+
         public void Render()
         {
-            //Console.Clear();
-            // width, height
-
-            Console.SetCursorPosition(x, y);
-            for (int i = x; i < width; i++)
+            for (int i = x; i < x+width; i++)
             {
-                //Console.SetCursorPosition(x, y);
+                Console.SetCursorPosition(i, y);
+                Console.Write(_char);
+                Console.SetCursorPosition(i, y + height);
                 Console.Write(_char);
             }
-                        
-            for (int i = 2; i < height; i++)
+            for (int i = y; i <= y + height; i++)
             {
                 Console.SetCursorPosition(x, i);
                 Console.Write(_char);
-                Console.SetCursorPosition(width-1, i);
+                Console.SetCursorPosition(x + width, i);
                 Console.Write(_char);
             }
-
-            for (int i = 1; i < width; i++)
-            {
-                Console.Write(_char);
-            }
-
         }
     }
 }

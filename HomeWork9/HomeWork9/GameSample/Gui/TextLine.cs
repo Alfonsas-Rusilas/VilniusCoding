@@ -9,15 +9,30 @@ namespace HomeWork9.GameSample.Gui
     class TextLine : GuiObject
     {
         protected string data;
-        public TextLine(int x, int y, int width, string msg) : base(x,y,width,1)
+        private bool IsCenter;
+
+        public TextLine(int x, int y, int width, string msg) : base(x,y,width)
         {
             this.data = msg;
         }
 
+        public void SetCenter(bool isCenter)
+        {
+            IsCenter = isCenter;
+        }
+
         public void Render()
         {
-            Console.SetCursorPosition(x, y);
+            if (IsCenter)
+            {
+                Console.SetCursorPosition((Console.WindowWidth - data.Length) / 2, y);
+            } else
+            {
+                Console.SetCursorPosition(x, y);
+            }
             Console.Write(data);
         }
+
+
     }
 }
