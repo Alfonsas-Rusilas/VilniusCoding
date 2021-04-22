@@ -17,6 +17,7 @@ namespace HomeWork9.Lesson10
 
 
 
+
         public int Age {
             get {
                 return age;

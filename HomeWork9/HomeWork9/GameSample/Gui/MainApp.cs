@@ -24,6 +24,9 @@ namespace HomeWork9.GameSample.Gui
             // abstract - netiksli ir abstarkti klasė, tai pav. GuiObject
             // galima ir metoduose: public virtual void Fly()
             // sealed - paskutinis abstrakcijos lygis, nebegalima išplėsti
+            //
+            // Properties:
+            // 
 
             TextLine lineStringSuper = new TextLine(10, 4, 15, "Super duper žaidimas");
             lineStringSuper.SetCenter(true);
@@ -39,17 +42,18 @@ namespace HomeWork9.GameSample.Gui
 
             int a = Console.WindowWidth / 4;
             int plotis = 10;
+            int aukstis = 2;
 
-            Button btn_start = new Button(a-plotis/2, 20, 10, 4, "Start");
+            Button btn_start = new Button(a-plotis/2, 20, 10, aukstis, "Start");
             btn_start.SetActive(true);
             btn_start.Render();
 
-            a += a;
-            Button btn_credit = new Button(a-plotis/2, 20, 10, 4, "Credit");
+            //a += a;
+            Button btn_credit = new Button((a+a)-plotis/2, 20, 10, aukstis, "Credit");
             btn_credit.Render();
 
-            a += a;
-            Button btn_quit = new Button(a-plotis/2, 20, 10, 4, "Quit");
+            //a += a;
+            Button btn_quit = new Button((a+a+a)-plotis/2, 20, 10, aukstis, "Quit");
             btn_quit.Render();
 
 
