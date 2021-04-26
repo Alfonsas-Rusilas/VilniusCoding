@@ -15,6 +15,7 @@ namespace HomeWork12
             //
             //
             //
+            // abstract gali būti ir klasė, ir metodas;
             //
 
             Pet pet = new Pet();

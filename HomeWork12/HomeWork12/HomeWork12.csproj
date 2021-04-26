@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>HomeWork12.Lesson12.Uzduotis_001.MainUzduotis</StartupObject>
   </PropertyGroup>
 
 </Project>
