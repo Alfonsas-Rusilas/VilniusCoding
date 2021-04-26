@@ -26,6 +26,9 @@ namespace HomeWork12.Lesson12.Uzduotis_001
             printObj.PrintAll();
 
 
+
+
+
             //List<IPrintable> printAble = new List<IPrintable>();
             //IRenderable[] renderAble = new IRenderable[1];
 
