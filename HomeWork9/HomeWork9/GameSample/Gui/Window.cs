@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace HomeWork9.GameSample.Gui
 {
-    class Window
+    class Window : GuiObject
     {
-        public Window()
+        private Frame border;
+
+        public Window(int x, int y, int width, int heght, char renderChar): base(x,y,width,heght)
         {
-            //
+            border = new Frame(x, y, width, height, renderChar);
+        }
+
+        public void Render()
+        {
+            border.Render();
         }
 
     }

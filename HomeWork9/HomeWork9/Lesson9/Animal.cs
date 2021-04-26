@@ -26,6 +26,7 @@ namespace HomeWork9.Lesson9
 
         public void PrintAnimal()
         {
+            name = name;
             Console.WriteLine($"Animal class > lifeSpan: {lifeSpan}");
             Console.WriteLine($"Animal class > name: {name}");
             Console.WriteLine($"Animal class > AnimalType: {AnimalType}");

@@ -11,22 +11,24 @@ namespace HomeWork9.GameSample.Gui
         protected string data;
         private bool IsCenter;
 
-        public TextLine(int x, int y, int width, string msg) : base(x,y,width)
+        public TextLine(int x, int y, int width, string msg, bool isCenter = false) : base(x,y,width)
         {
             this.data = msg;
-        }
-
-        public void SetCenter(bool isCenter)
-        {
             IsCenter = isCenter;
         }
+
+        //public void SetCenter(bool isCenter)
+        //{
+        //    IsCenter = isCenter;
+        //}
 
         public void Render()
         {
             if (IsCenter)
             {
                 Console.SetCursorPosition((Console.WindowWidth - data.Length) / 2, y);
-            } else
+            } 
+            else
             {
                 Console.SetCursorPosition(x, y);
             }

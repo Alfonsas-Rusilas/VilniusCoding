@@ -28,34 +28,41 @@ namespace HomeWork9.GameSample.Gui
             // Properties:
             // 
 
-            TextLine lineStringSuper = new TextLine(10, 4, 15, "Super duper žaidimas");
-            lineStringSuper.SetCenter(true);
-            lineStringSuper.Render();
+            //Frame frame = new Frame(0, 0, Console.WindowWidth-1, Console.WindowHeight-1, '%');
+            //frame.Render();
 
-            TextLine lineStringVardas = new TextLine(10, 5, 15, "Vardas Pavardaitis kūryba");
-            lineStringVardas.SetCenter(true);
-            lineStringVardas.Render();
+            Window window = new Window(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1, '%');
+            window.Render();
 
-            TextLine lineStringMade = new TextLine(10, 6, 15, "Made in Vilnius Coding Shool");
-            lineStringMade.SetCenter(true);
-            lineStringMade.Render();
+            List<TextLine> list = new List<TextLine>();
+            list.Add(new TextLine(10, 4, 15, "Super duper žaidimas!", true));
+            list.Add(new TextLine(10, 5, 15, "Vardas Pavardaitis kūryba", true));
+            list.Add(new TextLine(10, 6, 15, "Made in Vilnius Coding Shool", true));
+            TextBlock textBlock = new TextBlock(0, 0, 0, list);
+            textBlock.Render();
+
+            list.Clear();
+            list.Add(new TextLine(3, Console.WindowHeight-2, 1, "WindowWidth: "+Console.WindowWidth));
+            list.Add(new TextLine(3, Console.WindowHeight-3, 1, "WindowHeight: "+Console.WindowHeight));
+            TextBlock info = new TextBlock(0, 0, 0, list);
+            info.Render();
+
+            //TextLine line = new TextLine(3, Console.WindowHeight - 4, 1, "WindowWidth=" + Console.WindowWidth);
+            //line.Render();
 
             int a = Console.WindowWidth / 4;
-            int plotis = 10;
-            int aukstis = 2;
+            int buttonPlotis = 20;
+            int buttonAukstis = 5;
 
-            Button btn_start = new Button(a-plotis/2, 20, 10, aukstis, "Start");
-            btn_start.SetActive(true);
-            btn_start.Render();
+            Button startButton = new Button(a- buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Start");
+            startButton.IsActive = true;
+            startButton.Render();
 
-            //a += a;
-            Button btn_credit = new Button((a+a)-plotis/2, 20, 10, aukstis, "Credit");
-            btn_credit.Render();
+            Button creditButton = new Button((2*a)- buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Credit");
+            creditButton.Render();
 
-            //a += a;
-            Button btn_quit = new Button((a+a+a)-plotis/2, 20, 10, aukstis, "Quit");
-            btn_quit.Render();
-
+            Button quitButton = new Button((3*a)- buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Quit");
+            quitButton.Render();
 
 
             Console.ReadKey();

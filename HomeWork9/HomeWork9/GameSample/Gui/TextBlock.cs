@@ -8,18 +8,19 @@ namespace HomeWork9.GameSample.Gui
 {
     class TextBlock : GuiObject
     {
-        protected List<TextLine> textBlocks;
+        private List<TextLine> textBlocks;
 
-        public TextBlock(int x, int y, int width, List<string> list) : base(x, y, width)
+        public TextBlock(int x, int y, int width, List<TextLine> list) : base(x, y, width)
         {
-            textBlocks = new List<TextLine>();
-            //textBlocks = (TextLine)list;
-            
+            textBlocks = new List<TextLine>(list);
         }
 
         public void Render()
         {
-            //Console.WriteLine(data);
+            foreach (var textLine in textBlocks)
+            {
+                textLine.Render();
+            }
         }
     }
 }

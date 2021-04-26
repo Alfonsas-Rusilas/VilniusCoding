@@ -8,18 +8,19 @@ namespace HomeWork9.GameSample.Gui
 {
     class Button : GuiObject
     {
-        private Frame activeFrame;
-        private bool IsActive = false;
-        private Frame notActiveFrame;
+        //private Frame activeFrame;
+        //private Frame notActiveFrame;
+        private Frame frame;
         private TextLine textLine;
-
+        public bool IsActive { set; get; } = false;
         private const char activeChar = '#';
         private const char notActiveChar = '*';
 
         public Button(int x, int y, int width, int height, string name) : base(x, y, width, height)
         {
-            activeFrame = new Frame(x,y,width,height, activeChar);
-            notActiveFrame = new Frame(x, y, width, height, notActiveChar);
+            //activeFrame = new Frame(x,y,width,height, activeChar);
+            //notActiveFrame = new Frame(x, y, width, height, notActiveChar);
+            frame = new Frame(x, y, width, height, notActiveChar);
 
             if (name.Length > width - 2)
             {
@@ -43,32 +44,14 @@ namespace HomeWork9.GameSample.Gui
         {
             if (IsActive)
             {
-                activeFrame.Render();
-            } else
+                frame.RenderChar = activeChar;
+            } 
+            else
             {
-                notActiveFrame.Render();
+                frame.RenderChar = notActiveChar;
             }
+            frame.Render();
             textLine.Render();
-
-
-
-            /*
-            char _char = '*';
-            for (int i = x; i < x + width; i++)
-            {
-                Console.SetCursorPosition(i, y);
-                Console.Write(_char);
-                Console.SetCursorPosition(i, y + height);
-                Console.Write(_char);
-            }
-            for (int i = y; i <= y + height; i++)
-            {
-                Console.SetCursorPosition(x, i);
-                Console.Write(_char);
-                Console.SetCursorPosition(x + width, i);
-                Console.Write(_char);
-            }
-            */
         }
     }
 }
