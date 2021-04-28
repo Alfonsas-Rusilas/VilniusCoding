@@ -13,10 +13,10 @@ namespace HomeWork12
             // interface (polimorfizmas)
             // ką mūsų objektai galės padaryti, koks funkcionalumas, bet be implementacijos
             //
-            //
-            //
             // abstract gali būti ir klasė, ir metodas;
             //
+            // Destruktorius - vyksta automatiškai, bet dažniausiai labiau naudojamas IDisposable interfeisas.
+            // IDisposable interfeisas - aktualu kai naudojame išorinius resursus (bylas, TCP, nevaldoma atmintis GPU)
 
             Pet pet = new Pet();
 
