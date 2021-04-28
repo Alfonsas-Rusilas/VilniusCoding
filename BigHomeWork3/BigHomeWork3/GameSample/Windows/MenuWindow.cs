@@ -13,6 +13,7 @@ namespace BigHomeWork3.GameSample.Windows
         private Button startButton;
         private Button creditButton;
         private Button quitButton;
+        private List<Button> buttonList = new List<Button>();
 
         public MenuWindow(int x,int y,int width,int height) : base(x,y,width,height)
         {
@@ -29,6 +30,9 @@ namespace BigHomeWork3.GameSample.Windows
             startButton.IsActive = true;
             creditButton = new Button((2 * a) - buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Credit");
             quitButton = new Button((3 * a) - buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Quit");
+            buttonList.Add(startButton);
+            buttonList.Add(creditButton);
+            buttonList.Add(quitButton);
         }
 
         public override void Render()
@@ -39,6 +43,37 @@ namespace BigHomeWork3.GameSample.Windows
             creditButton.Render();
             quitButton.Render();
             Console.SetCursorPosition(0, 0);
+        }
+
+        public void SetFocusOnNextButton()
+        {
+            int index = buttonList.FindIndex(a => a.IsActive == true);
+            foreach (var item in buttonList)
+            {
+                item.SetActive(false); 
+            }
+
+            //int index = buttonList.FindIndex(a => a.IsActive == true);
+            //Console.WriteLine("Indexas= " + index);
+
+            if (index + 1 >= buttonList.Count())
+            {
+                buttonList[0].SetActive(true);
+            }
+            else
+            {
+                buttonList[index + 1].SetActive(true);
+            }
+            //creditButton.SetActive(true);
+            RenderButtons();
+        }
+
+        private void RenderButtons()
+        {
+            startButton.Render();
+            creditButton.Render();
+            quitButton.Render();
+            //Console.SetCursorPosition(0, 0);
         }
 
 

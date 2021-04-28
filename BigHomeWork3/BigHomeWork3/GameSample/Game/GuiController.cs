@@ -14,7 +14,7 @@ namespace BigHomeWork3.GameSample.Game
 
         public GuiController()
         {
-            Console.CursorVisible = false;
+            //Console.CursorVisible = false;
             menuWindow = new MenuWindow(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
             creditWindow = new CreditWindow(10, 10, 14, 14);
         }
@@ -22,6 +22,11 @@ namespace BigHomeWork3.GameSample.Game
         public void ShowMenu()
         {
             menuWindow.Render();
+        }
+
+        public void FocusNextButton()
+        {
+            menuWindow.SetFocusOnNextButton();
         }
     }
 }

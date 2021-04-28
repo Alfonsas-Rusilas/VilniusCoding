@@ -8,20 +8,39 @@ namespace BigHomeWork3
     {
         static void Main(string[] args)
         {
-            //Console.CursorVisible = false;
-
             GuiController guiController = new GuiController();
             guiController.ShowMenu();
 
-
-
-            //MenuWindow menuWindow = new MenuWindow(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
-            //menuWindow.Render();
-
-            ////CreditWindow creditWindow = new CreditWindow(10, 10, 14, 14);
-            ////creditWindow.Render();
+            bool running = true;
+            do
+            {
+                var ch = Console.ReadKey(false).Key;
+                switch (ch)
+                {
+                    case ConsoleKey.Escape:
+                        Console.WriteLine("Key: Escape");
+                        running = false;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Console.WriteLine("Key: LeftArrow");
+                        break;
+                    case ConsoleKey.RightArrow:
+                        Console.WriteLine("Key: RightArrow");
+                        guiController.FocusNextButton();
+                        break;
+                    case ConsoleKey.Enter:
+                        Console.WriteLine("Key: Enter");
+                        break;
+                }
+            } while (running);
 
             Console.ReadKey();
         }
+
+        //public void FocusOnNextButton()
+        //{
+
+        //}
+
     }
 }
