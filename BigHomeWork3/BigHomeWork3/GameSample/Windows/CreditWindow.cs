@@ -33,6 +33,7 @@ namespace BigHomeWork3.GameSample.Windows
             creditTextBlock = new TextBlock(0, 0, 0, list);
 
             backButton = new Button(cw/2-10, b+12, 20, 2, "Back");
+            backButton.SetActive(true);
         }
 
         public override void Render()

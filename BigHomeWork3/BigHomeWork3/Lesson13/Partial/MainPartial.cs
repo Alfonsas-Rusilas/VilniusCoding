@@ -9,5 +9,6 @@ namespace BigHomeWork3.Lesson13.Partial
     class MainPartial
     {
         //
+        Object ff;
     }
 }

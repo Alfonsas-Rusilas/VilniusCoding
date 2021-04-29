@@ -11,6 +11,7 @@ namespace BigHomeWork3.GameSample.Game
     {
         private MenuWindow menuWindow;
         private CreditWindow creditWindow;
+        private GameController gameController;
 
         public GuiController()
         {
@@ -28,5 +29,40 @@ namespace BigHomeWork3.GameSample.Game
         {
             menuWindow.SetFocusOnNextButton();
         }
+
+        public void FocusBackButton()
+        {
+            menuWindow.SetFocusOnBackButton();
+        }
+
+        public string GetActiveButtonLabel()
+        {
+            return menuWindow.GetActiveButtonLabel();
+        }
+
+
+        public void OnPressButton()
+        {
+            menuWindow.OnPressButton();
+
+
+        }
+
+        public void ShowCreditMenu()
+        {
+            creditWindow.Render();
+            Console.ReadKey();
+            menuWindow.Render();
+        }
+
+        public void StartGame()
+        {
+            //creditWindow.Render();
+            //Console.ReadKey();
+            //menuWindow.Render();
+
+            gameController = new GameController(Console.WindowWidth - 1, Console.WindowHeight - 1);
+        }
+
     }
 }

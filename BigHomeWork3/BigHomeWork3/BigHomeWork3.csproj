@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>BigHomeWork3.GameProject</StartupObject>
+    <StartupObject>BigHomeWork3.Lesson14.Main14</StartupObject>
   </PropertyGroup>
 
 </Project>

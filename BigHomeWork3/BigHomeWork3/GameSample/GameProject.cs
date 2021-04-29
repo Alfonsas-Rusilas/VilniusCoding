@@ -18,18 +18,19 @@ namespace BigHomeWork3
                 switch (ch)
                 {
                     case ConsoleKey.Escape:
-                        Console.WriteLine("Key: Escape");
-                        running = false;
-                        break;
+                        return;
                     case ConsoleKey.LeftArrow:
-                        Console.WriteLine("Key: LeftArrow");
+                        guiController.FocusBackButton();
                         break;
                     case ConsoleKey.RightArrow:
-                        Console.WriteLine("Key: RightArrow");
                         guiController.FocusNextButton();
                         break;
                     case ConsoleKey.Enter:
-                        Console.WriteLine("Key: Enter");
+                        if (guiController.GetActiveButtonLabel() == "Quit") return;
+                        if (guiController.GetActiveButtonLabel() == "Credit") guiController.ShowCreditMenu();
+                        guiController.StartGame();
+                        //guiController.OnPressButton();
+                        //guiController.ShowCreditMenu();
                         break;
                 }
             } while (running);
@@ -37,10 +38,6 @@ namespace BigHomeWork3
             Console.ReadKey();
         }
 
-        //public void FocusOnNextButton()
-        //{
-
-        //}
 
     }
 }

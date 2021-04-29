@@ -1,4 +1,5 @@
-﻿using BigHomeWork3.GameSample.Unit;
+﻿using BigHomeWork3.GameSample.Gui;
+using BigHomeWork3.GameSample.Unit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork3.GameSample.Game
 {
-    class GameController
+    class GameController : GuiObject
     {
+        
+
+        public GameController(int width, int height) : base(0,0,width,height)
+        {
+            //
+        }
+
         public void StartGame()
         {
-
-
-
-  
-            
-            GameScreen myGame = new GameScreen(40, 40);
+            GameScreen myGame = new GameScreen(Width, Height);
             myGame.SetHero(new Hero("Herojus", 20, 20));
 
             int universalID = 0;

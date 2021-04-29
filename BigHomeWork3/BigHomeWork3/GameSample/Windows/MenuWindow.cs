@@ -14,6 +14,7 @@ namespace BigHomeWork3.GameSample.Windows
         private Button creditButton;
         private Button quitButton;
         private List<Button> buttonList = new List<Button>();
+//        private int ActiveButtonIndex;
 
         public MenuWindow(int x,int y,int width,int height) : base(x,y,width,height)
         {
@@ -52,10 +53,6 @@ namespace BigHomeWork3.GameSample.Windows
             {
                 item.SetActive(false); 
             }
-
-            //int index = buttonList.FindIndex(a => a.IsActive == true);
-            //Console.WriteLine("Indexas= " + index);
-
             if (index + 1 >= buttonList.Count())
             {
                 buttonList[0].SetActive(true);
@@ -64,17 +61,51 @@ namespace BigHomeWork3.GameSample.Windows
             {
                 buttonList[index + 1].SetActive(true);
             }
-            //creditButton.SetActive(true);
             RenderButtons();
+        }
+
+        public void SetFocusOnBackButton()
+        {
+            int index = buttonList.FindIndex(a => a.IsActive == true);
+            foreach (var item in buttonList)
+            {
+                item.SetActive(false);
+            }
+            if (index - 1 < 0)
+            {
+                buttonList[buttonList.Count - 1].SetActive(true);
+            }
+            else
+            {
+                buttonList[index - 1].SetActive(true);
+            }
+            RenderButtons();
+        }
+
+        public void OnPressButton()
+        {
+            int index = buttonList.FindIndex(a => a.IsActive == true);
         }
 
         private void RenderButtons()
         {
-            startButton.Render();
-            creditButton.Render();
-            quitButton.Render();
+            //startButton.Render();
+            //creditButton.Render();
+            //quitButton.Render();
+            foreach (var btn in buttonList)
+            {
+                btn.Render();
+            }
             //Console.SetCursorPosition(0, 0);
         }
+
+        public string GetActiveButtonLabel()
+        {
+            int index = buttonList.FindIndex(a => a.IsActive == true);
+            return buttonList[index].Label.Label;
+        }
+
+
 
 
     }

@@ -10,6 +10,7 @@ namespace BigHomeWork3.GameSample.Gui
     {
         private Frame frame;
         public TextLine Label { get; set; }
+
         public bool IsActive { set; get; } = false;
         private const char activeChar = '#';
         private const char notActiveChar = '*';
