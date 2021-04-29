@@ -76,5 +76,18 @@ namespace BigHomeWork3.GameSample.Gui
         }
 
 
+        public void ClearRender()
+        {
+            for (int v = Y; v <= Y + Height; v++)
+            {
+                for (int h = X; h <= X + Width; h++)
+                {
+                    Console.SetCursorPosition(h, v);
+                    Console.Write(" ");
+                }
+            }
+        }
+
+
     }
 }

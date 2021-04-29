@@ -8,9 +8,11 @@ namespace BigHomeWork3.GameSample.Unit
 {
     class Unit
     {
-        protected int X;
-        protected int Y;
-        protected string Name;
+        //protected int X;
+        public int X { set; get; }
+        public int Y { set; get; }
+
+        public string Name { set; get; }
 
         public Unit(string name, int x, int y)
         {

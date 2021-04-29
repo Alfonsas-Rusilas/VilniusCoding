@@ -8,18 +8,12 @@ namespace BigHomeWork3.GameSample.Unit
 {
     class Enemy : Unit
     {
-        private int id;
-        //private int x;
-        //private int y;
-        //private string name;
-
+        private readonly int id;
 
         public Enemy(int id, string name, int x, int y) : base(name, x, y)
         {
             this.id = id;
-            //this.x = x;
-            //this.y = y;
-            //this.name = name;
+
         }
 
         public void MoveDown()
@@ -32,10 +26,6 @@ namespace BigHomeWork3.GameSample.Unit
             return id;
         }
 
-        //public void PrintInfo()
-        //{
-        //    Console.WriteLine($"Enemy: {name}, id={id}, {x}x{y}");
-        //}
     }
 
 

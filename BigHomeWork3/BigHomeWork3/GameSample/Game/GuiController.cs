@@ -18,6 +18,7 @@ namespace BigHomeWork3.GameSample.Game
             //Console.CursorVisible = false;
             menuWindow = new MenuWindow(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
             creditWindow = new CreditWindow(10, 10, 14, 14);
+            gameController = new GameController(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
         }
 
         public void ShowMenu()
@@ -41,13 +42,6 @@ namespace BigHomeWork3.GameSample.Game
         }
 
 
-        public void OnPressButton()
-        {
-            menuWindow.OnPressButton();
-
-
-        }
-
         public void ShowCreditMenu()
         {
             creditWindow.Render();
@@ -61,7 +55,8 @@ namespace BigHomeWork3.GameSample.Game
             //Console.ReadKey();
             //menuWindow.Render();
 
-            gameController = new GameController(Console.WindowWidth - 1, Console.WindowHeight - 1);
+            //gameController = new GameController(1,1,Console.WindowWidth - 1, Console.WindowHeight - 1);
+            gameController.StartGame();
         }
 
     }

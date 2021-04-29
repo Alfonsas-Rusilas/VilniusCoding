@@ -28,9 +28,7 @@ namespace BigHomeWork3
                     case ConsoleKey.Enter:
                         if (guiController.GetActiveButtonLabel() == "Quit") return;
                         if (guiController.GetActiveButtonLabel() == "Credit") guiController.ShowCreditMenu();
-                        guiController.StartGame();
-                        //guiController.OnPressButton();
-                        //guiController.ShowCreditMenu();
+                        if (guiController.GetActiveButtonLabel() == "Start") guiController.StartGame();
                         break;
                 }
             } while (running);
