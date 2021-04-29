@@ -9,7 +9,7 @@ namespace BigHomeWork3.Lesson14
     sealed class Client : Human
     {
         private static int clientCount = 0;
-        public int ClientId { set; get; }
+        public int ClientId { get; private set; }
 
         public Client(int lspan, string name) : base(lspan, name)
         {
@@ -23,9 +23,5 @@ namespace BigHomeWork3.Lesson14
         }
 
 
-        //public void SetClientClount(int c)
-        //{
-        //    clientCount++;
-        //}
     }
 }

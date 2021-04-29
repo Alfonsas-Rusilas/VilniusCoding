@@ -13,11 +13,6 @@ namespace BigHomeWork3.Lesson14
         private List<Client> clientList = new List<Client>();
         private List<Worker> workerList = new List<Worker>();
         public Dog OfficePet { get; set; }
-        //public Worker HireWorker { get; set ; }
-        //public Worker FireWorker { get; set; }
-
-        private Worker hireWorker;
-        private Worker fireWorker;
 
         public int ClientId { set; get; }
 
@@ -29,12 +24,12 @@ namespace BigHomeWork3.Lesson14
 
         public void HireWorker(Worker w)
         {
-            hireWorker = w;
+            workerList.Add(w);
         }
 
         public void FireWorker(Worker f)
         {
-            fireWorker = f;
+            workerList.Remove(f);
         }
 
 
@@ -60,10 +55,9 @@ namespace BigHomeWork3.Lesson14
         {
             foreach (var w in workerList)
             {
-                Console.WriteLine("Company.Worker = " + w.GetName());
+                Console.WriteLine("Company.Worker = " + w.GetName() + "; salary - " + w.GetSalary()); ;
             }
         }
-
 
 
         public void PrintInfo()
@@ -71,8 +65,8 @@ namespace BigHomeWork3.Lesson14
             Console.WriteLine("Company class: " + this.name);
             Console.WriteLine("Company boss name: " + this.boss.GetName() + ", metų " + this.boss.GetLiveSpan());
             Console.WriteLine($"Company.OfficePet: {this.OfficePet.GetName()}");
-            Console.WriteLine("Company fire worker: " + this.fireWorker.GetName() + "; alga - " + this.fireWorker.GetSalary());
-            Console.WriteLine("Company hire worker: " + this.hireWorker.GetName() + "; alga - " + this.hireWorker.GetSalary());
+            //Console.WriteLine("Company fire worker: " + this.fireWorker.GetName() + "; alga - " + this.fireWorker.GetSalary());
+            //Console.WriteLine("Company hire worker: " + this.hireWorker.GetName() + "; alga - " + this.hireWorker.GetSalary());
             Console.WriteLine("Clients count: " + clientList[0].ClientsCount());
             PrintAllWorker();
             PrintAllClients();

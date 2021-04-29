@@ -8,14 +8,14 @@ namespace BigHomeWork3.Lesson14
 {
     class Human : LiveObject, IPrintMe
     {
-        protected string name;
+        private string name;
 
         public Human(int lspan, string name) : base(lspan)
         {
             this.name = name;
         }
 
-        public void PrintInfo()
+        public virtual void PrintInfo()
         {
             Console.WriteLine("Human class");
         }

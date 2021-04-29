@@ -29,7 +29,7 @@ namespace BigHomeWork3.Lesson14
             company.OfficePet = new Dog(10, "Brisius");
 
             company.HireWorker(new Worker(40, "Valytojas Jonas", 460));
-            company.FireWorker(new Worker(45, "Programuotojas Žilvinas", 2500));
+            company.HireWorker(new Worker(45, "Programuotojas Žilvinas", 2500));
 
             company.AddClient(new Client(60, "Kęstas"));
             company.AddClient(new Client(22, "Onutė"));
