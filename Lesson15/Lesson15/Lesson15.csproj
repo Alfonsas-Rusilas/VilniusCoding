@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>Lesson15.Error_handling.MainError</StartupObject>
   </PropertyGroup>
 
 </Project>
