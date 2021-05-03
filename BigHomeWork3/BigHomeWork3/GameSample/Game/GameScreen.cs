@@ -46,6 +46,17 @@ namespace BigHomeWork3.GameSample.Game
             
         }
 
+        public int ScreenX()
+        {
+            return screenBorder.X;
+        }
+
+        public int ScreenY()
+        {
+            return screenBorder.Y;
+        }
+
+
         public int ScreenWidth()
         {
             return screenBorder.Width;
@@ -89,12 +100,12 @@ namespace BigHomeWork3.GameSample.Game
 
         public void MoveHeroRight()
         {
-            hero.MoveRight();
+            hero.MoveRight(screenBorder.Width);
         }
 
         public void MoveHeroLeft()
         {
-            hero.MoveLeft();
+            hero.MoveLeft(screenBorder.X);
         }
 
 

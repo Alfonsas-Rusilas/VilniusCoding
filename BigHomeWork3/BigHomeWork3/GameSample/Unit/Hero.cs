@@ -36,19 +36,30 @@ namespace BigHomeWork3.GameSample.Unit
             Label.Render();
         }
 
-        public void MoveRight()
+        public void MoveRight(int x)
         {
+            // jei atsiremiam į dešinę sieną, išeiname
+            if ((frame.X + frame.Width) >= x-1)
+            {
+                return;
+            }
             frame.ClearRender();
             frame.X++;
             Label.X++;
+            //Console.SetCursorPosition(5, 6);
+            //Console.WriteLine($"hero.X={frame.X}");
+            //Console.SetCursorPosition(5, 7);
+            //Console.WriteLine($"x={x}");
             Render();
         }
 
-        public void MoveLeft()
+        public void MoveLeft(int x)
         {
-            frame.X <= 
-
-
+            // jei atsiremiam į kairę sieną, išeiname
+            if (frame.X <= x+1)
+            {
+                return;
+            }  
             frame.ClearRender();
             frame.X--; 
             Label.X--;
