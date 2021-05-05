@@ -14,6 +14,15 @@ namespace Lesson15.String
             // string - yra System.String
             // Jei dirbame su dideliais tekstais, naudojama StringBuilder
             // string - tai klasė
+			//  IsNullOrEmpty  - IsNullOrEmpty (pastaroji sttaic)
+			// 
+			// string - is sealed
+			// ToCharArray()
+			// IndexOf()
+			// StartsWith()
+			// Split(..) 
+			
+			
 
             string test1 = "abc";
             string test2 = "123";

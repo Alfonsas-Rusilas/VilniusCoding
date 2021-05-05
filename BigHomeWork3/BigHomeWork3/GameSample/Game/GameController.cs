@@ -21,7 +21,6 @@ namespace BigHomeWork3.GameSample.Game
         public void StartGame()
         {
             myGame.SetHero(new Hero("HERO", (AppSettings.GameScreenWidth - AppSettings.HeroWidth)/2, AppSettings.GameScreenHeight-4));
-            
             int universalID = 0;
             for (int x = 0; x < AppSettings.EnemyCount; x++)
             {
@@ -30,7 +29,6 @@ namespace BigHomeWork3.GameSample.Game
                     rnd.Next(AppSettings.EnemyAreaFromX, AppSettings.EnemyAreaToX), rnd.Next(AppSettings.EnemyAreaFromY, AppSettings.EnemyAreaToY)));
                 universalID++;
             }
-
             myGame.Render();
             
             bool needToRender = true;

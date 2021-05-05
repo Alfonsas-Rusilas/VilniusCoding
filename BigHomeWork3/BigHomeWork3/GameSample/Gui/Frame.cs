@@ -16,23 +16,23 @@ namespace BigHomeWork3.GameSample.Gui
             RenderChar = c;
         }
 
-        public void RenderEx()
-        {
-            for (int i = X; i < X + Width; i++)
-            {
-                Console.SetCursorPosition(i, Y);
-                Console.Write(RenderChar);
-                Console.SetCursorPosition(i, Y + Height);
-                Console.Write(RenderChar);
-            }
-            for (int i = Y; i <= Y + Height; i++)
-            {
-                Console.SetCursorPosition(X, i);
-                Console.Write(RenderChar);
-                Console.SetCursorPosition(X + Width, i);
-                Console.Write(RenderChar);
-            }
-        }
+        //public void RenderEx()
+        //{
+        //    for (int i = X; i < X + Width; i++)
+        //    {
+        //        Console.SetCursorPosition(i, Y);
+        //        Console.Write(RenderChar);
+        //        Console.SetCursorPosition(i, Y + Height);
+        //        Console.Write(RenderChar);
+        //    }
+        //    for (int i = Y; i <= Y + Height; i++)
+        //    {
+        //        Console.SetCursorPosition(X, i);
+        //        Console.Write(RenderChar);
+        //        Console.SetCursorPosition(X + Width, i);
+        //        Console.Write(RenderChar);
+        //    }
+        //}
 
 
         //public void RenderFull()

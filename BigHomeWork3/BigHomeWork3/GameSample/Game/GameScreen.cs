@@ -46,10 +46,10 @@ namespace BigHomeWork3.GameSample.Game
             LivesInformation.Render();
         }
 
-        public void RenderFrame()
-        {
-            screenBorder.Render();
-        }
+        //public void RenderFrame()
+        //{
+        //    screenBorder.Render();
+        //}
 
         public void SetHero(Hero hero)
         {
@@ -61,25 +61,17 @@ namespace BigHomeWork3.GameSample.Game
             enemies.Add(enemy);
         }
 
-        public void MoveAllEnemysArround()
-        {
-            for (int i = 0; i < AppSettings.EnemyCount; i++)
-            {
-                enemies[i].MoveArround();
-            }
-        }
-
-        public Enemy GetEnemyByID(int id)
-        {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                if (enemies[i].GetId() == id)
-                {
-                    return enemies[i];
-                }
-            }
-            return null;
-        }
+        //public Enemy GetEnemyByID(int id)
+        //{
+        //    for (int i = 0; i < enemies.Count; i++)
+        //    {
+        //        if (enemies[i].GetId() == id)
+        //        {
+        //            return enemies[i];
+        //        }
+        //    }
+        //    return null;
+        //}
 
         public void MoveHeroRight()
         {
@@ -125,10 +117,6 @@ namespace BigHomeWork3.GameSample.Game
             CheckPositionsBallsAndEnemies();
             ScoreInformation.Render();
             CheckEnemysPosition();
-            //Console.SetCursorPosition(15, 15);
-            //Console.Write("                                                  ");
-            //Console.SetCursorPosition(15, 15);
-            //Console.Write("Liko priešų: " + enemies.Count);
         }
 
 
@@ -145,7 +133,6 @@ namespace BigHomeWork3.GameSample.Game
                     return;
                 }
             }
-
             // Nusileido prie pat apačios - minus gyvybė
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -163,7 +150,7 @@ namespace BigHomeWork3.GameSample.Game
                 }
             }
             enemies.RemoveAll(a => a.MarkForDelete == true);
-
+            // Enemy nebeliko, you are winner!
             if (enemies.Count<=0)
             {
                 IsGameWin = true;
