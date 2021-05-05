@@ -37,7 +37,7 @@ namespace BigHomeWork3.GameSample.Gui
         }
 
 
-        public void Render()
+        public override void Render()
         {
             if (IsActive)
             {

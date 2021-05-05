@@ -44,7 +44,11 @@ namespace BigHomeWork3.GameSample.Game
         {
             creditWindow = new CreditWindow(10, 10, 14, 14);
             creditWindow.Render();
-            Console.ReadKey();
+            ConsoleKeyInfo pressedChar;
+            do
+            {
+                pressedChar = Console.ReadKey(true);
+            } while (pressedChar.Key != ConsoleKey.Enter);
             menuWindow.Render();
         }
 

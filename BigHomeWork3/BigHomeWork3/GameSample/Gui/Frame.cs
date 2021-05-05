@@ -16,6 +16,39 @@ namespace BigHomeWork3.GameSample.Gui
             RenderChar = c;
         }
 
+        public override void Render()
+        {
+            for (int v = Y; v <= Y + Height; v++)
+            {
+                for (int h = X; h <= X + Width; h++)
+                {
+                    Console.SetCursorPosition(h, v);
+                    if (((h >= X && h <= X + Width) && (v == Y || v == Y + Height)) || ((h == X || h == X + Width) && (v >= Y && v <= Y + Height)))
+                    {
+                        Console.Write(RenderChar);
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+
+            }
+
+        }
+
+        public void ClearRender()
+        {
+            for (int v = Y; v <= Y + Height; v++)
+            {
+                for (int h = X; h <= X + Width; h++)
+                {
+                    Console.SetCursorPosition(h, v);
+                    Console.Write(" ");
+                }
+            }
+        }
+
         //public void RenderEx()
         //{
         //    for (int i = X; i < X + Width; i++)
@@ -53,41 +86,5 @@ namespace BigHomeWork3.GameSample.Gui
 
         //    }
         //}
-
-        public void Render()
-        {
-            for (int v = Y; v <= Y + Height; v++)
-            {
-                for (int h = X; h <= X + Width; h++)
-                {
-                    Console.SetCursorPosition(h, v);
-                    if (((h >= X && h <= X + Width) && (v == Y || v == Y + Height)) || ((h == X || h == X + Width) && (v >= Y && v <= Y + Height)))
-                    {
-                        Console.Write(RenderChar);
-                    }
-                    else
-                    {
-                        Console.Write(" ");
-                    }
-                }
-
-            }
-
-        }
-
-
-        public void ClearRender()
-        {
-            for (int v = Y; v <= Y + Height; v++)
-            {
-                for (int h = X; h <= X + Width; h++)
-                {
-                    Console.SetCursorPosition(h, v);
-                    Console.Write(" ");
-                }
-            }
-        }
-
-
     }
 }

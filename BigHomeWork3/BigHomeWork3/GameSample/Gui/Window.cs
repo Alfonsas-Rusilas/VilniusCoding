@@ -16,7 +16,7 @@ namespace BigHomeWork3.GameSample.Windows
             border = new Frame(x, y, width, height, '%');
         }
 
-        public virtual void Render()
+        public override void Render()
         {
             border.Render();
         }

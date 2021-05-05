@@ -15,7 +15,7 @@ namespace BigHomeWork3.GameSample.Gui
             textBlocks = new List<TextLine>(list);
         }
 
-        public void Render()
+        public override void Render()
         {
             foreach (var textLine in textBlocks)
             {

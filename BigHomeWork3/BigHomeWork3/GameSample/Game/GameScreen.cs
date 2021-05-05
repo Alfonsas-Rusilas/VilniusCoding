@@ -46,11 +46,6 @@ namespace BigHomeWork3.GameSample.Game
             LivesInformation.Render();
         }
 
-        //public void RenderFrame()
-        //{
-        //    screenBorder.Render();
-        //}
-
         public void SetHero(Hero hero)
         {
             this.hero = hero;
@@ -60,18 +55,6 @@ namespace BigHomeWork3.GameSample.Game
         {
             enemies.Add(enemy);
         }
-
-        //public Enemy GetEnemyByID(int id)
-        //{
-        //    for (int i = 0; i < enemies.Count; i++)
-        //    {
-        //        if (enemies[i].GetId() == id)
-        //        {
-        //            return enemies[i];
-        //        }
-        //    }
-        //    return null;
-        //}
 
         public void MoveHeroRight()
         {
@@ -127,8 +110,6 @@ namespace BigHomeWork3.GameSample.Game
             {
                 if (enemies[i].X >= hero.X && enemies[i].X <= hero.X + AppSettings.HeroWidth && enemies[i].Y >= hero.Y)
                 {
-                    LivesInformation.Label = "| Lives: GAME OVER |";
-                    LivesInformation.Render();
                     IsGameLost = true;
                     return;
                 }
@@ -187,7 +168,7 @@ namespace BigHomeWork3.GameSample.Game
         {
             if (IsGameWin)
             {
-                return "You won!!!";
+                return "You win!!!";
             }
             else 
             if (lives<=0)

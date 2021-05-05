@@ -21,5 +21,8 @@ namespace BigHomeWork3.GameSample.Gui
             this.Height = height;
         }
 
+        abstract public void Render();
+               
+
     }
 }
