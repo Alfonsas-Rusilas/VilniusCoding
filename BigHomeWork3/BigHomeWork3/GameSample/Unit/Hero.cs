@@ -15,8 +15,8 @@ namespace BigHomeWork3.GameSample.Unit
 
         public Hero(string name, int x, int y) : base(name, x, y)
         {
-            int width = StaticClass.HeroWidth;
-            int height = StaticClass.HeroHeight;
+            int width = AppSettings.HeroWidth;
+            int height = AppSettings.HeroHeight;
             frame = new Frame(x, y, width, height, 'o');
             if (name.Length > width - 2)
             {
@@ -46,10 +46,7 @@ namespace BigHomeWork3.GameSample.Unit
             frame.ClearRender();
             frame.X++;
             Label.X++;
-            //Console.SetCursorPosition(5, 6);
-            //Console.WriteLine($"hero.X={frame.X}");
-            //Console.SetCursorPosition(5, 7);
-            //Console.WriteLine($"x={x}");
+            X = frame.X;
             Render();
         }
 
@@ -63,8 +60,20 @@ namespace BigHomeWork3.GameSample.Unit
             frame.ClearRender();
             frame.X--; 
             Label.X--;
+            X = frame.X;
             Render();
         }
+
+        public int HeroMidX()
+        {
+            return (frame.X + frame.Width/2);
+        }
+
+        public int HeroY()
+        {
+            return frame.Y;
+        }
+
 
 
     }

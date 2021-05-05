@@ -15,10 +15,8 @@ namespace BigHomeWork3.GameSample.Game
 
         public GuiController()
         {
-            //Console.CursorVisible = false;
-            menuWindow = new MenuWindow(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
-            creditWindow = new CreditWindow(10, 10, 14, 14);
-            gameController = new GameController(0, 0, Console.WindowWidth - 1, Console.WindowHeight - 1);
+            Console.CursorVisible = false;
+            menuWindow = new MenuWindow(AppSettings.GameScreenX, AppSettings.GameScreenY, AppSettings.GameScreenWidth - 1, AppSettings.GameScreenHeight - 1);
         }
 
         public void ShowMenu()
@@ -44,6 +42,7 @@ namespace BigHomeWork3.GameSample.Game
 
         public void ShowCreditMenu()
         {
+            creditWindow = new CreditWindow(10, 10, 14, 14);
             creditWindow.Render();
             Console.ReadKey();
             menuWindow.Render();
@@ -51,11 +50,7 @@ namespace BigHomeWork3.GameSample.Game
 
         public void StartGame()
         {
-            //creditWindow.Render();
-            //Console.ReadKey();
-            //menuWindow.Render();
-
-            //gameController = new GameController(1,1,Console.WindowWidth - 1, Console.WindowHeight - 1);
+            gameController = new GameController(AppSettings.GameScreenX, AppSettings.GameScreenY, AppSettings.GameScreenWidth - 1, AppSettings.GameScreenHeight - 1);
             gameController.StartGame();
         }
 

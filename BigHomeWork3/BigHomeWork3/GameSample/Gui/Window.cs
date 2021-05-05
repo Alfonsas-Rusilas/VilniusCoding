@@ -10,7 +10,6 @@ namespace BigHomeWork3.GameSample.Windows
     class Window : GuiObject
     {
         private Frame border;
-        //private TextLine titleText;
 
         public Window(int x, int y, int width, int height) : base(x, y, width, height)
         {

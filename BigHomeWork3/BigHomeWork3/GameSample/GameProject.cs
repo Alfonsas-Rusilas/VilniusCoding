@@ -10,15 +10,12 @@ namespace BigHomeWork3
         {
             GuiController guiController = new GuiController();
             guiController.ShowMenu();
-
-            bool running = true;
+            ConsoleKeyInfo pressedChar;
             do
             {
-                var ch = Console.ReadKey(false).Key;
-                switch (ch)
+                pressedChar = Console.ReadKey(true);
+                switch (pressedChar.Key)
                 {
-                    case ConsoleKey.Escape:
-                        return;
                     case ConsoleKey.LeftArrow:
                         guiController.FocusBackButton();
                         break;
@@ -26,14 +23,24 @@ namespace BigHomeWork3
                         guiController.FocusNextButton();
                         break;
                     case ConsoleKey.Enter:
-                        if (guiController.GetActiveButtonLabel() == "Quit") return;
-                        if (guiController.GetActiveButtonLabel() == "Credit") guiController.ShowCreditMenu();
-                        if (guiController.GetActiveButtonLabel() == "Start") guiController.StartGame();
+                        if (guiController.GetActiveButtonLabel() == "Quit")
+                        {
+                            return;
+                        }
+                        if (guiController.GetActiveButtonLabel() == "Credit")
+                        {
+                            guiController.ShowCreditMenu();
+                            
+                        }
+                        if (guiController.GetActiveButtonLabel() == "Start")
+                        {
+                            guiController.StartGame();
+                            //guiController.ShowMenu();
+                        }
+                        guiController.ShowMenu();
                         break;
                 }
-            } while (running);
-
-            Console.ReadKey();
+            } while (pressedChar.Key != ConsoleKey.Escape);
         }
 
 

@@ -8,7 +8,6 @@ namespace BigHomeWork3.GameSample.Unit
 {
     class Unit
     {
-        //protected int X;
         public int X { set; get; }
         public int Y { set; get; }
 
@@ -19,11 +18,6 @@ namespace BigHomeWork3.GameSample.Unit
             this.X = x;
             this.Y = y;
             this.Name = name;
-        }
-
-        public void PrintInfo()
-        {
-            Console.WriteLine($"Unit: {Name}, {X}x{Y}");
         }
 
     }

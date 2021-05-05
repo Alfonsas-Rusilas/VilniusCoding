@@ -14,57 +14,41 @@ namespace BigHomeWork3.GameSample.Game
     {
         private Hero hero;
         private Frame screenBorder;
+        private TextLine ScoreInformation;
+        private TextLine ShootsInformation;
+        private TextLine LivesInformation;
         private List<Enemy> enemies = new List<Enemy>();
+        private List<Ball> balls = new List<Ball>();
+        private int shoots = 0;
+        private int lives = 3;
+        private int score = 0;
+        public bool IsGameLost { set; get; } = false;
+        public bool IsGameWin { set; get; } = false;
 
         public GameScreen(int x, int y, int width, int height)
         {
             screenBorder = new Frame(x, y, width, height, '*');
+            ScoreInformation = new TextLine((AppSettings.GameScreenWidth/3)*2, AppSettings.GameScreenHeight-1, 1, "| Scores: 0 |");
+            ShootsInformation = new TextLine((AppSettings.GameScreenWidth/3), AppSettings.GameScreenHeight - 1, 1, "| Shoots: 0 |");
+            LivesInformation = new TextLine(8, AppSettings.GameScreenHeight - 1, 1, "| Lives: 3 |");
         }
 
         public void Render()
         {
             screenBorder.Render();
             hero.Render();
+            foreach (var enemie in enemies)
+            {
+                enemie.Render();
+            }
+            ScoreInformation.Render();
+            ShootsInformation.Render();
+            LivesInformation.Render();
         }
 
         public void RenderFrame()
         {
             screenBorder.Render();
-        }
-
-
-        public int GetHeroWidth()
-        {
-            //return (hero==null)? 10 : hero.HeroWidth;
-            return StaticClass.HeroWidth;
-        }
-
-        public int GetHeroHight()
-        {
-            //return (hero == null) ? 2 : hero.HeroHeight;
-            return StaticClass.HeroHeight;
-            
-        }
-
-        public int ScreenX()
-        {
-            return screenBorder.X;
-        }
-
-        public int ScreenY()
-        {
-            return screenBorder.Y;
-        }
-
-
-        public int ScreenWidth()
-        {
-            return screenBorder.Width;
-        }
-
-        public int ScreenHeight()
-        {
-            return screenBorder.Height;
         }
 
         public void SetHero(Hero hero)
@@ -77,13 +61,12 @@ namespace BigHomeWork3.GameSample.Game
             enemies.Add(enemy);
         }
 
-        public void MoveAllEnemysDown()
+        public void MoveAllEnemysArround()
         {
-            for (int i = 0; i < enemies.Count; i++)
+            for (int i = 0; i < AppSettings.EnemyCount; i++)
             {
-                enemies[i].MoveDown();
+                enemies[i].MoveArround();
             }
-            
         }
 
         public Enemy GetEnemyByID(int id)
@@ -108,18 +91,127 @@ namespace BigHomeWork3.GameSample.Game
             hero.MoveLeft(screenBorder.X);
         }
 
+        public void CreateBall()
+        {
+            Ball ball = new Ball("Ball_", '|', hero.HeroMidX(), hero.HeroY() - 1);
+            balls.Add(ball);
+            shoots++;
+            ShootsInformation.Label = "| Shoots: " + shoots + " |";
+            ball.Render();
+        }
+
+        public void MoveAllBallsUp()
+        {
+            for (int i = 0; i < balls.Count; i++)
+            {
+                balls[i].MoveUp();
+            }
+        }
+
+        public void MoveAllEnemysDown()
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].MoveDown();
+            }
+        }
+
+        public void Recalculate()
+        {
+            MoveAllBallsUp();
+            balls.RemoveAll(a => a.Y <= AppSettings.GameScreenY+1 );
+            MoveAllEnemysDown();
+            ShootsInformation.Render();
+            CheckPositionsBallsAndEnemies();
+            ScoreInformation.Render();
+            CheckEnemysPosition();
+            //Console.SetCursorPosition(15, 15);
+            //Console.Write("                                                  ");
+            //Console.SetCursorPosition(15, 15);
+            //Console.Write("Liko priešų: " + enemies.Count);
+        }
 
 
+        private void CheckEnemysPosition()
+        {
+            // Nusileido ant herojaus- GameOver
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].X >= hero.X && enemies[i].X <= hero.X + AppSettings.HeroWidth && enemies[i].Y >= hero.Y)
+                {
+                    LivesInformation.Label = "| Lives: GAME OVER |";
+                    LivesInformation.Render();
+                    IsGameLost = true;
+                    return;
+                }
+            }
 
-        //public void Render()
-        //{
-        //Console.WriteLine("--------------Render()--------------------");
-        //hero.PrintInfo();
-        //for (int i = 0; i < enemies.Count; i++)
-        //{
-        //    enemies[i].PrintInfo();
-        //}
-        //}
+            // Nusileido prie pat apačios - minus gyvybė
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].Y >= AppSettings.GameScreenHeight - 2)
+                {
+                    enemies[i].MarkForDelete = true;
+                    enemies[i].ClearRender();
+                    lives--;
+                    LivesInformation.Label = "| Lives: " + lives + " |";
+                    LivesInformation.Render();
+                    if (lives <= 0)
+                    {
+                        IsGameLost = true;
+                    }
+                }
+            }
+            enemies.RemoveAll(a => a.MarkForDelete == true);
+
+            if (enemies.Count<=0)
+            {
+                IsGameWin = true;
+            }
+        }
+
+        public void CheckPositionsBallsAndEnemies()
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                for (int a = 0; a < balls.Count; a++)
+                {
+                    if (enemies[i].X == balls[a].X && enemies[i].Y == balls[a].Y)
+                    {
+                        enemies[i].ClearRender();
+                        balls[a].ClearRender();
+                        score +=100;
+                        ScoreInformation.Label = "| Scores: " + score + " |";
+                        enemies[i].MarkForDelete = true;
+                        balls[a].MarkForDelete = true;
+                    }
+                }
+            }
+            enemies.RemoveAll(a => a.MarkForDelete==true);
+            balls.RemoveAll(a => a.MarkForDelete==true);
+        }
+
+        public string GetScores()
+        {
+            return score.ToString();
+        }
+
+        public string GetReason()
+        {
+            if (IsGameWin)
+            {
+                return "You won!!!";
+            }
+            else 
+            if (lives<=0)
+            {
+                return "All lives was lost.";
+            }
+            else
+            {
+                return "Hero is dead.";
+            }
+        }
 
     }
 }

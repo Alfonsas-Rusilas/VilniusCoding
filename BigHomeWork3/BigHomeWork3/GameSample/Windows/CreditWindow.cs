@@ -1,4 +1,5 @@
-﻿using BigHomeWork3.GameSample.Gui;
+﻿using BigHomeWork3.GameSample.Game;
+using BigHomeWork3.GameSample.Gui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork3.GameSample.Windows
 {
-    class CreditWindow : Window
+    class CreditWindow //: Window
     {
         private Frame frame;
         private TextBlock creditTextBlock;
         private Button backButton;
-        public CreditWindow(int x, int y, int width, int height) : base(x,y,width,height)
+        public CreditWindow(int x, int y, int width, int height) //: base(x,y,width,height)
         {
-            int cw = Console.WindowWidth;
-            int ch = Console.WindowHeight;
-
             frame = new Frame(35, 8, 50, 19, '@');
 
             int b = 10;
@@ -32,11 +30,12 @@ namespace BigHomeWork3.GameSample.Windows
             
             creditTextBlock = new TextBlock(0, 0, 0, list);
 
-            backButton = new Button(cw/2-10, b+12, 20, 2, "Back");
+            backButton = new Button(AppSettings.GameScreenWidth/2-10, b+12, 20, 2, "Back");
             backButton.SetActive(true);
         }
 
-        public override void Render()
+        //public override void Render()
+        public void Render()
         {
             frame.Render();
             backButton.Render();

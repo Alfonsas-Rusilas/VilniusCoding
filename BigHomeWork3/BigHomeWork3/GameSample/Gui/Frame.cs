@@ -37,7 +37,7 @@ namespace BigHomeWork3.GameSample.Gui
 
         //public void RenderFull()
         //{
-        //    for (int v = 0; v < Console.WindowHeight; v++)
+        //    for (int v = 0; v < GameScreenHeight; v++)
         //    {
         //        for (int h = 0; h < Console.WindowWidth; h++)
         //        {

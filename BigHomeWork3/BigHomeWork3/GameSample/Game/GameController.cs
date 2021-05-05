@@ -1,5 +1,6 @@
 ﻿using BigHomeWork3.GameSample.Gui;
 using BigHomeWork3.GameSample.Unit;
+using BigHomeWork3.GameSample.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,6 @@ namespace BigHomeWork3.GameSample.Game
     {
         private GameScreen myGame;
 
-
-
         public GameController(int x, int y, int width, int height) 
         {
             myGame = new GameScreen(x, y, width, height);
@@ -21,53 +20,52 @@ namespace BigHomeWork3.GameSample.Game
 
         public void StartGame()
         {
-            myGame.SetHero(new Hero("HERO", (myGame.ScreenWidth() - myGame.GetHeroWidth())/2  , myGame.ScreenHeight()-4));
-            //myGame.SetHero(new Hero("HERO", myGame.GetHeroWidth() , myGame.ScreenHeight()-4));
-
-            //Console.WriteLine($"myGame.GetHeroWidth = {myGame.GetHeroWidth()}; sudejus= {myGame.ScreenWidth() / 2 + myGame.GetHeroWidth() / 2}");
-            myGame.Render();
-
-            //Console.WriteLine($"myGame.GetHeroWidth = {myGame.GetHeroWidth()}; sudejus= {myGame.ScreenWidth()/2 + myGame.GetHeroWidth()/2}");
-            //Console.WriteLine($"myGame.ScreenWidth= {myGame.ScreenWidth()}"); ; 
-            //myGame.
-
-            bool leave = false;
-            do
-            {
-                var ch = Console.ReadKey(false).Key;
-                if (ch == ConsoleKey.RightArrow)
-                {
-                    myGame.MoveHeroRight();
-                }
-                if (ch == ConsoleKey.LeftArrow)
-                {
-                    myGame.MoveHeroLeft();
-                }
-                if (ch == ConsoleKey.Escape)
-                {
-                    leave = true;
-                    myGame.MoveHeroLeft();
-                }
-
-            } while (!leave);
-
-
-            /*
+            myGame.SetHero(new Hero("HERO", (AppSettings.GameScreenWidth - AppSettings.HeroWidth)/2, AppSettings.GameScreenHeight-4));
+            
             int universalID = 0;
-            for (int x = 0; x < 10; x++)
+            for (int x = 0; x < AppSettings.EnemyCount; x++)
             {
                 Random rnd = new Random();
-                myGame.AddEnemy(new Enemy(universalID, "Priešas" + universalID, rnd.Next(0, 10), rnd.Next(0, 20)));
+                myGame.AddEnemy(new Enemy(universalID, "Enemy_" + universalID,  
+                    rnd.Next(AppSettings.EnemyAreaFromX, AppSettings.EnemyAreaToX), rnd.Next(AppSettings.EnemyAreaFromY, AppSettings.EnemyAreaToY)));
                 universalID++;
             }
-            */
-            //myGame.MoveAllEnemysDown();
-            //myGame.Render();
-            //myGame.MoveHeroLeft();
-            //myGame.MoveAllEnemysDown();
-            //myGame.GetEnemyByID(2).MoveDown();
-            //myGame.Render();
 
+            myGame.Render();
+            
+            bool needToRender = true;
+            do
+            {
+               while (Console.KeyAvailable)
+               {
+                    ConsoleKeyInfo pressedChar = Console.ReadKey(true);
+                    switch (pressedChar.Key)
+                    {
+                        case ConsoleKey.Escape:
+                            needToRender = false;
+                            break;
+                        case ConsoleKey.Spacebar:
+                            myGame.CreateBall();
+                            break;
+                        case ConsoleKey.RightArrow:
+                            myGame.MoveHeroRight();
+                            break;
+                        case ConsoleKey.LeftArrow:
+                            myGame.MoveHeroLeft();
+                            break;
+                    }
+               }
+               myGame.Recalculate();
+               System.Threading.Thread.Sleep(50);
+            } while (!myGame.IsGameLost && needToRender && !myGame.IsGameWin);
+
+            if (needToRender == true)
+            {
+                GameOverWindow gameOverWindow = new GameOverWindow(35, 8, 50, 19, myGame.GetScores(), myGame.GetReason()); ;
+                gameOverWindow.Render();
+                Console.ReadKey();
+            }
+            
         }
     }
 }

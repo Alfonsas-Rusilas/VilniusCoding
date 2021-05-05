@@ -1,4 +1,5 @@
-﻿using BigHomeWork3.GameSample.Gui;
+﻿using BigHomeWork3.GameSample.Game;
+using BigHomeWork3.GameSample.Gui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace BigHomeWork3.GameSample.Windows
         private Button creditButton;
         private Button quitButton;
         private List<Button> buttonList = new List<Button>();
-//        private int ActiveButtonIndex;
 
         public MenuWindow(int x,int y,int width,int height) : base(x,y,width,height)
         {
@@ -24,13 +24,13 @@ namespace BigHomeWork3.GameSample.Windows
             list.Add(new TextLine(10, 6, 15, "Made in Vilnius Coding Shool", true));
             titleTextBlock = new TextBlock(0, 0, 0, list);
 
-            int a = Console.WindowWidth / 4;
+            int a = AppSettings.GameScreenWidth / 4;
             int buttonPlotis = 20;
             int buttonAukstis = 5;
-            startButton = new Button(a - buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Start");
+            startButton = new Button(a - buttonPlotis / 2, AppSettings.GameScreenHeight / 2, buttonPlotis, buttonAukstis, "Start");
             startButton.IsActive = true;
-            creditButton = new Button((2 * a) - buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Credit");
-            quitButton = new Button((3 * a) - buttonPlotis / 2, Console.WindowHeight / 2, buttonPlotis, buttonAukstis, "Quit");
+            creditButton = new Button((2 * a) - buttonPlotis / 2, AppSettings.GameScreenHeight / 2, buttonPlotis, buttonAukstis, "Credit");
+            quitButton = new Button((3 * a) - buttonPlotis / 2, AppSettings.GameScreenHeight / 2, buttonPlotis, buttonAukstis, "Quit");
             buttonList.Add(startButton);
             buttonList.Add(creditButton);
             buttonList.Add(quitButton);
@@ -89,14 +89,10 @@ namespace BigHomeWork3.GameSample.Windows
 
         private void RenderButtons()
         {
-            //startButton.Render();
-            //creditButton.Render();
-            //quitButton.Render();
             foreach (var btn in buttonList)
             {
                 btn.Render();
             }
-            //Console.SetCursorPosition(0, 0);
         }
 
         public string GetActiveButtonLabel()
