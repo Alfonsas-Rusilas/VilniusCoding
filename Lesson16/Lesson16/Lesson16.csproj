@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>Lesson16.Lesson16.Uzduotys.UzduotysClass1</StartupObject>
+    <StartupObject>Lesson16.Lesson16.DataCollections4.DataCollectionsClass1</StartupObject>
   </PropertyGroup>
 
 </Project>

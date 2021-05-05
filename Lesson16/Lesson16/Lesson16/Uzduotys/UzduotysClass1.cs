@@ -23,10 +23,20 @@ namespace Lesson16.Lesson16.Uzduotys
             Console.WriteLine( manoFailoTekstas2 );
 
 
-            if (File.Exists(fname + "zz"))
+            if (File.Exists(fname))
             {
+                //File.Copy(fname, "NewFile" + fname);
                 File.Delete(fname);
             }
+
+            string[] strar = new string[20];
+            strar = Directory.GetFiles(Directory.GetCurrentDirectory());
+
+            for (int i = 0; i < strar.Length; i++)
+            {
+                Console.WriteLine($"Iteracija{i}:" + strar[i]);
+            }
+            
 
 
 
