@@ -59,11 +59,10 @@ namespace BigHomeWork3.GameSample.Game
                System.Threading.Thread.Sleep(50);
             } while (!myGame.IsGameLost && needToRender && !myGame.IsGameWin);
 
-            if (needToRender == true)
+            if (needToRender == true) // t.y. išėjome su Escape
             {
                 GameOverWindow gameOverWindow = new GameOverWindow(35, 8, 50, 19, myGame.GetScores(), myGame.GetReason()); ;
                 gameOverWindow.Render();
-                Console.ReadKey();
             }
             
         }

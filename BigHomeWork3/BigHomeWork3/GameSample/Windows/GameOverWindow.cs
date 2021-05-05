@@ -29,6 +29,11 @@ namespace BigHomeWork3.GameSample.Windows
             base.Render();
             backButton.Render();
             creditTextBlock.Render();
+            ConsoleKeyInfo pressedChar;
+            do
+            {
+                pressedChar = Console.ReadKey(true);
+            } while (pressedChar.Key != ConsoleKey.Enter);
         }
     }
 }

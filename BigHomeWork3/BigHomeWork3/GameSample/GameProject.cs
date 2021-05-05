@@ -30,12 +30,10 @@ namespace BigHomeWork3
                         if (guiController.GetActiveButtonLabel() == "Credit")
                         {
                             guiController.ShowCreditMenu();
-                            
                         }
                         if (guiController.GetActiveButtonLabel() == "Start")
                         {
                             guiController.StartGame();
-                            //guiController.ShowMenu();
                         }
                         guiController.ShowMenu();
                         break;
