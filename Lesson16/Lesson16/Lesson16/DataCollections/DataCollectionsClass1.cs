@@ -23,17 +23,30 @@ namespace Lesson16.Lesson16.DataCollections4
             // atmintyje jau neturi HashTable, saugo BinaryTree, t.y. gamina 'medį', ir gaunasi logaritminis greitis
             // foreach (KeyValuePAir<> kvp in manoZodynas) kvp.key arba kvp.Value 
 
-            // SortedList<T>
             // LinkedList<T> - surišti objektai tarpusavyje (išmėtyti atmintyje)
-            // Stack<T>
-            // Quene<T>
+            // Žinoma pradžią ir pabaigą (head ir pabaigą), vienas vidurinis narelis turi: data, previous, next
 
+            // SortedList<T>
 
-            // HashSet
-            // SortedSet
-            // 
+            // Quene<T>     // FIFO
+            // padarytas masyvo pagrindu, formuojama eilė su vienodo tipo kantamuoju (padaryti masyvo pagrindu)
+            // Count, Enquene(T) - prideda į galą, Dequene(T) - paima iš pradžio, Contains(), ToArray()
+
+            // Stack<T>     // LIFO
+            // eilė su funkcija: pirmas pridėtas į sąrašą bus apdorojamas paskutinis (padaryti masyvo pagrindu)
+            // Push(), Pop(); Peek(), Contains(), Count, ToArray()
+
+            // ArrayList - aukštesnio lygio nei Array, žemesnio nei List
+
+            // HashSet - padaryti masyvo pagrindu, elementų krūva, visi unikalūs (binary Tree)
+            // SortedSet - padaryti masyvo pagrindu, elementų krūva, visi unikalūs (binary Tree)
 
             // GetHaschCode - turi kiekvienas objektas, jis atmintyje nesikeičia (HaschTable - panaudojama Dictionary saugoti raktams ir value šalia)
+
+            // --------------------
+            // Tuple - tipizuotų duomenų krūva
+            // Tuple author = new Tuple<string, string, int>("Jonas", "Jonaitis", 2003);
+
 
             Dictionary<string, int> manoZodynas0 = new Dictionary<string, int>();
             Dictionary<string, List<int>> manoZodynas1 = new Dictionary<string, List<int>>();
@@ -64,6 +77,43 @@ namespace Lesson16.Lesson16.DataCollections4
                 Console.WriteLine("Key: " + Zod2.Key + "  Value =" + String.Join(' ', Zod2.Value));
             }
 
+            int X = 0;
+            manoZodynas0.TryGetValue("Some", out X);
+            Console.WriteLine("Some=" + X);
+            manoZodynas0.TryGetValue("Key8", out X);
+            Console.WriteLine("Key8=" + X);
+            Console.WriteLine("-----------------------------------------------");
+
+
+            Stack<string> kruva = new Stack<string>();
+            kruva.Push("Pirmas elementas");
+            kruva.Push("Antras elementas");
+            kruva.Push("Trečias elementas");
+            kruva.Push("Ketvirtas elementas");
+            string someStack = kruva.Pop();
+            Console.WriteLine("Stako value:" + someStack);
+            do
+            {
+                someStack = kruva.Pop();
+                Console.WriteLine("Stako value:" + someStack);
+            } while (kruva.Count > 0);
+
+            Console.WriteLine("-----------------------------------------------");
+            Queue<string> eile = new Queue<string>();
+            eile.Enqueue("Eilė-" + "Pirmas");
+            eile.Enqueue("Eilė-" + "Antras");
+            eile.Enqueue("Eilė-" + "Trečias");
+            eile.Enqueue("Eilė-" + "Ketvirtas");
+            eile.Enqueue("Eilė-" + "Penktas");
+            string someQuene = eile.Dequeue();
+            Console.WriteLine("Quene value:" + someQuene);
+            do
+            {
+                someQuene = eile.Dequeue();
+                Console.WriteLine("Quene value:" + someQuene);
+            } while (eile.Count > 0);
+
+            
 
 
         }

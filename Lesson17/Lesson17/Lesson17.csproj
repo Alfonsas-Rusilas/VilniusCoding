@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>Lesson17.Program</StartupObject>
+    <StartupObject>Lesson17.Rinkiniai3.MainClass3</StartupObject>
   </PropertyGroup>
 
 </Project>
