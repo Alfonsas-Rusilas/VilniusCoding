@@ -9,20 +9,15 @@ namespace Lesson17.Events
     class EmailSender
     {
 
-
-        public EmailSender()
-        {
-            //
-        }
-
         public void SendEmail(string s)
         {
             Console.WriteLine("Emailsender event trigered! " + s);
         }
 
-        public void ShowCountry(string s)
+        public void HandlePrintTransaction(string s)
         {
-            Console.WriteLine("Country= " + s);
+            Console.WriteLine("HandlePrintTransaction event trigered! " + s);
         }
+
     }
 }

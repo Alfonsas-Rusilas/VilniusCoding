@@ -14,17 +14,6 @@ namespace Lesson17.Delegate
         public int Data;
 
 
-
-        public void Unfold()
-        {
-            //
-        }
-
-        public void Fold()
-        {
-            //
-        }
-
         public void AddFood(string v)
         {
             //throw new NotImplementedException();
