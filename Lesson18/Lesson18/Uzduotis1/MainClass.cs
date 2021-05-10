@@ -21,10 +21,16 @@ namespace Lesson18.Uzduotis1
             };
 
 
-            List<Student> JauGali = students.FindAll(a => a.Age > 21);
-            List<Student> ValstybesRemiami = students.FindAll(a => a.AvarageMark > 8);
+            List<Student> JauGaliVartoti = students.FindAll(a => a.Age >= 21);
+            List<Student> ValstybesRemiami = students.FindAll(a => a.AvarageMark > 8 && a.IsGettingTuition);
             List<Student> MultiStudentai = students.FindAll(a => (a.AvarageMark <4 && a.Name.Length<=8));
 
+            string str = "";
+            foreach (var item in JauGaliVartoti)
+            {
+                str += item.Name + ", ";
+            }
+            Console.WriteLine(str);
 
         }
     }
