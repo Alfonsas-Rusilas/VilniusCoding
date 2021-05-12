@@ -17,7 +17,9 @@ namespace Lesson18.Uzduotis2
 
             Student st = new Student() { Id = 0, Name = "Kestas", Age = 30, AvarageMark = 6.1, IsGettingTuition = true };
             string str = st.PowerStudentName();
-            Console.WriteLine("Klases objekto name = " + str);
+            Console.WriteLine("Klases Student Objekto Name: " + str);
+
+
 
         }
     }

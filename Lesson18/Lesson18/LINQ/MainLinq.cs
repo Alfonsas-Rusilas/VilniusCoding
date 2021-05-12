@@ -19,6 +19,30 @@ namespace Lesson18.LINQ
             // Using System.Linq
 
             //IList<string> stringList = new
+            //
+            // All - ar visi atitinka sąlygas, Any - ar bent vienas, Contain - 
+            // Aggregate - 
+            // OfType - paima tik nurodyto tipo narius, pav. var strRes = mixedList.OfType<>() //paima tik string tipo
+            // Single - kai elementas egzistuoja tik vienas, tai jį grąžina
+            // FirstOrDefault - praverčia, kai reikia surasti elementą, o jo ten nėra - tada paima Default reikšmę
+            // SequenceEqual - palyginimas, pav. kruva1.SequenceEqual(kruva2)
+            // OrderBy - rūšiavimas, : OrderBy s.StudentName descending; jei reikia antros pakopos - ThenBy 
+            // Concat - sujungia, : col1.Concat(coll2)
+            // Group - grupavimas: group s by s.Age;
+            // DefaultIfEmpty - pakeičia rinkinio null elementus į default reikšmę
+            // Empty - tuštiems elementams grąžinti
+            // Range - tam tikras intervalas: .Range(10, 19)
+            // Skip - praleidžia nurodytą skaičių elementų; SkipWhile - skipinam su sąlyga 
+            // Take - paimti nurodyta skaičių elementų; TakeWhile - su sąlyga
+            // AsEnumerable - konversija as 
+            // ToLookup - into Lookup<TKey, TElement> (gali turėti pasikartojančius
+            // Join - sujungia abejų lentelių (krūvų) informaciją (kaip SQL)
+            //  join ... on post.ID equals meta.PostID  
+            //
+            // GroupJoin - kaip Join, bet dirba su grupėmis
+            // Let - galima sukurti Alias (ilgų pasikartojančių komandų sinonimus): let lowercasename = s.Studetname.toLower() 
+            // Into - rezultato patalpinimas į kitą kintąmąjį. select s Into teenStudent where ..
+
 
             List<string> stringList = new List<string>()
             {

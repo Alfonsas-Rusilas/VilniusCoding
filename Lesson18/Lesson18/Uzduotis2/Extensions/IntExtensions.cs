@@ -18,5 +18,11 @@ namespace Lesson18.Uzduotis2.Extensions
         {
             return data.Name;
         }
+
+        public static Student StudentsMember(this List<Student> data)
+        {
+            return data[0];
+        }
+
     }
 }

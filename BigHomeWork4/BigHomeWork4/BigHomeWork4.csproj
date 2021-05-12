@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>Lesson18.UzduotisRusiavimas.OrderByClass</StartupObject>
+    <StartupObject>BigHomeWork4.Speros.Program</StartupObject>
   </PropertyGroup>
 
 </Project>
