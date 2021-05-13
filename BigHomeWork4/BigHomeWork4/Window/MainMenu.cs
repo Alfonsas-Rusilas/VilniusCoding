@@ -17,8 +17,8 @@ namespace BigHomeWork4.Window
             int btnWidth = App.ScreenWidth / 6;
             int btnHeight = App.ScreenHeight / 7;
             int tarpasX = (App.ScreenWidth - 2 * btnWidth) / 3;
-            buttonList.Add(new Button(tarpasX, App.ScreenHeight/2, btnWidth, btnHeight, "P - Play"));
-            buttonList.Add(new Button(tarpasX*2+ btnWidth, App.ScreenHeight / 2, btnWidth, btnHeight, "Q - Quit"));
+            buttonList.Add(new Button(ButtonType.TypePlay, tarpasX, App.ScreenHeight/2, btnWidth, btnHeight, "P - Play"));
+            buttonList.Add(new Button(ButtonType.TypeQuit, tarpasX *2+ btnWidth, App.ScreenHeight / 2, btnWidth, btnHeight, "Q - Quit"));
         }
 
         public override void Render()

@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork4.Gui
 {
-    class Button : Frame
+    class PlayerSelectionBox : Frame
     {
-        public int Id { get; private set;}
         public TextLine Label { get; set; }
         public bool IsActive { set; get; } = false;
-        
-        private static int id = 0;
-        public ButtonType buttonType { get; }
+        public BoxType BoxType { get; }
 
-        public Button(ButtonType buttonType, int x, int y, int width, int height, string name, bool IsActive = false) : base(x, y, width, height)
+        public PlayerSelectionBox(BoxType boxType, int x, int y, int width, int height, string name, bool IsActive = false) : base(x, y, width, height)
         {
-            Id = ++id;
             this.IsActive = IsActive;
-            this.buttonType = buttonType;
+            this.BoxType = boxType;
 
             if (name.Length > width - 2)
             {
@@ -40,5 +36,6 @@ namespace BigHomeWork4.Gui
             base.Render();
             Label.Render();
         }
+
     }
 }

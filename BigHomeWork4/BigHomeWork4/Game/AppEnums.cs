@@ -10,8 +10,24 @@ namespace BigHomeWork4.Game
     {
         activeChar = '#',
         notActiveChar = '*'
-        //'#' ,
-        //'*'
+    }
+
+    enum ButtonType
+    {
+        TypeNone,
+        TypeQuit,
+        TypePlay
+    }
+
+    enum BoxType
+    {
+        None,
+        TypeP2,
+        TypeP3,
+        TypeP4,
+        TypeP5,
+        TypeP6,
+        TypeP7
     }
 
 }

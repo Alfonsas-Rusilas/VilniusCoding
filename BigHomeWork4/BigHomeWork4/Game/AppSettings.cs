@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork4.Game
 {
-    static class App
+    static class  App
     {
         // Game Screen
         public static int ScreenWidth { set; get; } = Console.WindowWidth;

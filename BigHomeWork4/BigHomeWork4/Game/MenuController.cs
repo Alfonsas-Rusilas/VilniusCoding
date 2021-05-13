@@ -13,7 +13,7 @@ namespace BigHomeWork4.Game
 
         public MenuController()
         {
-            mainMenu = new MainMenu(0, 0, 119, 29);
+            mainMenu = new MainMenu(App.ScreenX, App.ScreenY, App.ScreenWidth-1, App.ScreenHeight-1);
         }
 
         public void ShowMenu()
@@ -23,27 +23,17 @@ namespace BigHomeWork4.Game
             do
             {
                 pressedChar = Console.ReadKey(true);
-                //switch (pressedChar.Key)
-                //{
-                //    case ConsoleKey.P:
-                //        gameController.FocusNextButton();
-                //        break;
-                //    case ConsoleKey.Enter:
-                //        if (guiController.GetActiveButtonLabel() == "Quit")
-                //        {
-                //            return;
-                //        }
-                //        if (guiController.GetActiveButtonLabel() == "Credit")
-                //        {
-                //            guiController.ShowCreditMenu();
-                //        }
-                //        if (guiController.GetActiveButtonLabel() == "Start")
-                //        {
-                //            guiController.StartGame();
-                //        }
-                //        guiController.ShowMenu();
-                //        break;
-                //}
+                switch (pressedChar.Key)
+                {
+                    case ConsoleKey.P:
+                        Console.Clear();
+                        GameController gameController = new GameController();
+                        gameController.StartGame();
+                        mainMenu.Render();
+                        break;
+                    default:
+                        break;
+                }
             } while (pressedChar.Key != ConsoleKey.Q);
             mainMenu.ClearFrameRender();
         }

@@ -63,34 +63,47 @@ namespace Lesson18.UzduotisRusiavimas
 
             var filteredResAvgAge = from p in students
                                     group p by p.Age; 
-                                    //select p;
 
-            foreach (var item in filteredResAvgAge)
-            {
-                Console.WriteLine("Key: " + item.Key);
-                foreach (Student s in item) 
-                    Console.WriteLine("Student Name: {0}", s.Name);
-            }
+            //foreach (var item in filteredResAvgAge)
+            //{
+            //    Console.WriteLine("Key: " + item.Key);
+            //    foreach (Student s in item) 
+            //        Console.WriteLine("Student Name: {0}", s.Name);
+            //}
 
             ///// 
 
             var filteredIsTuition = from p in students
                                     group p by p.IsGettingTuition;
 
-            foreach (var item in filteredIsTuition)
+            //foreach (var item in filteredIsTuition)
+            //{
+            //    Console.WriteLine("Key: " + item.Key);
+            //    foreach (Student s in item)
+            //        Console.WriteLine("Student Name: {0}", s.Name);
+            //}
+
+
+            var filteredRes10 = from p in students
+                                group p by "Iki " + ((p.Age / 10) + 1) + "0";
+
+            foreach (var item in filteredRes10)
+            //    foreach (IGrouping<int, Student> item in filteredRes10)
             {
-                Console.WriteLine("Key: " + item.Key);
+                Console.WriteLine("Key dešimtmetis: " + item.Key);
                 foreach (Student s in item)
                     Console.WriteLine("Student Name: {0}", s.Name);
             }
 
 
-            var filteredRes10 = from p in students
-                                    group p by "Iki " + ((p.Age/10)+1) + "0";
+            var filteredRes10ex = from p in students
+                                  group p by new { ageMilenium = p.Age / 10, isGettingT = p.IsGettingTuition } ;
 
-            foreach (var item in filteredRes10)
+
+            foreach (var item in filteredRes10ex)
+            //    foreach (IGrouping<int, Student> item in filteredRes10)
             {
-                Console.WriteLine("Key: " + item.Key);
+                Console.WriteLine("Key dešimtmetis: " + item.Key);
                 foreach (Student s in item)
                     Console.WriteLine("Student Name: {0}", s.Name);
             }
