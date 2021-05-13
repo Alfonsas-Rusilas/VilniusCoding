@@ -1,0 +1,20 @@
+﻿<Window x:Name="mainWindow" x:Class="Lesson19_WpfAppTestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lesson19_WpfAppTestApp"
+        mc:Ignorable="d"
+        Title="MainFirstWindow" Height="600" Width="800">
+    <Grid x:Name="mainGrid" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+
+        <Label x:Name="TestLabel" Content="Label" HorizontalAlignment="Left" Margin="518,116,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Label x:Name="Label2" Content="Hello world! " HorizontalAlignment="Left" Margin="331,63,0,0" VerticalAlignment="Top" FontSize="20" Width="187"/>
+        <Button x:Name="TestButton" HorizontalAlignment="Left" Margin="360,124,0,0" VerticalAlignment="Top" FontSize="24" Click="HandleButtonClick" MouseMove="HandleMouseMove" Height="101" Width="139" Content="Btn&#xD;&#xA;"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="465,331,0,0" VerticalAlignment="Top" Width="100"/>
+        <GroupBox Header="GroupBox" Margin="55,39,534,213">
+            <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="65,0,0,0"/>
+        </GroupBox>
+
+    </Grid>
+</Window>

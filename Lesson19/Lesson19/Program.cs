@@ -79,14 +79,24 @@ namespace Lesson19
             //Console.WriteLine("=================================================");
 
 
+
+        //Student_type stud_status;
+
+
             var filterOver5 = from p in students
                               where p.Name.Length > 5
                               select new { p.Id, p.Name, Status = (p.AvarageMark < 5) ? ("Bad") : (p.AvarageMark > 8) ? ("Good") : ("Vidurys") }
                               into p2
                               group p2 by p2.Status;
 
+            var filterOver6 = from p in students
+                          where p.Name.Length > 5
+                          select new { p.Id, p.Name, Status = GetStatusFromMark(p.AvarageMark) }
+                          into p2
+                          group p2 by p2.Status;
 
-            foreach (var item in filterOver5)
+
+            foreach (var item in filterOver6)
             {
                 Console.WriteLine("Group : " + item.Key);
                 foreach (var s in item)
@@ -99,6 +109,19 @@ namespace Lesson19
 
         }
 
+
+        public static Student_type GetStatusFromMark(double avarageMark)
+        {
+            if (avarageMark < 5)
+            {
+                return Student_type.Bad;
+            }
+            if (avarageMark > 8)
+            {
+                return Student_type.Good;
+            }
+            return Student_type.Ok;
+        }
 
         public static void PrintSet(IEnumerable<Student> set)
         {

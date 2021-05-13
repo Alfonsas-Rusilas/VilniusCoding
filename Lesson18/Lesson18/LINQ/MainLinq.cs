@@ -42,6 +42,8 @@ namespace Lesson18.LINQ
             // GroupJoin - kaip Join, bet dirba su grupėmis
             // Let - galima sukurti Alias (ilgų pasikartojančių komandų sinonimus): let lowercasename = s.Studetname.toLower() 
             // Into - rezultato patalpinimas į kitą kintąmąjį. select s Into teenStudent where ..
+            //
+            // SelectMany - sujungia dvi krūvas į vieną
 
 
             List<string> stringList = new List<string>()
