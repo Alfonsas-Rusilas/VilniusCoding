@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork4.Game
 {
-    enum FrameChar
-    {
-        activeChar = '#',
-        notActiveChar = '*'
-    }
-
     enum ButtonType
     {
         TypeNone,
@@ -22,12 +16,26 @@ namespace BigHomeWork4.Game
     enum BoxType
     {
         None,
-        TypeP2,
-        TypeP3,
-        TypeP4,
-        TypeP5,
-        TypeP6,
-        TypeP7
+        Players2,
+        Players3,
+        Players4,
+        Players5,
+        Players6,
+        Players7
+    }
+
+    enum ArrowIndex
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    enum FrameChar
+    {
+        activeChar = '#',
+        notActiveChar = '*'
     }
 
 }
