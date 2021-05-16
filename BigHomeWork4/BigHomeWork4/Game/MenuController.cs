@@ -13,6 +13,7 @@ namespace BigHomeWork4.Game
 
         public MenuController()
         {
+            Console.CursorVisible = false;
             mainMenu = new MainMenu(App.ScreenX, App.ScreenY, App.ScreenWidth-1, App.ScreenHeight-1);
         }
 
@@ -23,19 +24,17 @@ namespace BigHomeWork4.Game
             do
             {
                 pressedChar = Console.ReadKey(true);
-                switch (pressedChar.Key)
+                if (pressedChar.Key == ConsoleKey.P)
                 {
-                    case ConsoleKey.P:
-                        Console.Clear();
-                        GameController gameController = new GameController();
-                        gameController.StartGame();
-                        mainMenu.Render();
-                        break;
-                    default:
-                        break;
+                    Console.Clear();
+                    GameController gameController = new GameController();
+                    gameController.StartGame();
+                    mainMenu.Render();
                 }
             } while (pressedChar.Key != ConsoleKey.Q);
-            mainMenu.ClearFrameRender();
+            Console.Clear();
+
+            //mainMenu.ClearFrameRender();
         }
     }
 }

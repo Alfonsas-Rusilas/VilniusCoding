@@ -21,30 +21,24 @@ namespace BigHomeWork4.Game
 
         public void StartGame()
         {
-            // TO DO : Players Select Count
-            playerSelectionController = new PlayerSelectionController();
-            gameStatus.PlayersCount = playerSelectionController.GetPlayersCount();
-            //Console.WriteLine($"Pasirinkta {gameStatus.PlayersCount}");
+            MenuReturnType rtype = MenuReturnType.None;
+            do
+            {
+                // TO DO : Players Select Count
+                Console.Clear();
+                playerSelectionController = new PlayerSelectionController();
+                gameStatus.PlayersCount = playerSelectionController.GetPlayersCount();
 
-            // TO DO :  DiecesSelect
-            diceSelectionController = new DiceSelectionController();
-            gameStatus.DicesCount = diceSelectionController.GetDiceCount();
-            //Console.WriteLine($"Pasirinkta {gameStatus.DicesCount}");
+                // TO DO :  DiecesSelect
+                diceSelectionController = new DiceSelectionController();
+                gameStatus.DicesCount = diceSelectionController.GetDiceCount();
+                //Console.WriteLine($"Pasirinkta {gameStatus.DicesCount}");
 
-            // TO DO :  Run..
-            GameRunner gameRunner = new GameRunner(gameStatus.PlayersCount, gameStatus.DicesCount);
-            gameStatus.Winner = gameRunner.RunGame();
-
-
-
-            // TO DO :  Game over,
-
-            // TO DO :  restart?
-
-            Console.ReadKey();
+                // TO DO :  Run action..
+                GameRunner gameRunner = new GameRunner(gameStatus.PlayersCount, gameStatus.DicesCount);
+                rtype = gameRunner.RunGame();
+            } while (rtype == MenuReturnType.ReplayGame);
         }
-
-
 
     }
 }

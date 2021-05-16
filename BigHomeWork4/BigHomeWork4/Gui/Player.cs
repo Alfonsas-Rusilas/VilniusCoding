@@ -26,7 +26,7 @@ namespace BigHomeWork4.Gui
             Dices = new List<Dice>();
             for (int i = 0; i < DicesCount; i++)
             {
-                Dices.Add(new Dice(x, tempy, width, 1, "Dice-" + (i + 1)));
+                Dices.Add(new Dice(x, tempy, width, 1, "Dice-?"));
                 tempy = tempy + Dices[i].GetDiceHight() + 1;
             }
         }

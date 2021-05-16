@@ -19,6 +19,7 @@ namespace BigHomeWork4.Gui
         private const char horizontal = '═';
         private const char point = 'X';
         //public const int BoxHeight = 7;
+        
 
         public ScoresFrame(int x, int y, int width, int height, string name, bool IsActive = false) : base(x, y, width, height)
         {

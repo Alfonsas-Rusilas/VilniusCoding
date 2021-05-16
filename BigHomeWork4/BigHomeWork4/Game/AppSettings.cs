@@ -9,10 +9,10 @@ namespace BigHomeWork4.Game
     static class  App
     {
         // Game Screen
-        public static int ScreenWidth { set; get; } = Console.WindowWidth;
-        public static int ScreenHeight { set; get; } = Console.WindowHeight;
-        public static int ScreenX { set; get; } = 0;
-        public static int ScreenY { set; get; } = 0;
+        public static int ScreenWidth { get; }  = Console.WindowWidth;
+        public static int ScreenHeight { get; } = Console.WindowHeight;
+        public static int ScreenX { get; } = 0;
+        public static int ScreenY { get; } = 0;
 
         // Gui elements
         //public static char FrameActiveChar = '#';

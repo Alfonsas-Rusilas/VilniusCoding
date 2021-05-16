@@ -10,7 +10,9 @@ namespace BigHomeWork4.Game
     {
         TypeNone,
         TypeQuit,
-        TypePlay
+        TypePlay,
+        TypeReplay,
+        TypeMainMenu
     }
 
     enum BoxType
@@ -36,6 +38,13 @@ namespace BigHomeWork4.Game
     {
         activeChar = '#',
         notActiveChar = '*'
+    }
+
+    enum MenuReturnType
+    {
+        None,
+        ReplayGame,
+        GoToMenu
     }
 
 }

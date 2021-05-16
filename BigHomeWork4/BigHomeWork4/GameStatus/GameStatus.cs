@@ -13,7 +13,6 @@ namespace BigHomeWork4.Game
         public int DicesCount { set; get; }
         public string Winner { set; get; }
 
-
         public GameStatus()
         {
             //
