@@ -9,7 +9,7 @@ namespace BigHomeWork4.Gui
 {
     class BoxFrame : GuiObject
     {
-        public string Name { get; }
+        public string Name { private set;  get; }
         public bool IsActive { set; get; }
         public BoxType BoxType { get; }
 
@@ -24,13 +24,7 @@ namespace BigHomeWork4.Gui
 
         public BoxFrame(BoxType boxtype, int x, int y, int width, int height, string name, bool IsActive = false) : base(x, y, width, BoxHeight)
         {
-            Name = name.Substring(0, (name.Length >= width-4)?(width-4):(name.Length));
-            int a = 1;
-            while (Name.Length < width-4)
-            {
-                Name = (a<0) ? Name +" " : " "+Name;
-                a *= (-1);
-            }
+            SetName(name);
             this.IsActive = IsActive;
             BoxType = boxtype;
         }
@@ -43,6 +37,8 @@ namespace BigHomeWork4.Gui
 
         private void RenderConsoleBox(List<string> strL)
         {
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             int y = Y;
             Console.SetCursorPosition(X, y);
             foreach (var strl in strL)
@@ -50,6 +46,7 @@ namespace BigHomeWork4.Gui
                 Console.Write(strl);
                 Console.SetCursorPosition(X, ++y);
             }
+            Console.ResetColor();
         }
         private List<string> GetConsoleBox()
         {
@@ -64,6 +61,17 @@ namespace BigHomeWork4.Gui
             sb.Add(vertical + (new String(fill, Width - 2)) + vertical);
             sb.Add(llCorner + (new String(horizontal, Width - 2)) + lrCorner);
             return sb;
+        }
+
+        public void SetName(string name)
+        {
+            Name = name.Substring(0, (name.Length >= Width - 4) ? (Width - 4) : (name.Length));
+            int a = 1;
+            while (Name.Length < Width - 4)
+            {
+                Name = (a < 0) ? Name + " " : " " + Name;
+                a *= (-1);
+            }
         }
 
         /*

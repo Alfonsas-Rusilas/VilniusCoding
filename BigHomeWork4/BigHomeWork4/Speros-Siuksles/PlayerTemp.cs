@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork4.GameStatus
 {
-    class Player
+    class PlayerTemp
     {
-        public Player()
+        public PlayerTemp()
         {
             //
         }

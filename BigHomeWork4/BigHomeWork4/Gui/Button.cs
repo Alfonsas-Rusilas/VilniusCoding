@@ -36,9 +36,12 @@ namespace BigHomeWork4.Gui
 
         public override void Render()
         {
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             FrameRenderChar = (IsActive) ? ('*') : ('%');
             base.Render();
             Label.Render();
+            Console.ResetColor();
         }
     }
 }

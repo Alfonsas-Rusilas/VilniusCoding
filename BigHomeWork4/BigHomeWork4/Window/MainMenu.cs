@@ -24,8 +24,10 @@ namespace BigHomeWork4.Window
         public override void Render()
         {
             base.Render();
-            buttonList[0].Render();
-            buttonList[1].Render();
+            foreach (var btnitem in buttonList)
+            {
+                btnitem.Render();
+            }
         }
     }
 }
