@@ -11,7 +11,7 @@ namespace Lesson21
         private static Singleton instance = null;
         private static readonly object padlock = new object();
         
-        Singleton()
+        private Singleton()
         {
 
         }
