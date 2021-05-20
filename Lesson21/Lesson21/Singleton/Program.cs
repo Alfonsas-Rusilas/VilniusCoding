@@ -36,6 +36,8 @@ namespace Lesson21
             //
 
             // Behavioral Pattern
+            //-------------------------
+            //Chain of Resp.
             //Interpreter // darbas su kalbomis
             //Iterator //dažnai naudojami dirbant su krūvomis
             //Mediator //kaip proxy, tik siunčia ir gauna signalus
@@ -46,7 +48,9 @@ namespace Lesson21
             //Template Method - dažniausiai turime abstrakčias funkcijas, kuria vėliau panaudojame (start, awake..)
             //Visitor - yra krūva objektų, į kurius visitorius gali įeiti ir atlikti tam tikrus darbus (objektai turi būti paruošti)
             //Command - enkapsuliuojam funkcionalumą į objektą
-
+            //
+            // design-pattern: pasigilinti, kaip jau suprogramuota;
+            // p,s. 26 ir 2 diena - laisvos
 
             Singleton singleton1 = Singleton.Instance;
             Singleton singleton2 = Singleton.Instance;

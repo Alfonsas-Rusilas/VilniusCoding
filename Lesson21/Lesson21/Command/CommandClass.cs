@@ -20,7 +20,6 @@ namespace Lesson21.Command
         }
     }
 
-
     class CommandClass
     {
         public void Main()
