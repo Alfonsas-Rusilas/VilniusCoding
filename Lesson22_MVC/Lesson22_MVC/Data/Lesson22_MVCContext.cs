@@ -16,6 +16,8 @@ namespace Lesson22_MVC.Data
 
         public DbSet<Lesson22_MVC.Models.Universitity.Student> Student { get; set; }
         public DbSet<Lesson22_MVC.Models.Universitity.Adress> Adresses { get; set; }
+        public DbSet<Lesson22_MVC.Models.Universitity.Subject> Subject { get; set; }
+        public DbSet<Lesson22_MVC.Models.Universitity.StudentSubject> StudentSubject { get; set; }
 
 
     }

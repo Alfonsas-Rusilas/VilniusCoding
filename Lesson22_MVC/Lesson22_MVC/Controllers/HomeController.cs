@@ -13,10 +13,24 @@ namespace Lesson22_MVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly Data.Lesson22_MVCContext db;
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        public HomeController(ILogger<HomeController> logger, Data.Lesson22_MVCContext db)
         {
             _logger = logger;
+            this.db = db;
         }
+
+        //public IActionResult Test2()
+        //{
+        //    //return View();
+        //    var data = db.Student.Find(v => v.)
+        //}
 
         public IActionResult Index()
         {

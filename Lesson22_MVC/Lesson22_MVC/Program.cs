@@ -28,9 +28,45 @@ namespace Lesson22_MVC
             //Shared // elementams, kurie naudojami keliuose puslapiuose
             //appsettings.json // servisø ir prisijungimø parametrai, pav. DB
 
+
+            //            Lesson23_SQL
+
+            //Baziø modeliai:
+            //            -Reliacinës //daþnai naudojamos, MySQL, SQL, Oracle, ...
+            //            - Tinklinis
+            //            - Hierarchinis
+            //            - Objektinis
+
+
+            //Primary key -áraðo lentelëje identifikacija(uniklaus). Gali bûti sudarytas ið keliø laukø
+            //Foreign key -sàryðis su kita DB lentele, pav. Pirma lentelë turi primary key, tai antra turës ryðá pagal Foreign key
+
+
+            //View > Other Window > Package Manager Console
+            //PM > add - migration CreateStudent //Migrations: du failiukai susikuria
+
+            //   Prie double priraðytas double? paverèia já objektu
+            //   [Range(0.0, 10.0)]
+            //public double? Score { get; set; }
+
+            //        View > Other Window > Package Manager Console
+            //PM> update-database	// sukuria konkreèias lenteles
+            //Build started...
+            //Build succeeded.
+            //Done.
+            //PM> 
+
+            //SQLConnection
+            //SQLCommand
+            //SQLDataReader
+
+            // ORM - Object relational mapper
+            // dirbti su SQL naudojant C# klases;
+            // Entity framework - gan populiarus ORM
+            //
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
