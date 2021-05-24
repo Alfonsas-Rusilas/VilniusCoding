@@ -12,7 +12,7 @@ namespace UniversitityLibraryTests.Universitity
     [TestClass]
     public class LibraryTests
     {
-        // TDD, Unit testing
+        // TDD (Test Driven Development), Unit testing
         //=========================================================================
         //Waterfall: senas būdas daryti viską iš karto, rezultatas pasimato tik gale 
         //Agilė: naudoja framework - Scrum, Kanban, XP
@@ -41,6 +41,17 @@ namespace UniversitityLibraryTests.Universitity
         //Assert.IsTrue
         //Assert.IsNull
         //Assert.Fail 	
+
+
+        // Integraciniai testai - tikrinami svarbiausi scenarijai
+        // Automatiniai testai - daro Selenium, Katalon Studio, UFT, TestComplete..
+        // Testų piramidė - 
+
+        // Kartu su Unit testing naudojami sekantys įrankiai:
+        // fake, stub, mocks: netikras, tuščias ir simuliuojantis objektai
+        // Moq, NSubstitute, Rhino Mocks, FakeItEasy, NMock3, JustMock, EasyMock.NET, TypeMock Isolator 
+
+        // Selenium - web puslapių testavimas
 
 
         [TestMethod]
@@ -79,20 +90,21 @@ namespace UniversitityLibraryTests.Universitity
         [TestMethod]
         public void GetBook_AddFiveBookThenGetOne_CorrectBookReceived()
         {
+            const int testId = 3;
+
             //Arrange
             IBookAction library = new Library();
 
-            // Act
-            library.RemoveAllBooks();
             library.AddBook(new Book(1));
             library.AddBook(new Book(2));
-            Book book = new Book(3);
+            Book book = new Book(testId);
             library.AddBook(book);
             library.AddBook(new Book(4));
             library.AddBook(new Book(5));
 
+            // Act
             //Assert
-            Assert.AreEqual(book, library.GetBook(2), "Is not same objects");
+            Assert.AreEqual(book, library.GetBook(testId), "Is not same objects");
         }
 
 

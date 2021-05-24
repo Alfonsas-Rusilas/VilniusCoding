@@ -19,16 +19,15 @@ namespace UniversitityLibrary.Universitity
             books.Add(book);
         }
 
-        public void RemoveBook(int book_id)
+        public void RemoveBook(int bookId)
         {
-            books.RemoveAll(b => b.Id == book_id);
+            books.RemoveAll(b => b.Id == bookId);
         }
 
 
-        public Book GetBook(int BookId)
+        public Book GetBook(int bookId)
         {
-            //throw new NotImplementedException();
-            return books[BookId];
+            return books.Find(b => b.Id == bookId);
         }
 
         public void RemoveAllBooks()
