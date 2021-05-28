@@ -9,6 +9,8 @@ namespace BigHomeWork5
 {
     class Program
     {
+        //public BoxElement s;
+
         static void Main(string[] args)
         {
             AppInitializeManager.SetUpWindow();
@@ -18,8 +20,11 @@ namespace BigHomeWork5
             //Console.ForegroundColor = ConsoleColor.White;
 
             //CupWalls cupWalls = new CupWalls();
+            CupArray.DrawArray2D(0,0);
 
-            BoxElement s = new BoxElement(AppParam.GameCupWidth/2, 2);
+
+            BoxElement s = new BoxElement(4, 1);
+            s.Render();
 
             ConsoleKeyInfo pressedChar;
             do
@@ -27,18 +32,17 @@ namespace BigHomeWork5
                 pressedChar = Console.ReadKey(true);
                 switch (pressedChar.Key)
                 {
-                    //case ConsoleKey.UpArrow:
-                    //    s.MoveUp();
-                    //    break;
                     case ConsoleKey.DownArrow:
 
                         if (s.CanMoveDown())
                         {
                             s.MoveDown();
-                            Debug.WriteLine(s.GetCoordinates() + " " + CupWalls.GetDownSideString());
+                            PrintInfo(s);
+                            CupArray.DrawArray2D();
+
                         } else
                         {
-                            CupWalls.UpdateDownSide(s.X, s.Y);
+                            CupArray.UpdateDownSide(s.X, s.Y);
                             s = new BoxElement(AppParam.GameCupWidth / 2, 2);
                             s.Render();
                         }
@@ -47,27 +51,16 @@ namespace BigHomeWork5
                         if (s.CanMoveLeft())
                         {
                             s.MoveLeft();
-                            Debug.WriteLine(s.GetCoordinates() + " " + CupWalls.GetLeftSideString());
-                        }
-                        else
-                        {
-                            CupWalls.UpdateLeftSide(s.X, s.Y);
-                            s = new BoxElement(AppParam.GameCupWidth / 2, 2);
-                            s.Render();
+                            PrintInfo(s);
+                            CupArray.DrawArray2D();
                         }
                         break;
-
                     case ConsoleKey.RightArrow:
                         if (s.CanMoveRight())
                         {
                             s.MoveRight();
-                            Debug.WriteLine(s.GetCoordinates() + " " + CupWalls.GetLeftSideString());
-                        }
-                        else
-                        {
-                            CupWalls.UpdateRightSide(s.X, s.Y);
-                            s = new BoxElement(AppParam.GameCupWidth / 2, 2);
-                            s.Render();
+                            PrintInfo(s);
+                            CupArray.DrawArray2D();
                         }
                         break;
                     
@@ -85,10 +78,27 @@ namespace BigHomeWork5
         }
 
 
-        static void PrintInfo(string str)
+        static void PrintInfo(BoxElement b)
         {
-            Console.SetCursorPosition(1, Console.WindowHeight - 1);
+            
+            int x = b.X;
+            int y = b.Y;
+            
+
+            int c = x - 1;
+            int L = CupArray.LeftArray2DValue(x, y);
+
+            c = y; // + 1;
+            int D = CupArray.DownArray2DValue(x, y);
+
+            c = x + 1;
+            int R = CupArray.RightArray2DValue(x, y);
+
+            string str = $"Box koordinatės: ({b.X},{b.Y}); L-Masyve={L}; R-Masyve={R}; D-Masyve={D};";
+
+            Console.SetCursorPosition(5, Console.WindowHeight - 1);
             Console.WriteLine(str);
+            Debug.WriteLine(str);
         }
     }
 }

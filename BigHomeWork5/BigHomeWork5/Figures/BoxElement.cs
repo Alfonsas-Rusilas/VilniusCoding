@@ -54,7 +54,10 @@ namespace BigHomeWork5.Figures
 
         internal bool CanMoveDown()
         {
-            return Y < CupWalls.DownSideValue(X);
+            //return Y < CupArray.DownSideValue(X);
+            //int a = Y + 1;
+            return CupArray.DownArray2DValue(X,Y) == 0;
+
         }
 
         internal void MoveLeft()
@@ -64,22 +67,28 @@ namespace BigHomeWork5.Figures
             Render();
         }
 
-        internal bool CanMoveLeft()
-        {
-            return X > CupWalls.LeftSideValue(Y);
-        }
-
-        internal bool CanMoveRight()
-        {
-            return X < CupWalls.LeftSideValue(Y);
-        }
-
         internal void MoveRight()
         {
             ClearRender();
             X++;
             Render();
         }
+
+        internal bool CanMoveLeft()
+        {
+            //return X > CupArray.   .LeftSideValue(Y);
+            //int priorX = X - 1;
+            return CupArray.LeftArray2DValue(X, Y) == 0;
+        }
+
+        internal bool CanMoveRight()
+        {
+            //return X < CupArray.LeftSideValue(Y);
+            //int nextX = X +1;
+            return CupArray.RightArray2DValue(X, Y) == 0;
+        }
+
+
 
         internal string GetCoordinates()
         {
