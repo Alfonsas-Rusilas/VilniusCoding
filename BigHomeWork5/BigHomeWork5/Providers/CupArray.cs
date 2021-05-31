@@ -9,9 +9,6 @@ namespace BigHomeWork5.Providers
 {
     internal static class CupArray
     {
-        //private static int[] DownSide = new int[] { 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 };
-        //private static int[] LeftSide = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        //private static int[] RightSide = new int[] { 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17 };
 
         private static int[,] Array2D = new int[,]
         {
@@ -42,8 +39,6 @@ namespace BigHomeWork5.Providers
             {4,1,2,3,4,5,6,7,8,9,1,1,2,3,4,5,6},
         };
 
-
-
         internal static int RightArray2DValue(int x, int y)
         {
             int a = x + 1;
@@ -55,6 +50,11 @@ namespace BigHomeWork5.Providers
             {
                 return Array2D[y, a];
             }
+        }
+
+        internal static int RotateRightArray2DValue(int x, int y)
+        {
+            throw new NotImplementedException();
         }
 
         internal static int LeftArray2DValue(int x, int y)
@@ -85,7 +85,6 @@ namespace BigHomeWork5.Providers
 
         internal static string GetArray2DElement(int x, int y)
         {
-            //string str = "";
             return $"Matrica[{x},{y}]={Array2D[y, x]}; {GetArray2DRow(x)}";
         }
 
@@ -149,9 +148,6 @@ namespace BigHomeWork5.Providers
                 y++;
                 Console.SetCursorPosition(x, y);
             }
-
-            //Console.SetCursorPosition(AppParam.GameCupWidth + 2, 0);
-            //Console.WriteLine( str );
         }
 
         internal static void DrawArray2D(int a, int b)
@@ -168,60 +164,9 @@ namespace BigHomeWork5.Providers
                 y++;
                 Console.SetCursorPosition(x, y);
             }
-
-            //Console.SetCursorPosition(AppParam.GameCupWidth + 2, 0);
-            //Console.WriteLine( str );
         }
 
 
-        //internal static void UpdateDownSide(int x, int y)
-        //{
-        //    DownSide[x] = --y;
-        //}
-
-        //internal static int DownSideValue(int x)
-        //{
-        //    return DownSide[x];
-        //}
-
-        //internal static void UpdateLeftSide(int x, int y)
-        //{
-        //    LeftSide[y] = ++x;
-        //}
-
-        //internal static int LeftSideValue(int y)
-        //{
-        //    return LeftSide[y];
-        //}
-
-
-        //internal static void UpdateRightSide(int x, int y)
-        //{
-        //    RightSide[y] = --x;
-        //}
-
-        //internal static int RightSideValue(int y)
-        //{
-        //    return RightSide[y];
-        //}
-
-
-        //internal static string GetLeftSideString()
-        //{
-        //    return String.Join(" ", LeftSide);
-        //}
-
-        //internal static string GetRightSideString()
-        //{
-        //    return String.Join(" ", RightSide);
-        //}
-
-
-        //internal static string GetDownSideString()
-        //{
-        //    //return DownSide.Join();
-        //    return String.Join(" ", DownSide);
-        //}
 
     }
 

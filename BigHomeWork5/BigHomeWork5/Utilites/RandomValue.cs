@@ -19,5 +19,18 @@ namespace BigHomeWork5.Utilites
         {
             return ZeroRange(max - min + 1) + min;
         }
+
+        internal static ConsoleColor RandomColor()
+        {
+            //ConsoleColor color;
+            //int 
+            //do
+            //{
+            //    color = (ConsoleColor)RandomNumber.ZeroBasedRange(16);
+            //} while (color.Equals(FieldData.BackgroundColor));
+            //return color;
+
+            return (ConsoleColor)InRange(1, 15);
+        }
     }
 }

@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BigHomeWork5.Figures
+namespace BigHomeWork5.Enums
 {
-    class Box
+    internal enum FiguresTypes
     {
+        Line,
+        Box,
+        Z,
+        S,
+        T,
+        L
     }
 }
