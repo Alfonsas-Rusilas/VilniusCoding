@@ -11,6 +11,7 @@ namespace BigHomeWork5.Figures
     {
         public int X { get; private set; }
         public int Y { get; private set; }
+        public int Index { get; private set; }
 
         private ConsoleColor MyColor { get;  set; }
 
@@ -18,10 +19,11 @@ namespace BigHomeWork5.Figures
 
         private bool IsCenter;
 
-        public BoxElement(int x, int y, ConsoleColor myColor,  bool IsCentr = false) //{ X = x; Y = y; IsCenter = IsCentr; }
+        public BoxElement(int x, int y, int position, ConsoleColor myColor,  bool IsCentr = false) //{ X = x; Y = y; IsCenter = IsCentr; }
         {
             X = x;
             Y = y;
+            Index = position;
             MyColor = myColor;
             IsCenter = IsCentr;
         }
@@ -44,16 +46,14 @@ namespace BigHomeWork5.Figures
 
         internal bool CanMoveDown() => CupArray.DownArray2DValue(X, Y) == 0;
 
-        internal bool CanMoveLeft() => CupArray.LeftArray2DValue(X, Y) == 0;
-
-        internal bool CanMoveRight() => CupArray.RightArray2DValue(X, Y) == 0;
-
         internal void MoveDown()
         {
             ClearRender();
             Y++;
             Render();
         }
+
+        internal bool CanMoveLeft() => CupArray.LeftArray2DValue(X, Y) == 0;
 
         internal void MoveLeft()
         {
@@ -62,6 +62,8 @@ namespace BigHomeWork5.Figures
             Render();
         }
 
+        internal bool CanMoveRight() => CupArray.RightArray2DValue(X, Y) == 0;
+
         internal void MoveRight()
         {
             ClearRender();
@@ -69,11 +71,12 @@ namespace BigHomeWork5.Figures
             Render();
         }
 
-        internal string GetCoordinates() => $"X={X},Y={Y}";
+        //internal string GetCoordinates() => $"X={X},Y={Y}";
 
         internal bool CanRotateRight()
         {
-            throw new NotImplementedException();
+            bool b = CupArray.RotateRightArray2DValue(X, Y) == 0;
+            return true;
         }
     }
 }

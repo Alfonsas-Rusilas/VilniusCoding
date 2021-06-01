@@ -1,0 +1,30 @@
+Azure - leidžia paleisti WEB servisą (paprastai įmonės lygiu), veikia Cloude
+
+AWS - amazon platorma Clouduose
+Azure - microsoft platforma Clouduose
+
+Azure DevOps - atskiras servisas iš Azure paketo (projektų administravimas)
+
+https://portal.azure.com
+========================================
+All resources //visi azure resursai. 
+Pav. Create Virtual machine (už mokestį)
+
+Web App - elementarus internetinis puslapis
+1. Pridedam web app (serverį)
+2. Sukuriam SQL serverį (ir tuo pačiu serverį)
+Populiari ir greita - Azure Cosmos DB
+
+c#: startup.cs - įkeliam sugeneruotą nuorodą; (VCS - 78.31.184.10)
+
+Application Insights - prijungiam daug dalykų, pav. stebėjimą, srautą, ir t.t.
+
+Key vault - paslepiami slaptažodžiai
+
+API Managament services - veikia kaip gateway, apart to gali sukurti Subscription'us ir juos parduoti
+
+DevOps Starter - galima susikurti DevOps serverį savo struktūroje (kad kontroliuoti)
+
+CDN - content delivery network (kaip tiekiam klientui), t.y. load balancer, vpn, gateway,..
+
+Recovery - atstatymo įrankiai

@@ -12,12 +12,13 @@ namespace BigHomeWork5.Figures
     internal class Figure
     {
         private List<BoxElement> Elements;
-
         private FiguresTypes FigureType;
+        private FiguresAngle FigureAngle;
 
         public Figure(FiguresTypes figureType, ConsoleColor color)
         {
             FigureType = figureType;
+            FigureAngle = FiguresAngle.StartPosition;
             Elements = FigureFactory.GenerateFigureElements(FigureType, color);
         }
 
@@ -36,7 +37,6 @@ namespace BigHomeWork5.Figures
                 box.ClearRender();
             }
         }
-
 
         public bool CanMoveDown()
         {
@@ -84,6 +84,24 @@ namespace BigHomeWork5.Figures
             {
                 box.MoveRight();
             }
+        }
+
+
+        //internal bool CanRotateRight()
+        //{
+        //    return Elements.All(s => s.CanRotateRight());
+        //}
+
+        internal bool CanRotateRight()
+        {
+            //return Elements.All(s => s.CanRotateRight());
+            bool can = false;
+            int CentrX = Elements[1].X;
+            int CentrY = Elements[1].Y;
+
+            CupArray.RotateRightArray2DValue(CentrX, CentrY, FigureType);
+
+            return can;
         }
 
     }

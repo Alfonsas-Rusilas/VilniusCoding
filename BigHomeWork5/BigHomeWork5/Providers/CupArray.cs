@@ -1,4 +1,5 @@
-﻿using BigHomeWork5.Utilites;
+﻿using BigHomeWork5.Enums;
+using BigHomeWork5.Utilites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,10 +53,7 @@ namespace BigHomeWork5.Providers
             }
         }
 
-        internal static int RotateRightArray2DValue(int x, int y)
-        {
-            throw new NotImplementedException();
-        }
+
 
         internal static int LeftArray2DValue(int x, int y)
         {
@@ -82,6 +80,24 @@ namespace BigHomeWork5.Providers
             }               
             
         }
+
+        internal static int RotateRightArray2DValue(int x, int y, FiguresTypes figureType)
+        {
+            //
+            int a = x + 1;
+            //
+
+
+            if (y > 24 || x > 16)
+            {
+                return -1;
+            }
+            else
+            {
+                return Array2D[y, a];
+            }
+        }
+
 
         internal static string GetArray2DElement(int x, int y)
         {

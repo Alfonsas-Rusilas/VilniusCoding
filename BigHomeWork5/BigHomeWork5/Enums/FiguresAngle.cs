@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork5.Enums
 {
-    internal enum FiguresTypes
+    internal enum FiguresAngle
     {
-        I,
-        O,
-        Z,
-        S,
-        T,
-        L,
-        J
+        StartPosition,
+        Up12h,
+        Right03h,
+        Down06h
     }
 }

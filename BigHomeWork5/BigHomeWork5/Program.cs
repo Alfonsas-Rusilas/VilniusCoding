@@ -13,14 +13,12 @@ namespace BigHomeWork5
 
         static void Main(string[] args)
         {
+
             AppInitializeManager.SetUpWindow();
 
             CupArray.DrawArray2D(0,0);
 
-            //BoxElement s = new BoxElement(4, 1);
-            //s.Render();
-
-            Figure figure = new Figure(FiguresTypes.Z, RandomValue.RandomColor());
+            Figure figure = new Figure(FiguresTypes.L, RandomValue.RandomColor());
             figure.Render();
 
 
@@ -35,7 +33,6 @@ namespace BigHomeWork5
                         if (figure.CanMoveDown())
                         {
                             figure.MoveDown();
-                            //PrintInfo(s);
                             CupArray.DrawArray2D();
                         } 
                             else
@@ -49,15 +46,13 @@ namespace BigHomeWork5
                         if (figure.CanMoveLeft())
                         {
                             figure.MoveLeft();
-                            //PrintInfo(s);
-                            CupArray.DrawArray2D();
+                             CupArray.DrawArray2D();
                         }
                         break;
                     case ConsoleKey.RightArrow:
                         if (figure.CanMoveRight())
                         {
                             figure.MoveRight();
-                            //PrintInfo(s);
                             CupArray.DrawArray2D();
                         }
                         break;
@@ -72,7 +67,6 @@ namespace BigHomeWork5
                         break;
                 }
             } while (pressedChar.Key != ConsoleKey.Escape);
-
 
 
 
@@ -94,18 +88,6 @@ namespace BigHomeWork5
             Debug.WriteLine(str);
         }
 
-        static void PrintInfo(Figure b)
-        {
 
-            //int x = b.X;
-            //int y = b.Y;
-            //int L = CupArray.LeftArray2DValue(x, y);
-            //int D = CupArray.DownArray2DValue(x, y);
-            //int R = CupArray.RightArray2DValue(x, y);
-            //string str = $"Box koordinatės: ({b.X},{b.Y}); L-Masyve={L}; R-Masyve={R}; D-Masyve={D};";
-            //Console.SetCursorPosition(5, Console.WindowHeight - 1);
-            //Console.WriteLine(str);
-            //Debug.WriteLine(str);
-        }
     }
 }
