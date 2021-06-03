@@ -1,4 +1,5 @@
-﻿using BigHomeWork5.Providers;
+﻿using BigHomeWork5.Enums;
+using BigHomeWork5.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,19 @@ namespace BigHomeWork5.Figures
     {
         public int X { get; private set; }
         public int Y { get; private set; }
-        public int Index { get; private set; }
+        public int BoxIndex { get; private set; }
 
         private ConsoleColor MyColor { get;  set; }
 
         private const string EmptyChar = " ";
 
-        private bool IsCenter;
 
-        public BoxElement(int x, int y, int position, ConsoleColor myColor,  bool IsCentr = false) //{ X = x; Y = y; IsCenter = IsCentr; }
+        public BoxElement(int x, int y, int position, ConsoleColor myColor) 
         {
             X = x;
             Y = y;
-            Index = position;
+            BoxIndex = position;
             MyColor = myColor;
-            IsCenter = IsCentr;
         }
 
 
@@ -73,10 +72,75 @@ namespace BigHomeWork5.Figures
 
         //internal string GetCoordinates() => $"X={X},Y={Y}";
 
-        internal bool CanRotateRight()
+        internal bool CanRotateRight(FiguresTypes figureType, FiguresAngle figureAngle, int centerX, int centerY)
         {
-            bool b = CupArray.RotateRightArray2DValue(X, Y) == 0;
-            return true;
+            int rowNumber = (int)figureAngle + 1;
+            if (rowNumber > 3) rowNumber = 0;
+
+            int FigureTypeRowInList = (int)figureType;
+            var figure_row = FigureFactory.Coordinates[FigureTypeRowInList][rowNumber];
+
+            int nextX = 88;
+            int nextY = 88;
+
+            switch (BoxIndex)
+            {
+                case 0:
+                    nextX = centerX + figure_row.Item1.X;
+                    nextY = centerY + figure_row.Item1.Y;
+                    break;
+                case 1:
+                    nextX = centerX + figure_row.Item2.X;
+                    nextY = centerY + figure_row.Item2.Y;
+                    break;
+                case 2:
+                    nextX = centerX + figure_row.Item3.X;
+                    nextY = centerY + figure_row.Item3.Y;
+                    break;
+                case 3:
+                    nextX = centerX + figure_row.Item4.X;
+                    nextY = centerY + figure_row.Item4.Y;
+                    break;
+            }
+            return CupArray.Array2DValue(nextX, nextY) == 0;
+        }
+
+        internal void RotateRight(FiguresTypes figureType, FiguresAngle figureAngle, int x, int y)
+        {
+            //ClearRender();
+
+            int rowNumber = (int)figureAngle + 1;
+            if (rowNumber > 3) rowNumber = 0;
+
+            int FigureTypeRowInList = (int)figureType;
+            var figure_row = FigureFactory.Coordinates[FigureTypeRowInList][rowNumber];
+
+            switch (BoxIndex)
+            {
+                case 0:
+                    X = x + figure_row.Item1.X;
+                    Y = y + figure_row.Item1.Y;
+                    break;
+                case 1:
+                    X = x + figure_row.Item2.X;
+                    Y = y + figure_row.Item2.Y;
+                    break;
+                case 2:
+                    X = x + figure_row.Item3.X;
+                    Y = y + figure_row.Item3.Y;
+                    break;
+                case 3:
+                    X = x + figure_row.Item4.X;
+                    Y = y + figure_row.Item4.Y;
+                    break;
+            }
+            Render();
+
+        }
+
+        internal void MergeWithBottom()
+        {
+            CupArray.MergeElementWithBottom(X, Y);
         }
     }
 }

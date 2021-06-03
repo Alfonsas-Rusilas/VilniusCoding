@@ -18,7 +18,7 @@ namespace BigHomeWork5
 
             CupArray.DrawArray2D(0,0);
 
-            Figure figure = new Figure(FiguresTypes.L, RandomValue.RandomColor());
+            Figure figure = new Figure(FiguresTypes.T  , RandomValue.RandomColor());
             figure.Render();
 
 
@@ -37,7 +37,14 @@ namespace BigHomeWork5
                         } 
                             else
                         {
-                            //CupArray.UpdateDownSide(s.X, s.Y);
+                            // reikia sulieti figūrą prie apačios:
+
+                            figure.MergeWithBottom();
+
+                            figure = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor());
+                            figure.Render();
+
+                            //CupArray.UpdateDownSide(figure.X, figure.Y);
                             //s = new BoxElement(AppParam.GameCupWidth / 2, 2);
                             //s.Render();
                         }
@@ -60,30 +67,42 @@ namespace BigHomeWork5
                     case ConsoleKey.Spacebar:
                         if (figure.CanRotateRight())
                         {
+                            PrintInfoBefore(figure);
                             figure.RotateRight();
-                            //PrintInfo(s);
+                            PrintInfo(figure);
                             CupArray.DrawArray2D();
                         }
                         break;
                 }
             } while (pressedChar.Key != ConsoleKey.Escape);
 
-
-
             Console.ReadLine();
         }
 
 
-        static void PrintInfo(BoxElement b)
+        static void PrintInfo(Figure figure)
         {
             
-            int x = b.X;
-            int y = b.Y;
-            int L = CupArray.LeftArray2DValue(x, y);
-            int D = CupArray.DownArray2DValue(x, y);
-            int R = CupArray.RightArray2DValue(x, y);
-            string str = $"Box koordinatės: ({b.X},{b.Y}); L-Masyve={L}; R-Masyve={R}; D-Masyve={D};";
+            //int x = b.X;
+            //int y = b.Y;
+            //int L = CupArray.LeftArray2DValue(x, y);
+            //int D = CupArray.DownArray2DValue(x, y);
+            //int R = CupArray.RightArray2DValue(x, y);
+
+            string str = $"After right rotate - Figure type: {figure.FigureType}; Figure Angle: {figure.FigureAngle}" +
+                $"Figure[1] coord.X = {figure.FigureElementCoordinatesX(1)}, Figure[1] coord.Y = {figure.FigureElementCoordinatesY(1)}";
+
             Console.SetCursorPosition(5, Console.WindowHeight - 1);
+            Console.WriteLine(str);
+            Debug.WriteLine(str);
+        }
+
+        static void PrintInfoBefore(Figure figure)
+        {
+            string str = $"Before right rotate - Figure type: {figure.FigureType}; Figure Angle: {figure.FigureAngle}, " +
+                $"Figure[1] coord.X = {figure.FigureElementCoordinatesX(1)}, Figure[1] coord.Y = {figure.FigureElementCoordinatesY(1)}";
+
+            Console.SetCursorPosition(5, Console.WindowHeight - 4);
             Console.WriteLine(str);
             Debug.WriteLine(str);
         }

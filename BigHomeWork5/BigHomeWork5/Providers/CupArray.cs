@@ -81,12 +81,22 @@ namespace BigHomeWork5.Providers
             
         }
 
+        internal static int Array2DValue(int x, int y)
+        {
+            if (y > 24 || x > 16)
+            {
+                return -1;
+            }
+            else
+            {
+                return Array2D[y, x];
+            }
+
+        }
+
         internal static int RotateRightArray2DValue(int x, int y, FiguresTypes figureType)
         {
-            //
             int a = x + 1;
-            //
-
 
             if (y > 24 || x > 16)
             {
@@ -129,10 +139,8 @@ namespace BigHomeWork5.Providers
 
         internal static List<string> GetAllArray2D()
         {
-            //int rowNumber = 2;
-            //int[] ar = Enumerable.Range(0, Array2D.GetLength(1)).Select(x => Array2D[rowNumber, x]).ToArray();
-            //string str = string.Join("", ar);
             Console.ResetColor();
+
             string strRow = "";
             List<string> strTmp = new List<string>();
             int rowLength = Array2D.GetLength(0);
@@ -148,6 +156,11 @@ namespace BigHomeWork5.Providers
                 strRow = "";
             }
             return strTmp;
+        }
+
+        internal static void MergeElementWithBottom(int x, int y)
+        {
+            Array2D[y, x] = 5;
         }
 
         internal static void DrawArray2D()
@@ -186,22 +199,22 @@ namespace BigHomeWork5.Providers
 
     }
 
-    public class CustomArray<T>
-    {
-        public T[] GetColumn(T[,] matrix, int columnNumber)
-        {
-            return Enumerable.Range(0, matrix.GetLength(0))
-                    .Select(x => matrix[x, columnNumber])
-                    .ToArray();
-        }
+    //public class CustomArray<T>
+    //{
+    //    public T[] GetColumn(T[,] matrix, int columnNumber)
+    //    {
+    //        return Enumerable.Range(0, matrix.GetLength(0))
+    //                .Select(x => matrix[x, columnNumber])
+    //                .ToArray();
+    //    }
 
-        public T[] GetRow(T[,] matrix, int rowNumber)
-        {
-            return Enumerable.Range(0, matrix.GetLength(1))
-                    .Select(x => matrix[rowNumber, x])
-                    .ToArray();
-        }
-    }
+    //    public T[] GetRow(T[,] matrix, int rowNumber)
+    //    {
+    //        return Enumerable.Range(0, matrix.GetLength(1))
+    //                .Select(x => matrix[rowNumber, x])
+    //                .ToArray();
+    //    }
+    //}
 
 
 

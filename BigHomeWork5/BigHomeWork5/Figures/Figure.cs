@@ -12,8 +12,8 @@ namespace BigHomeWork5.Figures
     internal class Figure
     {
         private List<BoxElement> Elements;
-        private FiguresTypes FigureType;
-        private FiguresAngle FigureAngle;
+        public FiguresTypes FigureType { private set; get; }
+        public FiguresAngle FigureAngle { private set; get; }
 
         public Figure(FiguresTypes figureType, ConsoleColor color)
         {
@@ -42,6 +42,8 @@ namespace BigHomeWork5.Figures
         {
             return Elements.All(s => s.CanMoveDown());
         }
+
+
 
         public bool CanMoveLeft()
         {
@@ -86,22 +88,37 @@ namespace BigHomeWork5.Figures
             }
         }
 
+        internal int FigureElementCoordinatesX(int index)
+        {
+            return Elements[index].X;
+        }
 
-        //internal bool CanRotateRight()
-        //{
-        //    return Elements.All(s => s.CanRotateRight());
-        //}
+        internal int FigureElementCoordinatesY(int index)
+        {
+            return Elements[index].Y;
+        }
 
         internal bool CanRotateRight()
         {
-            //return Elements.All(s => s.CanRotateRight());
-            bool can = false;
-            int CentrX = Elements[1].X;
-            int CentrY = Elements[1].Y;
+            return Elements.All(s => s.CanRotateRight(FigureType, FigureAngle, Elements[1].X, Elements[1].Y));
+        }
 
-            CupArray.RotateRightArray2DValue(CentrX, CentrY, FigureType);
+        internal void RotateRight()
+        {
+            ClearRender();
+            foreach (var box in Elements)
+            {
+                box.RotateRight(FigureType, FigureAngle, Elements[1].X, Elements[1].Y);
+            }
+            FigureAngle = EnumsFunctions.GetNextFigureAngleEnumValue(FigureAngle);
+        }
 
-            return can;
+        internal void MergeWithBottom()
+        {
+            foreach (var box in Elements)
+            {
+                box.MergeWithBottom();
+            }
         }
 
     }

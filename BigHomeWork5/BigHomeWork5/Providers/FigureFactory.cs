@@ -12,10 +12,10 @@ namespace BigHomeWork5.Providers
 {
     internal static class FigureFactory
     {
-        private static int StartX = 4;
-        private static int StartY = 2;
+        private static int StartCenterX = 4;
+        private static int StartCenterY = 2;
 
-        private static List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]> Coordinates =
+        internal static List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]> Coordinates =
             new List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]>()
             {
              new[] { //ICoordinates
@@ -31,15 +31,15 @@ namespace BigHomeWork5.Providers
             ( (0,-1),(0,0),(1,0),(1,-1) )
             },
              new[] { //ZCoordinates 
-            ( (-1,0),(0,0),(1,0),(2,0) ),
-            ( (0,-1),(0,0),(0,1),(0,2) ),
-            ( (1,0),(0,0),(-1,0),(-2,0) ),
-            ( (0,1),(0,0),(0,-1),(0,-2) )
+            ( (-1,-1),(0,0),(0,-1),(1,0) ),
+            ( (1,-1),(0,0),(1,0),(0,1) ),
+            ( (1,1),(0,0),(0,1),(-1,0) ),
+            ( (-1,1),(0,0),(-1,0),(0,-1) )
             },
              new[] { //SCoordinates
             ( (-1,0),(0,0),(0,-1),(1,-1) ),
             ( (0,-1),(0,0),(1,0),(1,1) ),
-            ( (1,0),(0,0),(0,1),(1,1) ),
+            ( (1,0),(0,0),(0,1),(-1,1) ),
             ( (0,1),(0,0),(-1,0),(-1,-1) )
             },
              new[] { //TCoordinates
@@ -50,9 +50,9 @@ namespace BigHomeWork5.Providers
             },
              new[] { //LCoordinates
             ( (-1,0),(0,0),(1,0),(1,-1) ),
-            ( (1,-1),(0,0),(-1,1),(1,2) ),
-            ( (1,1),(0,0),(-1,-1),(-2,0) ),
-            ( (-1,1),(0,0),(1,-1),(0,-2) )
+            ( (0,-1),(0,0),(0,1),(1,1) ),
+            ( (1,0),(0,0),(-1,0),(-1,1) ),
+            ( (0,1),(0,0),(0,-1),(-1,-1) )
             },
              new[] { //JCoordinates
             ( (1,0),(0,0),(-1,0),(-1,-1) ),
@@ -65,18 +65,30 @@ namespace BigHomeWork5.Providers
         internal static List<BoxElement> GenerateFigureElements(FiguresTypes figureType, ConsoleColor color)
         {
             List<BoxElement> Elements = new List<BoxElement>();
-            int rowNumber = 0;
+            int rowNumber = (int)FiguresAngle.StartPosition;
             int FigureTypeRowInList = (int)figureType;
             var figure_row = Coordinates[FigureTypeRowInList][rowNumber];
 
-            Elements.Add(new BoxElement(StartX + figure_row.Item2.X, StartY + figure_row.Item2.Y, 1, color, false));
-            Elements.Add(new BoxElement(StartX + figure_row.Item1.X + figure_row.Item2.X, StartY + figure_row.Item2.Y + figure_row.Item1.Y, 1, color, false));
-            Elements.Add(new BoxElement(StartX + figure_row.Item3.X + figure_row.Item2.X, StartY + figure_row.Item2.Y + figure_row.Item3.Y, 1, color, false));
-            Elements.Add(new BoxElement(StartX + figure_row.Item4.X + figure_row.Item2.X, StartY + figure_row.Item2.Y + figure_row.Item4.Y, 1, color, false));
+            Elements.Add(new BoxElement(StartCenterX + figure_row.Item1.X, StartCenterY + figure_row.Item1.Y, 0, color));
+            Elements.Add(new BoxElement(StartCenterX + figure_row.Item2.X, StartCenterY + figure_row.Item2.Y, 1, color));
+            Elements.Add(new BoxElement(StartCenterX + figure_row.Item3.X, StartCenterY + figure_row.Item3.Y, 2, color));
+            Elements.Add(new BoxElement(StartCenterX + figure_row.Item4.X, StartCenterY + figure_row.Item4.Y, 3, color));
+
             return Elements;
         }
 
+
+
     }
+
+
+
+
+
+
+
+
+
 
     //private static int[] BoxCoordinates = new int[] { 4, 1, 5, 1, 4, 2, 5, 2 };
     //private static Tuple<int, int>[] BoxCoordinates2 = new Tuple<int, int>[] { 4, 1, 5, 1, 4, 2, 5, 2 };

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BigHomeWork5.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,11 @@ namespace BigHomeWork5.Utilites
         internal static int InRange(int min, int max)
         {
             return ZeroRange(max - min + 1) + min;
+        }
+
+        internal static FiguresTypes RandomFigure()
+        {
+            return (FiguresTypes)InRange(0, 6);
         }
 
         internal static ConsoleColor RandomColor()
