@@ -140,7 +140,8 @@ namespace BigHomeWork5.Figures
 
         internal void MergeWithBottom()
         {
-            CupArray.MergeElementWithBottom(X, Y);
+            //CupArray.MergeElementWithBottom(X, Y, (int)MyColor <= 9 ? (int)MyColor : 9 );
+            CupArray.MergeElementWithBottom(X, Y, (int)MyColor);
         }
     }
 }

@@ -15,6 +15,9 @@ namespace BigHomeWork5.Providers
         private static int StartCenterX = 4;
         private static int StartCenterY = 2;
 
+        private static int NextStartCenterX = 27;
+        private static int NextStartCenterY = 4;
+
         internal static List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]> Coordinates =
             new List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]>()
             {
@@ -62,17 +65,18 @@ namespace BigHomeWork5.Providers
             }
     };
 
-        internal static List<BoxElement> GenerateFigureElements(FiguresTypes figureType, ConsoleColor color)
+        internal static List<BoxElement> GenerateFigureElements(FiguresTypes figureType, ConsoleColor color, bool NextFigure = false)
         {
             List<BoxElement> Elements = new List<BoxElement>();
             int rowNumber = (int)FiguresAngle.StartPosition;
             int FigureTypeRowInList = (int)figureType;
             var figure_row = Coordinates[FigureTypeRowInList][rowNumber];
-
-            Elements.Add(new BoxElement(StartCenterX + figure_row.Item1.X, StartCenterY + figure_row.Item1.Y, 0, color));
-            Elements.Add(new BoxElement(StartCenterX + figure_row.Item2.X, StartCenterY + figure_row.Item2.Y, 1, color));
-            Elements.Add(new BoxElement(StartCenterX + figure_row.Item3.X, StartCenterY + figure_row.Item3.Y, 2, color));
-            Elements.Add(new BoxElement(StartCenterX + figure_row.Item4.X, StartCenterY + figure_row.Item4.Y, 3, color));
+            int x = NextFigure ? NextStartCenterX : StartCenterX;
+            int y = NextFigure ? NextStartCenterY : StartCenterY;
+            Elements.Add(new BoxElement(x + figure_row.Item1.X, y + figure_row.Item1.Y, 0, color));
+            Elements.Add(new BoxElement(x + figure_row.Item2.X, y + figure_row.Item2.Y, 1, color));
+            Elements.Add(new BoxElement(x + figure_row.Item3.X, y + figure_row.Item3.Y, 2, color));
+            Elements.Add(new BoxElement(x + figure_row.Item4.X, y + figure_row.Item4.Y, 3, color));
 
             return Elements;
         }

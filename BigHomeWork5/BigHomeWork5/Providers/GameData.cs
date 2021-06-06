@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+//using System.Threading;
+using System.Timers;
 using System.Threading.Tasks;
+using BigHomeWork5.Enums;
 
 namespace BigHomeWork5.Providers
 {
@@ -23,7 +25,9 @@ namespace BigHomeWork5.Providers
         internal static int level;
         internal static int figureCount;
 
-        //internal static Timer speedDelay;
+        internal static Timer timer;
+
+        internal static Status GameStatus;
 
         internal static void ResetData()
         {

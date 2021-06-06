@@ -13,99 +13,112 @@ namespace BigHomeWork5
 
         static void Main(string[] args)
         {
-
             AppInitializeManager.SetUpWindow();
 
-            CupArray.DrawArray2D(0,0);
+            Engine engine = new Engine();
+            engine.ShowWelcomeMenu();
 
-            Figure figure = new Figure(FiguresTypes.T  , RandomValue.RandomColor());
-            figure.Render();
+            //return;
+
+            //AppInitializeManager.SetUpWindow();
+
+            //CupArray.Render();
+
+            //Figure figure = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor());
+            //figure.Render();
+
+            //Figure figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
+            //figureNext.Render();
+
+            //MessagesManager.PrepareMessages();
+
+            //ConsoleKeyInfo pressedChar;
+            //do
+            //{
+            //    pressedChar = Console.ReadKey(true);
+            //    switch (pressedChar.Key)
+            //    {
+            //        case ConsoleKey.DownArrow:
+
+            //            while (figure.CanMoveDown())
+            //            {
+            //                figure.MoveDown();
+            //            };
+            //                // reikia sulieti figūrą prie apačios:
+            //                figure.MergeWithBottom();
+            //                //figure = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor());
+            //                figure = new Figure(figureNext.FigureType, figureNext.FigureColor);
+            //                MessagesManager.AddPoints(CupArray.ClearFilledLines());
+            //                MessagesManager.AddFigure();
 
 
-            ConsoleKeyInfo pressedChar;
-            do
-            {
-                pressedChar = Console.ReadKey(true);
-                switch (pressedChar.Key)
-                {
-                    case ConsoleKey.DownArrow:
+            //                figure.Render();
 
-                        if (figure.CanMoveDown())
-                        {
-                            figure.MoveDown();
-                            CupArray.DrawArray2D();
-                        } 
-                            else
-                        {
-                            // reikia sulieti figūrą prie apačios:
+            //                figureNext.ClearRender();
+            //                figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
+            //                figureNext.Render();
+            //                MessagesManager.PrintInfoMessages();
+            //            break;
 
-                            figure.MergeWithBottom();
+            //            //if (figure.CanMoveDown())
+            //            //{
+            //            //    figure.MoveDown();
+            //            //} 
+            //            //    else
+            //            //{
+            //            //    // reikia sulieti figūrą prie apačios:
+            //            //    figure.MergeWithBottom();
+            //            //    figure = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor());
+            //            //    CupArray.ClearFilledLines();
+            //            //    figure.Render();
+            //            //}
+            //            //break;
+            //        case ConsoleKey.LeftArrow:
+            //            if (figure.CanMoveLeft())
+            //            {
+            //                figure.MoveLeft();
+            //             }
+            //            break;
+            //        case ConsoleKey.RightArrow:
+            //            if (figure.CanMoveRight())
+            //            {
+            //                figure.MoveRight();
+            //            }
+            //            break;
 
-                            figure = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor());
-                            figure.Render();
+            //        case ConsoleKey.Spacebar:
+            //            if (figure.CanRotateRight())
+            //            {
+            //                figure.RotateRight();
+            //            }
+            //            break;
+            //    }
+            //} while (pressedChar.Key != ConsoleKey.Escape);
 
-                            //CupArray.UpdateDownSide(figure.X, figure.Y);
-                            //s = new BoxElement(AppParam.GameCupWidth / 2, 2);
-                            //s.Render();
-                        }
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        if (figure.CanMoveLeft())
-                        {
-                            figure.MoveLeft();
-                             CupArray.DrawArray2D();
-                        }
-                        break;
-                    case ConsoleKey.RightArrow:
-                        if (figure.CanMoveRight())
-                        {
-                            figure.MoveRight();
-                            CupArray.DrawArray2D();
-                        }
-                        break;
-                    
-                    case ConsoleKey.Spacebar:
-                        if (figure.CanRotateRight())
-                        {
-                            PrintInfoBefore(figure);
-                            figure.RotateRight();
-                            PrintInfo(figure);
-                            CupArray.DrawArray2D();
-                        }
-                        break;
-                }
-            } while (pressedChar.Key != ConsoleKey.Escape);
-
-            Console.ReadLine();
+            ////Console.ReadLine();
         }
 
 
-        static void PrintInfo(Figure figure)
-        {
+        //static void PrintInfo(Figure figure)
+        //{
             
-            //int x = b.X;
-            //int y = b.Y;
-            //int L = CupArray.LeftArray2DValue(x, y);
-            //int D = CupArray.DownArray2DValue(x, y);
-            //int R = CupArray.RightArray2DValue(x, y);
+        //    string str = $"After right rotate - Figure type: {figure.FigureType}; Figure Angle: {figure.FigureAngle}" +
+        //        $"Figure[1] coord.X = {figure.FigureElementCoordinatesX(1)}, Figure[1] coord.Y = {figure.FigureElementCoordinatesY(1)}";
 
-            string str = $"After right rotate - Figure type: {figure.FigureType}; Figure Angle: {figure.FigureAngle}" +
-                $"Figure[1] coord.X = {figure.FigureElementCoordinatesX(1)}, Figure[1] coord.Y = {figure.FigureElementCoordinatesY(1)}";
+        //    Console.SetCursorPosition(5, Console.WindowHeight - 1);
+        //    Console.WriteLine(str);
+        //    Debug.WriteLine(str);
+        //}
 
-            Console.SetCursorPosition(5, Console.WindowHeight - 1);
-            Console.WriteLine(str);
-            Debug.WriteLine(str);
-        }
+        //static void PrintInfoBefore(Figure figure)
+        //{
+        //    string str = $"Before right rotate - Figure type: {figure.FigureType}; Figure Angle: {figure.FigureAngle}, " +
+        //        $"Figure[1] coord.X = {figure.FigureElementCoordinatesX(1)}, Figure[1] coord.Y = {figure.FigureElementCoordinatesY(1)}";
 
-        static void PrintInfoBefore(Figure figure)
-        {
-            string str = $"Before right rotate - Figure type: {figure.FigureType}; Figure Angle: {figure.FigureAngle}, " +
-                $"Figure[1] coord.X = {figure.FigureElementCoordinatesX(1)}, Figure[1] coord.Y = {figure.FigureElementCoordinatesY(1)}";
-
-            Console.SetCursorPosition(5, Console.WindowHeight - 4);
-            Console.WriteLine(str);
-            Debug.WriteLine(str);
-        }
+        //    Console.SetCursorPosition(5, Console.WindowHeight - 4);
+        //    Console.WriteLine(str);
+        //    Debug.WriteLine(str);
+        //}
 
 
     }

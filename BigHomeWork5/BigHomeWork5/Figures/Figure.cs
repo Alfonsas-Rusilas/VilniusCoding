@@ -14,12 +14,16 @@ namespace BigHomeWork5.Figures
         private List<BoxElement> Elements;
         public FiguresTypes FigureType { private set; get; }
         public FiguresAngle FigureAngle { private set; get; }
+        public ConsoleColor FigureColor { private set; get; }
+        public bool PreviewFigure { private set; get; }
 
-        public Figure(FiguresTypes figureType, ConsoleColor color)
+        public Figure(FiguresTypes figureType, ConsoleColor color, bool previewFigure = false)
         {
+            PreviewFigure = previewFigure;
             FigureType = figureType;
             FigureAngle = FiguresAngle.StartPosition;
-            Elements = FigureFactory.GenerateFigureElements(FigureType, color);
+            FigureColor = color;
+            Elements = FigureFactory.GenerateFigureElements(FigureType, color, PreviewFigure);
         }
 
         public void Render()
