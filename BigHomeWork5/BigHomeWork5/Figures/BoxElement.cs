@@ -70,9 +70,7 @@ namespace BigHomeWork5.Figures
             Render();
         }
 
-        //internal string GetCoordinates() => $"X={X},Y={Y}";
-
-        internal bool CanRotateRight(FiguresTypes figureType, FiguresAngle figureAngle, int centerX, int centerY)
+         internal bool CanRotateRight(FiguresTypes figureType, FiguresAngle figureAngle, int centerX, int centerY)
         {
             int rowNumber = (int)figureAngle + 1;
             if (rowNumber > 3) rowNumber = 0;
@@ -107,8 +105,6 @@ namespace BigHomeWork5.Figures
 
         internal void RotateRight(FiguresTypes figureType, FiguresAngle figureAngle, int x, int y)
         {
-            //ClearRender();
-
             int rowNumber = (int)figureAngle + 1;
             if (rowNumber > 3) rowNumber = 0;
 
@@ -135,12 +131,10 @@ namespace BigHomeWork5.Figures
                     break;
             }
             Render();
-
         }
 
         internal void MergeWithBottom()
         {
-            //CupArray.MergeElementWithBottom(X, Y, (int)MyColor <= 9 ? (int)MyColor : 9 );
             CupArray.MergeElementWithBottom(X, Y, (int)MyColor);
         }
     }

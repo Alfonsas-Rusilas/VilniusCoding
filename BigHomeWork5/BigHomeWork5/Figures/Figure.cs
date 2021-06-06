@@ -125,5 +125,15 @@ namespace BigHomeWork5.Figures
             }
         }
 
+        internal bool NotMooved()
+        {
+            if (Elements[1].X == GameData.StartCenterX && Elements[1].Y == GameData.StartCenterY)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
     }
 }

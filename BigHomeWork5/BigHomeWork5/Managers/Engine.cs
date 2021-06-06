@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Threading;
 using System.Timers;
 
 namespace BigHomeWork5.Managers
@@ -27,14 +26,17 @@ namespace BigHomeWork5.Managers
                 if (pressedChar.Key != ConsoleKey.Q)
                 {
                     InitializeGameParameters();
+                    GameData.ResetData();
                     Run();
                 }
             } while (pressedChar.Key != ConsoleKey.Q);
-            
+            EndOfGameManager.EndOfGame();
         }
 
         internal void ShowContinueMenu()
         {
+            GameData.timer.Stop();
+            Console.ResetColor();
             MessagesManager.PrintContinueMessage();
             ConsoleKeyInfo pressedChar;
             do
@@ -42,27 +44,36 @@ namespace BigHomeWork5.Managers
                 pressedChar = Console.ReadKey(true);
                 if (pressedChar.Key != ConsoleKey.Q)
                 {
-                    
                     Run();
                 }
             } while (pressedChar.Key != ConsoleKey.Q);
+            EndOfGameManager.EndOfGame();
+        }
 
+        internal void ShowWinnerMenu()
+        {
+            GameData.timer.Stop();
+            MessagesManager.PrintWinnerMessage();
+            EndOfGameManager.EndOfGame();
+        }
+
+        internal void ShowGameOverMenu()
+        {
+            GameData.timer.Stop();
+            MessagesManager.PrintGameOverMessage();
+            Console.ReadKey();
+            EndOfGameManager.EndOfGame();
         }
 
         internal void Run()
         {
-
+            GameData.timer.Start();
             Console.Clear();
             CupArray.Render();
-            
+            MessagesManager.PrintInfoMessages();
 
-            //Figure figure = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor());
             figure.Render();
-
-            //Figure figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
             figureNext.Render();
-
-            MessagesManager.PrepareMessages();
 
             ConsoleKeyInfo pressedChar;
             do
@@ -71,22 +82,8 @@ namespace BigHomeWork5.Managers
                 switch (pressedChar.Key)
                 {
                     case ConsoleKey.DownArrow:
-                        GameData.timer.Enabled = true;
-                        while (figure.CanMoveDown())
-                        {
-                            figure.MoveDown();
-                        };
-                        figure.MergeWithBottom();
-                        figure = new Figure(figureNext.FigureType, figureNext.FigureColor);
-                        MessagesManager.AddPoints(CupArray.ClearFilledLines());
-                        MessagesManager.AddFigure();
-                        figure.Render();
-                        figureNext.ClearRender();
-                        figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
-                        figureNext.Render();
-                        MessagesManager.PrintInfoMessages();
+                        AfterDownKeyPressed();
                         break;
-
                     case ConsoleKey.LeftArrow:
                         if (figure.CanMoveLeft())
                         {
@@ -118,7 +115,6 @@ namespace BigHomeWork5.Managers
             GameData.timer = new System.Timers.Timer();
             GameData.timer.Interval = GameData.speed;
             GameData.timer.AutoReset = true;
-            //GameData.timer.Enabled = true;
             GameData.timer.Elapsed += TimerTickTock;
             GameData.GameStatus = Status.Play;
 
@@ -130,9 +126,63 @@ namespace BigHomeWork5.Managers
         {
             if (GameData.GameStatus == Status.Play)
             {
-                Console.SetCursorPosition(1, AppParam.WindowHeight - 1);
-                Console.Write($"Raised: {e.SignalTime}");
+                if (figure.CanMoveDown())
+                {
+                    figure.MoveDown();
+                } 
+                    else
+                {
+                    if (figure.NotMooved())
+                    {
+                        ShowGameOverMenu();
+
+                    }
+                    figure.MergeWithBottom();
+                    figure = new Figure(figureNext.FigureType, figureNext.FigureColor);
+                    GameData.points += CupArray.ClearFilledLines();
+                    figure.Render();
+                    figureNext.ClearRender();
+                    figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
+                    figureNext.Render();
+                    GameData.speed--;
+                    GameData.points++;
+                    GameData.figureCount++;
+                    MessagesManager.PrintInfoMessages();
+                }
+                if (GameData.figureCount >= GameData.FiguresPerLevel)
+                {
+                    GameData.level++;
+                    GameData.figureCount = 1;
+                    GameData.points += GameData.PointsPerLevel;
+                }
+                if (GameData.level >= GameData.LevelsCount)
+                {
+                    ShowWinnerMenu();
+                }
+
             }
+        }
+
+        internal void AfterDownKeyPressed()
+        {
+            GameData.timer.Enabled = false;
+            while (figure.CanMoveDown())
+            {
+                figure.MoveDown();
+            };
+            figure.MergeWithBottom();
+            figure = new Figure(figureNext.FigureType, figureNext.FigureColor);
+            GameData.points += CupArray.ClearFilledLines();
+            figure.Render();
+            figureNext.ClearRender();
+            figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
+            figureNext.Render();
+            GameData.speed--;
+            GameData.points++;
+            GameData.figureCount++;
+            MessagesManager.PrintInfoMessages();
+
+            GameData.timer.Enabled = true;
         }
 
 

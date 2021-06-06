@@ -29,6 +29,12 @@ namespace BigHomeWork5.Providers
 
         internal static Status GameStatus;
 
+        internal const int StartCenterX = 4;
+        internal const int StartCenterY = 2;
+
+        internal const int NextStartCenterX = 27;
+        internal const int NextStartCenterY = 4;
+
         internal static void ResetData()
         {
             level = 1;

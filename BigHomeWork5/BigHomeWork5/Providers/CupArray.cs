@@ -56,8 +56,6 @@ namespace BigHomeWork5.Providers
             }
         }
 
-
-
         internal static int LeftArray2DValue(int x, int y)
         {
             int a = x - 1;
@@ -81,7 +79,6 @@ namespace BigHomeWork5.Providers
             {
                 return Array2D[b, x];
             }
-
         }
 
         internal static int Array2DValue(int x, int y)
@@ -94,7 +91,6 @@ namespace BigHomeWork5.Providers
             {
                 return Array2D[y, x];
             }
-
         }
 
         internal static int RotateRightArray2DValue(int x, int y, FiguresTypes figureType)
@@ -112,145 +108,17 @@ namespace BigHomeWork5.Providers
         }
 
 
-        internal static string GetArray2DElement(int x, int y)
-        {
-            return $"Matrica[{x},{y}]={Array2D[y, x]}; {GetArray2DRow(x)}";
-        }
-
-        internal static string GetArray2DRow(int row)
-        {
-            int rowNumber = row;
-            int[] ar = Enumerable.Range(0, Array2D.GetLength(1)).Select(x => Array2D[rowNumber, x]).ToArray();
-            string str = $"ROW={rowNumber}: " + string.Join("", ar);
-            return str;
-        }
-
         internal static void UpdateDownSide(int x, int y)
         {
             Array2D[y, x] = 1;
         }
 
-        internal static void UpdateLeftSide(int x, int y)
-        {
-            Array2D[y, x] = 1;
-        }
-
-        internal static void UpdateRightSide(int x, int y)
-        {
-            Array2D[y, x] = 1;
-        }
-
-        internal static List<string> GetAllArray2D()
-        {
-            Console.ResetColor();
-
-            string strRow = "";
-            List<string> strTmp = new List<string>();
-            int rowLength = Array2D.GetLength(0);
-            int colLength = Array2D.GetLength(1);
-
-            for (int i = 0; i < rowLength; i++)
-            {
-                for (int j = 0; j < colLength; j++)
-                {
-                    strRow += $"{Array2D[i, j]}";
-                }
-                strTmp.Add(strRow);
-                strRow = "";
-            }
-            return strTmp;
-
-
-        }
 
         internal static void MergeElementWithBottom(int x, int y, int colorValue)
         {
             Array2D[y, x] = colorValue;
         }
 
-        internal static void DrawArray2D()
-        {
-            List<string> strL = GetAllArray2D();
-
-            int x = AppParam.GameCupWidth + AppParam.InfoPanelWidth;
-            int y = 0;
-
-            Console.SetCursorPosition(x, y);
-            foreach (var strl in strL)
-            {
-                Console.Write(strl);
-                y++;
-                Console.SetCursorPosition(x, y);
-            }
-        }
-
-        internal static void DrawArray2D(int a, int b)
-        {
-            List<string> strL = GetAllArray2D();
-
-            int x = a; // AppParam.GameCupWidth + AppParam.InfoPanelWidth;
-            int y = b; //; ;
-
-            Console.SetCursorPosition(x, y);
-            foreach (var strl in strL)
-            {
-                Console.Write(strl);
-                y++;
-                Console.SetCursorPosition(x, y);
-            }
-        }
-
-        //internal static void ClearFilledLines()
-        //{
-        //    List<string> strArray = GetAllArray2D();
-
-        //    strArray.RemoveAll(filed => filed.IndexOf('0') < 0);
-
-        //    while (strArray.Count < ArrayRowsCount)
-        //    {
-        //        strArray.Insert(0, "E000000000000000E");
-        //    }
-        //    strArray[strArray.Count - 1] = "A---------------A";
-
-        //    int x = AppParam.GameCupWidth * 2 + AppParam.InfoPanelWidth + 4;
-        //    //int x = 0;
-        //    int y = 0; //; ;
-
-        //    //Console.SetCursorPosition(x, y);
-
-        //    //foreach (var strl in strArray)
-        //    //{
-        //    //    Console.Write(strl);
-        //    //    y++;
-        //    //    Console.SetCursorPosition(x, y);
-        //    //}
-
-        //    x = 0;
-        //    y = 0;
-
-        //    foreach (var strLine in strArray)
-        //    {
-
-        //        foreach (var charItem in strLine)
-        //        {
-        //            Console.SetCursorPosition(x, y);
-        //            if (charItem != '0')
-        //            {
-        //                int c = (int)charItem;
-
-        //                Console.BackgroundColor = (ConsoleColor)c; // (ConsoleColor)c; //  ((int)charItem);
-        //                Console.Write(" ");
-        //            }
-        //            x++;
-
-        //        }
-        //        //Console.Write(strLine);
-        //        y++;
-        //        x = 0;
-        //        //Console.SetCursorPosition(x, y);
-        //    }
-
-        //}
 
         internal static int ClearFilledLines()
         {
@@ -268,7 +136,6 @@ namespace BigHomeWork5.Providers
                         linescount++;
                         continue;
                     }
-
                 }
             } while (IsFilledLines);
             return linescount * ArrayRowLenght;
@@ -310,10 +177,8 @@ namespace BigHomeWork5.Providers
             return true;
         }
 
-
         internal static int[] GetArrayColumn(int colum)
         {
-            int rowLength = Array2D.GetLength(1);
             int colLength = Array2D.GetLength(0);
             int[] reta = new int[colLength];
 
@@ -327,10 +192,7 @@ namespace BigHomeWork5.Providers
         internal static int[] GetArrayRow(int row)
         {
             int rowLength = Array2D.GetLength(1);
-            int colLength = Array2D.GetLength(0);
-
             int[] reta = new int[rowLength];
-
             for (int i = 0; i < rowLength; i++)
             {
                 reta[i] = Array2D[row, i];
@@ -341,8 +203,6 @@ namespace BigHomeWork5.Providers
         internal static void SetArrayRow(int[] arow, int row)
         {
             int rowLength = Array2D.GetLength(1);
-            int colLength = Array2D.GetLength(0);
-
             for (int i = 0; i < rowLength; i++)
             {
                 Array2D[row, i] = arow[i];
@@ -351,6 +211,20 @@ namespace BigHomeWork5.Providers
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //public class CustomArray<T>

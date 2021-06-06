@@ -12,11 +12,6 @@ namespace BigHomeWork5.Providers
 {
     internal static class FigureFactory
     {
-        private static int StartCenterX = 4;
-        private static int StartCenterY = 2;
-
-        private static int NextStartCenterX = 27;
-        private static int NextStartCenterY = 4;
 
         internal static List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]> Coordinates =
             new List<((int X, int Y), (int X, int Y), (int X, int Y), (int X, int Y))[]>()
@@ -71,8 +66,8 @@ namespace BigHomeWork5.Providers
             int rowNumber = (int)FiguresAngle.StartPosition;
             int FigureTypeRowInList = (int)figureType;
             var figure_row = Coordinates[FigureTypeRowInList][rowNumber];
-            int x = NextFigure ? NextStartCenterX : StartCenterX;
-            int y = NextFigure ? NextStartCenterY : StartCenterY;
+            int x = NextFigure ? GameData.NextStartCenterX : GameData.StartCenterX;
+            int y = NextFigure ? GameData.NextStartCenterY : GameData.StartCenterY;
             Elements.Add(new BoxElement(x + figure_row.Item1.X, y + figure_row.Item1.Y, 0, color));
             Elements.Add(new BoxElement(x + figure_row.Item2.X, y + figure_row.Item2.Y, 1, color));
             Elements.Add(new BoxElement(x + figure_row.Item3.X, y + figure_row.Item3.Y, 2, color));
