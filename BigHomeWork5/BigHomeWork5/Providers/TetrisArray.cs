@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BigHomeWork5.Providers
 {
-    internal static class CupArray
+    internal static class TetrisArray
     {
         private static int ArrayRowsCount = 25;
         private static int ArrayRowLenght = 17;
@@ -107,18 +107,10 @@ namespace BigHomeWork5.Providers
             }
         }
 
-
-        internal static void UpdateDownSide(int x, int y)
-        {
-            Array2D[y, x] = 1;
-        }
-
-
         internal static void MergeElementWithBottom(int x, int y, int colorValue)
         {
             Array2D[y, x] = colorValue;
         }
-
 
         internal static int ClearFilledLines()
         {

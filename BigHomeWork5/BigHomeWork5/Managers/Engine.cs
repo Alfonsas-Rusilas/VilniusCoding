@@ -69,7 +69,7 @@ namespace BigHomeWork5.Managers
         {
             GameData.timer.Start();
             Console.Clear();
-            CupArray.Render();
+            TetrisArray.Render();
             MessagesManager.PrintInfoMessages();
 
             figure.Render();
@@ -139,7 +139,7 @@ namespace BigHomeWork5.Managers
                     }
                     figure.MergeWithBottom();
                     figure = new Figure(figureNext.FigureType, figureNext.FigureColor);
-                    GameData.points += CupArray.ClearFilledLines();
+                    GameData.points += TetrisArray.ClearFilledLines();
                     figure.Render();
                     figureNext.ClearRender();
                     figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);
@@ -172,7 +172,7 @@ namespace BigHomeWork5.Managers
             };
             figure.MergeWithBottom();
             figure = new Figure(figureNext.FigureType, figureNext.FigureColor);
-            GameData.points += CupArray.ClearFilledLines();
+            GameData.points += TetrisArray.ClearFilledLines();
             figure.Render();
             figureNext.ClearRender();
             figureNext = new Figure(RandomValue.RandomFigure(), RandomValue.RandomColor(), true);

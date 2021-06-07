@@ -23,7 +23,7 @@ namespace BigHomeWork5.Figures
             FigureType = figureType;
             FigureAngle = FiguresAngle.StartPosition;
             FigureColor = color;
-            Elements = FigureFactory.GenerateFigureElements(FigureType, color, PreviewFigure);
+            Elements = GenerateFigureElements(FigureType, color, PreviewFigure);
         }
 
         public void Render()
@@ -135,5 +135,22 @@ namespace BigHomeWork5.Figures
                 return false;
             }
         }
+
+        internal List<BoxElement> GenerateFigureElements(FiguresTypes figureType, ConsoleColor color, bool NextFigure = false)
+        {
+            List<BoxElement> Elements = new List<BoxElement>();
+            int rowNumber = (int)FiguresAngle.StartPosition;
+            int FigureTypeRowInList = (int)figureType;
+            var figure_row = FigureCoordinates.Coordinates[FigureTypeRowInList][rowNumber];
+            int x = NextFigure ? GameData.NextStartCenterX : GameData.StartCenterX;
+            int y = NextFigure ? GameData.NextStartCenterY : GameData.StartCenterY;
+            Elements.Add(new BoxElement(x + figure_row.Item1.X, y + figure_row.Item1.Y, 0, color));
+            Elements.Add(new BoxElement(x + figure_row.Item2.X, y + figure_row.Item2.Y, 1, color));
+            Elements.Add(new BoxElement(x + figure_row.Item3.X, y + figure_row.Item3.Y, 2, color));
+            Elements.Add(new BoxElement(x + figure_row.Item4.X, y + figure_row.Item4.Y, 3, color));
+
+            return Elements;
+        }
+
     }
 }

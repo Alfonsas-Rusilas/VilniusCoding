@@ -27,7 +27,6 @@ namespace BigHomeWork5.Figures
             MyColor = myColor;
         }
 
-
         public void Render()
         {
             Console.SetCursorPosition(X, Y);
@@ -43,7 +42,7 @@ namespace BigHomeWork5.Figures
             Console.Write(str);
         }
 
-        internal bool CanMoveDown() => CupArray.DownArray2DValue(X, Y) == 0;
+        internal bool CanMoveDown() => TetrisArray.DownArray2DValue(X, Y) == 0;
 
         internal void MoveDown()
         {
@@ -52,7 +51,7 @@ namespace BigHomeWork5.Figures
             Render();
         }
 
-        internal bool CanMoveLeft() => CupArray.LeftArray2DValue(X, Y) == 0;
+        internal bool CanMoveLeft() => TetrisArray.LeftArray2DValue(X, Y) == 0;
 
         internal void MoveLeft()
         {
@@ -61,7 +60,7 @@ namespace BigHomeWork5.Figures
             Render();
         }
 
-        internal bool CanMoveRight() => CupArray.RightArray2DValue(X, Y) == 0;
+        internal bool CanMoveRight() => TetrisArray.RightArray2DValue(X, Y) == 0;
 
         internal void MoveRight()
         {
@@ -76,7 +75,7 @@ namespace BigHomeWork5.Figures
             if (rowNumber > 3) rowNumber = 0;
 
             int FigureTypeRowInList = (int)figureType;
-            var figure_row = FigureFactory.Coordinates[FigureTypeRowInList][rowNumber];
+            var figure_row = FigureCoordinates.Coordinates[FigureTypeRowInList][rowNumber];
 
             int nextX = 88;
             int nextY = 88;
@@ -100,7 +99,7 @@ namespace BigHomeWork5.Figures
                     nextY = centerY + figure_row.Item4.Y;
                     break;
             }
-            return CupArray.Array2DValue(nextX, nextY) == 0;
+            return TetrisArray.Array2DValue(nextX, nextY) == 0;
         }
 
         internal void RotateRight(FiguresTypes figureType, FiguresAngle figureAngle, int x, int y)
@@ -109,7 +108,7 @@ namespace BigHomeWork5.Figures
             if (rowNumber > 3) rowNumber = 0;
 
             int FigureTypeRowInList = (int)figureType;
-            var figure_row = FigureFactory.Coordinates[FigureTypeRowInList][rowNumber];
+            var figure_row = FigureCoordinates.Coordinates[FigureTypeRowInList][rowNumber];
 
             switch (BoxIndex)
             {
@@ -135,7 +134,7 @@ namespace BigHomeWork5.Figures
 
         internal void MergeWithBottom()
         {
-            CupArray.MergeElementWithBottom(X, Y, (int)MyColor);
+            TetrisArray.MergeElementWithBottom(X, Y, (int)MyColor);
         }
     }
 }
